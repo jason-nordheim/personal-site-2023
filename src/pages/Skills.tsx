@@ -81,13 +81,10 @@ const useSortedAndFilteredSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_
     return sortedSkills.filter((skill) => {
       let isIncluded = false;
       filters.forEach((filter) => {
-        console.log({ filter, category: skill.category });
         if (filter.toLowerCase() === skill.category) {
           isIncluded = true;
         }
       });
-
-      console.log(skill.name, isIncluded);
       return isIncluded;
     });
   }, [sortedSkills, filters]);
