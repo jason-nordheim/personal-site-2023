@@ -32,15 +32,15 @@ const Bubble = styled("span")(({ theme }) => ({
 }));
 
 const ColorMap = {
-  [SKILL_TYPES.Concept]: "yellow",
-  [SKILL_TYPES.Framework]: "darkorange",
-  [SKILL_TYPES.Language]: "dodgerblue",
-  [SKILL_TYPES.Library]: "coral",
-  [SKILL_TYPES.Software]: "darkturquoise",
-  [SKILL_TYPES.Technology]: "limegreen",
+  [SKILL_TYPES.Concept]: "#0096C7",
+  [SKILL_TYPES.Framework]: "#00B4D8",
+  [SKILL_TYPES.Language]: "#48CAE4",
+  [SKILL_TYPES.Library]: "#90E0EF",
+  [SKILL_TYPES.Software]: "#ADE8F4",
+  [SKILL_TYPES.Technology]: "#CAF0F8",
 };
 
-export const SkillBubble: FC<SkillBubbleProps> = ({ skill }) => {
+const SkillBubble: FC<SkillBubbleProps> = ({ skill }) => {
   return <Bubble sx={{ backgroundColor: ColorMap[skill.category], color: "black" }}>{skill.name}</Bubble>;
 };
 
