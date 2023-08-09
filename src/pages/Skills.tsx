@@ -1,10 +1,21 @@
-import { FormControl, InputLabel, NativeSelect, Stack, Typography, styled } from "@mui/material";
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  NativeSelect,
+  Select,
+  Stack,
+  Typography,
+  styled,
+} from "@mui/material";
 import { SKILLS } from "../lib";
 import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
 import { Section } from "../components/Section";
 import { FC } from "react";
-import { SKILL_TYPES, Skill } from "../lib";
+import { SKILL_CATEGORY, Skill } from "../lib";
 
 const SkillContainer = styled("div")(({ theme }) => ({
   display: "flex",
@@ -32,19 +43,19 @@ const Bubble = styled("span")(({ theme }) => ({
 }));
 
 const ColorMap = {
-  [SKILL_TYPES.Concept]: "#0096C7",
-  [SKILL_TYPES.Framework]: "#00B4D8",
-  [SKILL_TYPES.Language]: "#48CAE4",
-  [SKILL_TYPES.Library]: "#90E0EF",
-  [SKILL_TYPES.Software]: "#ADE8F4",
-  [SKILL_TYPES.Technology]: "#CAF0F8",
+  [SKILL_CATEGORY.Concept]: "#0096C7",
+  [SKILL_CATEGORY.Framework]: "#00B4D8",
+  [SKILL_CATEGORY.Language]: "#48CAE4",
+  [SKILL_CATEGORY.Library]: "#90E0EF",
+  [SKILL_CATEGORY.Software]: "#ADE8F4",
+  [SKILL_CATEGORY.Technology]: "#CAF0F8",
 };
 
 const SkillBubble: FC<SkillBubbleProps> = ({ skill }) => {
   return <Bubble sx={{ backgroundColor: ColorMap[skill.category], color: "black" }}>{skill.name}</Bubble>;
 };
 
-const useSortedSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name) => {
+const useSortedAndFilteredSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name, filters: string[]) => {
   const sortedSkills = useMemo(() => {
     if (sortBy === SORT_OPTIONS.category) {
       return SKILLS.sort((a, b) => {
@@ -64,13 +75,31 @@ const useSortedSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.nam
     });
   }, [sortBy]);
 
-  return sortedSkills;
+  const filteredSkills = useMemo(() => {
+    if (!filters || filters.length === 0) return sortedSkills;
+
+    return sortedSkills.filter((skill) => {
+      let isIncluded = false;
+      filters.forEach((filter) => {
+        console.log({ filter, category: skill.category });
+        if (filter.toLowerCase() === skill.category) {
+          isIncluded = true;
+        }
+      });
+
+      console.log(skill.name, isIncluded);
+      return isIncluded;
+    });
+  }, [sortedSkills, filters]);
+
+  return filteredSkills;
 };
 
 export const Skills = () => {
+  const [filterOptions, setFilterOptions] = useState<string[]>([]);
   const [sortField, setSortField] = useState(SORT_OPTIONS.name);
 
-  const skills = useSortedSkills(sortField);
+  const skills = useSortedAndFilteredSkills(sortField, filterOptions);
 
   return (
     <Section id="skills">
@@ -78,6 +107,7 @@ export const Skills = () => {
         <Typography variant="h4" textAlign="center">
           Skills
         </Typography>
+
         <FormControl variant="outlined" sx={{ mx: 2, display: "flex", flexDirection: "column" }}>
           <InputLabel id="sortOption" size="small">
             Sort by:
@@ -93,6 +123,35 @@ export const Skills = () => {
             <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
             <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
           </NativeSelect>
+        </FormControl>
+        <FormControl variant="outlined" sx={{ px: 2, display: "flex", flexDirection: "column" }}>
+          <InputLabel id="filterOptions" size="small">
+            Filter
+          </InputLabel>
+          <Select
+            labelId="filterOptions"
+            value={filterOptions}
+            placeholder="filter"
+            multiple
+            variant="outlined"
+            renderValue={(selected) => selected.join(", ")}
+            onChange={(e) => {
+              console.log(e.target.value);
+              // is an array
+              if (typeof e.target.value === "object") {
+                setFilterOptions(e.target.value);
+              }
+            }}
+          >
+            {Object.keys(SKILL_CATEGORY).map((cat) => {
+              return (
+                <MenuItem key={cat} value={cat}>
+                  <Checkbox checked={filterOptions.indexOf(cat) > -1} />
+                  <ListItemText primary={cat} />
+                </MenuItem>
+              );
+            })}
+          </Select>
         </FormControl>
       </Stack>
       <SkillContainer>
