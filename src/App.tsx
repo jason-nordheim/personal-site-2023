@@ -1,9 +1,17 @@
-import { Typography } from "@mui/material";
+import { About } from "./pages/About";
+import { Skills } from "./pages/Skills";
+import { Header } from "./components/Header";
+import { Hero } from "./components/Hero";
+import { Footer } from "./components/Footer";
 
 function App() {
   return (
     <>
-      <Typography variant="h2">Jason Nordheim</Typography>
+      <Header />
+      <Hero />
+      <About />
+      <Skills />
+      <Footer />
     </>
   );
 }
