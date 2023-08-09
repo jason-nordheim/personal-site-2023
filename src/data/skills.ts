@@ -93,6 +93,11 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.DevOps, TAGS.Api],
   },
   {
+    name: "Vite",
+    category: SKILL_TYPES.Technology,
+    tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.DevOps],
+  },
+  {
     name: "Cypress",
     category: SKILL_TYPES.Library,
     tags: [TAGS.FrontEnd, TAGS.Testing],
