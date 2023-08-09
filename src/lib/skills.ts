@@ -10,9 +10,10 @@ export const TAGS = {
   Collaboration: "collaboration",
   DevOps: "dev ops",
   Testing: "testing",
+  Documentation: "documentation",
 };
 
-const SKILL_TYPES = {
+export const SKILL_TYPES = {
   Language: "language",
   Library: "library",
   Framework: "framework",
@@ -32,6 +33,26 @@ export type Skill = {
 };
 
 export const SKILLS: Skill[] = [
+  {
+    name: "SharePoint",
+    category: SKILL_TYPES.Software,
+    tags: [TAGS.Collaboration, TAGS.Documentation],
+  },
+  {
+    name: "Lucid Diagrams",
+    category: SKILL_TYPES.Software,
+    tags: [TAGS.Collaboration, TAGS.Documentation],
+  },
+  {
+    name: "Big O",
+    category: SKILL_TYPES.Concept,
+    tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.Collaboration],
+  },
+  {
+    name: "Swagger",
+    category: SKILL_TYPES.Framework,
+    tags: [TAGS.Api, TAGS.Backend, TAGS.Documentation],
+  },
   {
     name: "Emotion (styled components)",
     category: SKILL_TYPES.Library,
@@ -53,7 +74,7 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd, TAGS.Backend],
   },
   {
-    name: "REST Methodologies",
+    name: "REST",
     category: SKILL_TYPES.Concept,
     tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
   },
@@ -208,11 +229,6 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd],
   },
   {
-    name: "PostgreSQL",
-    category: SKILL_TYPES.Language,
-    tags: [TAGS.Backend, TAGS.Databases],
-  },
-  {
     name: "Mongo DB",
     category: SKILL_TYPES.Language,
     tags: [TAGS.Backend, TAGS.Databases],
@@ -229,7 +245,7 @@ export const SKILLS: Skill[] = [
   },
   {
     name: "Express",
-    category: "Framework",
+    category: SKILL_TYPES.Framework,
     tags: [TAGS.Backend, TAGS.Api],
   },
   {
@@ -253,18 +269,13 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd],
   },
   {
-    name: "Next.js",
-    category: SKILL_TYPES.Framework,
-    tags: [TAGS.FrontEnd],
-  },
-  {
     name: "MUI/Material UI",
     category: SKILL_TYPES.Framework,
     tags: [TAGS.FrontEnd],
   },
   {
     name: "Jest",
-    category: "Testing",
+    category: SKILL_TYPES.Library,
     tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.Testing],
   },
   {
@@ -279,7 +290,7 @@ export const SKILLS: Skill[] = [
   },
   {
     name: "JIRA",
-    category: "Software",
+    category: SKILL_TYPES.Software,
     tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.ProjectManagement],
   },
   {
