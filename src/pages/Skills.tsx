@@ -1,18 +1,47 @@
-import { styled } from "@mui/material";
-import { SkillBubble } from "../components/SkillBubble";
+import { FormControl, InputLabel, NativeSelect, Stack, Typography, styled } from "@mui/material";
 import { SKILLS } from "../lib";
 import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
+import { Section } from "../components/Section";
+import { FC } from "react";
+import { SKILL_TYPES, Skill } from "../lib";
 
 const SkillContainer = styled("div")(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
   alignContent: "center",
+  justifyContent: "center",
 }));
 
 const SORT_OPTIONS = {
   name: "name",
   category: "category",
+};
+
+type SkillBubbleProps = {
+  skill: Skill;
+};
+
+const Bubble = styled("span")(({ theme }) => ({
+  border: `1px solid ${theme.palette.primary.light}`,
+  borderRadius: theme.spacing(1),
+  margin: `${theme.spacing(1)}`,
+  padding: [theme.spacing(1), theme.spacing(1)],
+  fontSize: 12,
+  boxShadow: `${theme.spacing(0.5)} ${theme.spacing(0.5)} ${theme.spacing(0.25)}`,
+}));
+
+const ColorMap = {
+  [SKILL_TYPES.Concept]: "yellow",
+  [SKILL_TYPES.Framework]: "darkorange",
+  [SKILL_TYPES.Language]: "dodgerblue",
+  [SKILL_TYPES.Library]: "coral",
+  [SKILL_TYPES.Software]: "darkturquoise",
+  [SKILL_TYPES.Technology]: "limegreen",
+};
+
+export const SkillBubble: FC<SkillBubbleProps> = ({ skill }) => {
+  return <Bubble sx={{ backgroundColor: ColorMap[skill.category], color: "black" }}>{skill.name}</Bubble>;
 };
 
 const useSortedSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name) => {
@@ -44,29 +73,33 @@ export const Skills = () => {
   const skills = useSortedSkills(sortField);
 
   return (
-    <section id="skills">
-      <h2>Skills</h2>
-      <div>
-        <label htmlFor="sortOption">Sort:</label>
-        <select
-          name="sortOption"
-          onChange={(e) => {
-            console.log(e.target.value);
-            setSortField(e.target.value);
-          }}
-        >
-          {Object.keys(SORT_OPTIONS).map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
+    <Section id="skills">
+      <Stack>
+        <Typography variant="h4" textAlign="center">
+          Skills
+        </Typography>
+        <FormControl variant="outlined" sx={{ mx: 2, display: "flex", flexDirection: "column" }}>
+          <InputLabel id="sortOption" size="small">
+            Sort by:
+          </InputLabel>
+          <NativeSelect
+            inputProps={{
+              name: "",
+              id: "sortOption",
+            }}
+            value={sortField}
+            onChange={(e) => setSortField(e.target.value)}
+          >
+            <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
+            <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
+          </NativeSelect>
+        </FormControl>
+      </Stack>
       <SkillContainer>
         {skills.map((s) => (
           <SkillBubble key={s.name} skill={s} />
         ))}
       </SkillContainer>
-    </section>
+    </Section>
   );
 };
