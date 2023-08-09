@@ -1,6 +1,7 @@
 import {
   Checkbox,
   FormControl,
+  Grid,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -104,52 +105,57 @@ export const Skills = () => {
         <Typography variant="h4" textAlign="center">
           Skills
         </Typography>
-
-        <FormControl variant="outlined" sx={{ mx: 2, display: "flex", flexDirection: "column" }}>
-          <InputLabel id="sortOption" size="small">
-            Sort by:
-          </InputLabel>
-          <NativeSelect
-            inputProps={{
-              name: "",
-              id: "sortOption",
-            }}
-            value={sortField}
-            onChange={(e) => setSortField(e.target.value)}
-          >
-            <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
-            <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
-          </NativeSelect>
-        </FormControl>
-        <FormControl variant="outlined" sx={{ px: 2, display: "flex", flexDirection: "column" }}>
-          <InputLabel id="filterOptions" size="small">
-            Filter
-          </InputLabel>
-          <Select
-            labelId="filterOptions"
-            value={filterOptions}
-            placeholder="filter"
-            multiple
-            variant="outlined"
-            renderValue={(selected) => selected.join(", ")}
-            onChange={(e) => {
-              console.log(e.target.value);
-              // is an array
-              if (typeof e.target.value === "object") {
-                setFilterOptions(e.target.value);
-              }
-            }}
-          >
-            {Object.keys(SKILL_CATEGORY).map((cat) => {
-              return (
-                <MenuItem key={cat} value={cat}>
-                  <Checkbox checked={filterOptions.indexOf(cat) > -1} />
-                  <ListItemText primary={cat} />
-                </MenuItem>
-              );
-            })}
-          </Select>
-        </FormControl>
+        <Grid container>
+          <Grid item xs={4}>
+            <FormControl variant="outlined" sx={{ mx: 2, display: "flex", flexDirection: "column" }}>
+              <InputLabel id="sortOption" size="small">
+                Sort by:
+              </InputLabel>
+              <NativeSelect
+                inputProps={{
+                  name: "",
+                  id: "sortOption",
+                }}
+                value={sortField}
+                onChange={(e) => setSortField(e.target.value)}
+              >
+                <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
+                <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
+              </NativeSelect>
+            </FormControl>
+          </Grid>
+          <Grid item xs={4}>
+            <FormControl variant="outlined" sx={{ px: 2, display: "flex", flexDirection: "column" }}>
+              <InputLabel id="filterOptions" size="small">
+                Filter
+              </InputLabel>
+              <Select
+                labelId="filterOptions"
+                value={filterOptions}
+                placeholder="filter"
+                multiple
+                variant="outlined"
+                renderValue={(selected) => selected.join(", ")}
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  // is an array
+                  if (typeof e.target.value === "object") {
+                    setFilterOptions(e.target.value);
+                  }
+                }}
+              >
+                {Object.keys(SKILL_CATEGORY).map((cat) => {
+                  return (
+                    <MenuItem key={cat} value={cat}>
+                      <Checkbox checked={filterOptions.indexOf(cat) > -1} />
+                      <ListItemText primary={cat} />
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
       </Stack>
       <SkillContainer>
         {skills.map((s) => (
