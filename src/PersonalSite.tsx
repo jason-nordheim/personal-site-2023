@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Footer } from "./components/Footer";
 
-function App() {
+export const PersonalSite = () => {
   return (
     <>
       <Header />
@@ -14,6 +14,4 @@ function App() {
       <Footer />
     </>
   );
-}
-
-export default App;
+};
