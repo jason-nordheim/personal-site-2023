@@ -179,7 +179,7 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.Backend, TAGS.FrontEnd],
   },
   {
-    name: "Go",
+    name: "Go/Golang",
     category: SKILL_CATEGORY.Language,
     tags: [TAGS.Backend, TAGS.Api],
   },
@@ -299,3 +299,17 @@ export const SKILLS: Skill[] = [
     tags: ["back-end", "orm"],
   },
 ];
+
+export const makeSkillsString = (skills: Skill[]) => {
+  return skills
+    .sort((a, b) => {
+      const x = a.name.toLowerCase();
+      const y = b.name.toLowerCase();
+      if (x < y) return 1;
+      if (y > x) return -1;
+      return 0;
+    })
+    .filter((s) => s.category !== SKILL_CATEGORY.Software)
+    .map((s) => s.name)
+    .join(" ,");
+};
