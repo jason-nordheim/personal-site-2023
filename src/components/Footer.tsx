@@ -1,18 +1,14 @@
-import { styled } from "@mui/material";
+import { css } from "../styled-system/css";
 import { FooterLink } from "./FooterLink";
-
-const UnorderedList = styled("ul")(({ theme }) => ({
-  listStyle: "none",
-}));
 
 export const Footer = () => {
   return (
     <footer>
-      <UnorderedList id="footer-links">
+      <ul className={css({ display: "flex" })}>
         <FooterLink href="#">Github</FooterLink>
         <FooterLink href="#">LinkedIn</FooterLink>
         <FooterLink href="#">Email</FooterLink>
-      </UnorderedList>
+      </ul>
     </footer>
   );
 };

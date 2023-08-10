@@ -1,7 +1,7 @@
 import { FC } from "react";
-import { Section } from "../components/Section";
 import { EXPERIENCE, Experience } from "../lib";
-import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { css } from "../styled-system/css";
+import { section } from "../styles";
 
 const MONTHS = [
   "January",
@@ -37,37 +37,36 @@ const formatDateString = (start: string, end: string) => {
 
 const ExperienceCard: FC<Experience> = ({ description, employer, end, start, responsibilities, title, location }) => {
   return (
-    <Grid item>
-      <Typography
-        fontWeight="800"
-        variant="subtitle1"
-        sx={{ ml: (theme) => theme.spacing(2) }}
-      >{`${title} | ${employer}`}</Typography>
-      <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
+    <article
+      className={css({
+        display: "flex",
+        flexDirection: "column",
+        rounded: "md",
+        border: "1px solid black",
+        my: 10,
+        p: 5,
+      })}
+    >
+      <p className={css({ textStyle: "lg", fontWeight: "bold", textAlign: "center" })}>{`${title} | ${employer}`}</p>
+      <p className={css({ textStyle: "md", fontVariant: "small-caps" })}>
         {location ? `${formatDateString(start, end)}, ${location}` : formatDateString(start, end)}
-      </Typography>
-      {description && (
-        <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
-          {description}
-        </Typography>
-      )}
-      <List dense>
+      </p>
+      {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
+      <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs" })}>
         {responsibilities.map((r) => (
-          <ListItem key={r}>
-            <ListItemText>{r}</ListItemText>
-          </ListItem>
+          <li key={r}>{r}</li>
         ))}
-      </List>
-    </Grid>
+      </ul>
+    </article>
   );
 };
 
 export const ExperienceSection = () => {
   return (
-    <Section id="experience">
+    <section id="skills" className={section({})}>
       {EXPERIENCE.map((e) => (
-        <ExperienceCard {...e} />
+        <ExperienceCard key={e.title} {...e} />
       ))}
-    </Section>
+    </section>
   );
 };

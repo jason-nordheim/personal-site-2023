@@ -1,54 +1,22 @@
-import {
-  Checkbox,
-  FormControl,
-  Grid,
-  InputLabel,
-  ListItemText,
-  MenuItem,
-  NativeSelect,
-  Select,
-  Stack,
-  Typography,
-  styled,
-} from "@mui/material";
-import { SKILLS } from "../lib";
+import { SKILLS, SKILL_CATEGORY } from "../lib";
 import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
-import { Section } from "../components/Section";
-import { FC } from "react";
-import { SKILL_CATEGORY, Skill } from "../lib";
+import { section, sectionSubTitle } from "../styles";
+import { container, stack } from "../styled-system/patterns";
+import { sortAscending } from "../lib/utils/sorting";
+import { css } from "../styled-system/css";
 
-const SkillContainer = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexWrap: "wrap",
-  alignContent: "center",
-  justifyContent: "center",
-}));
+// const SkillContainer = styled("div")(({ theme }) => ({
+//   display: "flex",
+//   flexWrap: "wrap",
+//   alignContent: "center",
+//   justifyContent: "center",
+// }));
 
 const SORT_OPTIONS = {
   name: "name",
   category: "category",
 };
-
-type SkillBubbleProps = {
-  skill: Skill;
-};
-
-const Bubble = styled("span")(({ theme }) => ({
-  border: `1px solid ${theme.palette.primary.light}`,
-  borderRadius: theme.spacing(1),
-  margin: `${theme.spacing(1)}`,
-  padding: [theme.spacing(1), theme.spacing(1)],
-  fontSize: 12,
-  boxShadow: `${theme.spacing(0.5)} ${theme.spacing(0.5)} ${theme.spacing(0.25)}`,
-}));
-
-const StyledFormControl = styled(FormControl)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(2),
-  display: "flex",
-  flexDirection: "column",
-}));
 
 const ColorMap = {
   [SKILL_CATEGORY.Concept]: "#0096C7",
@@ -59,28 +27,12 @@ const ColorMap = {
   [SKILL_CATEGORY.Technology]: "#CAF0F8",
 };
 
-const SkillBubble: FC<SkillBubbleProps> = ({ skill }) => {
-  return <Bubble sx={{ backgroundColor: ColorMap[skill.category], color: "black" }}>{skill.name}</Bubble>;
-};
-
 const useSortedAndFilteredSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name, filters: string[]) => {
   const sortedSkills = useMemo(() => {
     if (sortBy === SORT_OPTIONS.category) {
-      return SKILLS.sort((a, b) => {
-        const lowerA = a.category.toLowerCase();
-        const lowerB = b.category.toLowerCase();
-        if (lowerA < lowerB) return -1;
-        if (lowerA > lowerB) return 1;
-        return 0;
-      });
+      return SKILLS.sort((a, b) => sortAscending(a.category, b.category));
     }
-    return SKILLS.sort((a, b) => {
-      const lowerA = a.name.toLowerCase();
-      const lowerB = b.name.toLowerCase();
-      if (lowerA < lowerB) return -1;
-      if (lowerA > lowerB) return 1;
-      return 0;
-    });
+    return SKILLS.sort((a, b) => sortAscending(a.name, b.name));
   }, [sortBy]);
 
   const filteredSkills = useMemo(() => {
@@ -107,60 +59,58 @@ export const SkillsSection = () => {
   const skills = useSortedAndFilteredSkills(sortField, filterOptions);
 
   return (
-    <Section id="skills">
-      <Stack>
-        <Typography variant="h4" textAlign="center">
-          Skills
-        </Typography>
-        <Grid container>
-          <Grid item xs={4}>
-            <StyledFormControl variant="outlined">
-              <InputLabel id="sortOption" size="small">
-                Sort by:
-              </InputLabel>
-              <Select labelId="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
-                <MenuItem value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</MenuItem>
-                <MenuItem value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</MenuItem>
-              </Select>
-            </StyledFormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <StyledFormControl variant="outlined">
-              <InputLabel id="filterOptions" size="small">
-                Filter
-              </InputLabel>
-              <Select
-                labelId="filterOptions"
-                value={filterOptions}
-                placeholder="filter"
-                multiple
-                variant="outlined"
-                renderValue={(selected) => selected.join(", ")}
-                onChange={(e) => {
-                  // is an array
-                  if (typeof e.target.value === "object") {
-                    setFilterOptions(e.target.value);
-                  }
-                }}
-              >
-                {Object.keys(SKILL_CATEGORY).map((cat) => {
-                  return (
-                    <MenuItem key={cat} value={cat}>
-                      <Checkbox checked={filterOptions.indexOf(cat) > -1} />
-                      <ListItemText primary={cat} />
-                    </MenuItem>
-                  );
-                })}
-              </Select>
-            </StyledFormControl>
-          </Grid>
-        </Grid>
-      </Stack>
-      <SkillContainer>
+    <section id="skills" className={section({})}>
+      <p className={sectionSubTitle({})}>Skills</p>
+      <div className={container({})}>
+        <form>
+          <label htmlFor="sortOption">Sort by:</label>
+          <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
+            <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
+            <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
+          </select>
+        </form>
+
+        <label htmlFor="filterOptions">Filter</label>
+        <select
+          id="filterOptions"
+          value={filterOptions}
+          placeholder="filter"
+          multiple
+          onChange={(e) => {
+            console.log(e);
+            // is an array
+            if (typeof e.target.value === "object") {
+              setFilterOptions(e.target.value);
+            }
+          }}
+        >
+          {Object.keys(SKILL_CATEGORY).map((cat) => {
+            return (
+              <option value={cat} key={cat}>
+                {cat}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+      <div className={container({ textAlign: "center", gap: "10" })}>
         {skills.map((s) => (
-          <SkillBubble key={s.name} skill={s} />
+          <span
+            key={s.name}
+            className={css({
+              display: "inline-block",
+              bg: ColorMap[s.category],
+              fontSize: "sm",
+              rounded: "md",
+              border: "1px solid black",
+              margin: "10px",
+              p: "5px 10px",
+            })}
+          >
+            {s.name}
+          </span>
         ))}
-      </SkillContainer>
-    </Section>
+      </div>
+    </section>
   );
 };
