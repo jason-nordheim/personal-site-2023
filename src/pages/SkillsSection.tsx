@@ -1,4 +1,4 @@
-import { SKILLS, SKILL_CATEGORY, Skill, SkillCategory, TAGS, skillHasTag } from "../lib";
+import { SKILLS, SKILL_CATEGORY, Skill, SkillCategory, SkillTag, TAGS, skillHasTag } from "../lib";
 import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
 import { section, sectionTitle } from "../styles";
@@ -40,8 +40,10 @@ const makeStillStyles = (category: SkillCategory) => {
   }
 };
 
+type Filters = SkillTag | "All" | "None";
+
 type TagFilters = {
-  [k: ValueOf<typeof TAGS>]: boolean;
+  [k: Filters]: boolean;
 };
 
 const allPropertiesTruthy = (obj: object) => {
@@ -50,7 +52,9 @@ const allPropertiesTruthy = (obj: object) => {
 
 const useTagFilter = (skills: Skill[], filters: TagFilters) => {
   const skillsFilteredByTag = useMemo(() => {
-    if (!filters || allPropertiesTruthy(filters)) return skills;
+    if (!filters || allPropertiesTruthy(filters) || filters["All"]) return skills;
+
+    if (filters["None"]) return [];
 
     return skills.filter((skill) => {
       const selectedFilters = Object.keys(filters).filter((x) => filters[x]);
@@ -99,19 +103,38 @@ const useSortedAndFilteredSkills = (
   return categoryFilteredSkills;
 };
 
+const FILTERS_ALL = {
+  [TAGS.Api]: true,
+  [TAGS.Backend]: true,
+  [TAGS.Collaboration]: true,
+  [TAGS.Databases]: true,
+  [TAGS.DevOps]: true,
+  [TAGS.Documentation]: true,
+  [TAGS.FrontEnd]: true,
+  [TAGS.ProjectManagement]: true,
+  [TAGS.Software]: true,
+  [TAGS.Testing]: true,
+  All: true,
+  None: false,
+};
+
+const FILTER_NONE = {
+  [TAGS.Api]: false,
+  [TAGS.Backend]: false,
+  [TAGS.Collaboration]: false,
+  [TAGS.Databases]: false,
+  [TAGS.DevOps]: false,
+  [TAGS.Documentation]: false,
+  [TAGS.FrontEnd]: false,
+  [TAGS.ProjectManagement]: false,
+  [TAGS.Software]: false,
+  [TAGS.Testing]: false,
+  All: false,
+  None: true,
+};
+
 export const SkillsSection = () => {
-  const [filters, setFilters] = useState<TagFilters>({
-    [TAGS.Api]: true,
-    [TAGS.Backend]: true,
-    [TAGS.Collaboration]: true,
-    [TAGS.Databases]: true,
-    [TAGS.DevOps]: true,
-    [TAGS.Documentation]: true,
-    [TAGS.FrontEnd]: true,
-    [TAGS.ProjectManagement]: true,
-    [TAGS.Software]: true,
-    [TAGS.Testing]: true,
-  });
+  const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
   const [sortField, setSortField] = useState(SORT_OPTIONS.name);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
 
@@ -219,24 +242,32 @@ export const SkillsSection = () => {
             Show skills related to:
           </label>
           <div className={css({ ml: "10px", display: "grid", gridTemplateColumns: 3 })}>
-            {Object.keys(filters).map((k) => {
-              // key == tag
-              return (
-                <span key={k} className={css({ fontVariant: "small-caps" })}>
-                  <input
-                    type="checkbox"
-                    checked={filters[k]}
-                    onChange={() => {
-                      setFilters({
-                        ...filters,
-                        [k]: !filters[k],
-                      });
-                    }}
-                  />
-                  <span className={css({ ml: "4px" })}>{k}</span>
-                </span>
-              );
-            })}
+            {[
+              ...Object.keys(filters).map((k) => {
+                // key == tag
+                return (
+                  <span key={k} className={css({ fontVariant: "small-caps" })}>
+                    <input
+                      type="checkbox"
+                      checked={filters[k]}
+                      onChange={() => {
+                        if (k == "None") {
+                          setFilters(FILTER_NONE);
+                        } else if (k == "All") {
+                          setFilters(FILTERS_ALL);
+                        } else {
+                          setFilters({
+                            ...filters,
+                            [k]: !filters[k],
+                          });
+                        }
+                      }}
+                    />
+                    <span className={css({ ml: "4px" })}>{k}</span>
+                  </span>
+                );
+              }),
+            ]}
           </div>
         </div>
       </form>
