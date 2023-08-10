@@ -313,3 +313,5 @@ export const makeSkillsString = (skills: Skill[]) => {
     .map((s) => s.name)
     .join(" ,");
 };
+
+export const skillHasTag = (skill: Skill, tag: SkillTag): boolean => skill.tags.includes(tag);
