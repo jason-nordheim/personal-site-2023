@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Section } from "../components/Section";
 import { EXPERIENCE, Experience } from "../lib";
-import { Grid, Typography } from "@mui/material";
+import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 
 const MONTHS = [
   "January",
@@ -38,8 +38,21 @@ const formatDateString = (start: string, end: string) => {
 const ExperienceCard: FC<Experience> = ({ description, employer, end, start, responsibilities, title, location }) => {
   return (
     <Grid item>
-      <Typography fontWeight="800" variant="subtitle1">{`${title} | ${employer}`}</Typography>
-      <Typography variant="subtitle2">{formatDateString(start, end)}</Typography>
+      <Typography
+        fontWeight="800"
+        variant="subtitle1"
+        sx={{ ml: (theme) => theme.spacing(2) }}
+      >{`${title} | ${employer}`}</Typography>
+      <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
+        {formatDateString(start, end)}
+      </Typography>
+      <List dense>
+        {responsibilities.map((r) => (
+          <ListItem key={r}>
+            <ListItemText>{r}</ListItemText>
+          </ListItem>
+        ))}
+      </List>
     </Grid>
   );
 };
