@@ -18,7 +18,7 @@ export const Header: FC<TabProps> = ({ tab, onTabChange }) => {
           placeContent: "center",
           fontSize: "4xl",
           lineHeight: "loose",
-          fontFamily: "sans-serif",
+          fontFamily: "monospace",
           alignSelf: "center",
           color: "white",
           aspectRatio: "square",

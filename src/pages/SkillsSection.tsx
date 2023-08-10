@@ -8,6 +8,12 @@ import { css } from "../styled-system/css";
 
 type FilterCategories = SkillCategory & "All";
 
+const capatalizeFirstWord = (str: string) => {
+  const firstChar = str[0].toUpperCase();
+  const updatedStr = `${firstChar}${str.slice(1)}`;
+  return updatedStr;
+};
+
 const SORT_OPTIONS = {
   name: "name",
   category: "category",
@@ -17,9 +23,12 @@ const makeStillStyles = (category: SkillCategory) => {
   const baseStyles = {
     display: "inline-block",
     fontSize: "sm",
-    rounded: "md",
+    borderRadius: "md",
     border: "1px solid black",
+    fontFamily: "monospace",
+    fontStretch: "condensed",
     margin: "10px",
+    minWidth: "100px",
     p: "5px 10px",
   };
   switch (category.trim().toLowerCase()) {
@@ -135,7 +144,7 @@ const FILTER_NONE = {
 
 export const SkillsSection = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
-  const [sortField, setSortField] = useState(SORT_OPTIONS.name);
+  const [sortField, setSortField] = useState(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
 
   const skills = useSortedAndFilteredSkills(sortField, filters, filterCategory);
@@ -144,7 +153,7 @@ export const SkillsSection = () => {
     <section id="skills" className={section({})}>
       <p className={sectionTitle({})}>Skills</p>
       <form
-        className={css({ display: "flex", flexDirection: "row", fontVariant: "small-caps", gap: "10px", my: "10px" })}
+        className={css({ display: "flex", flexDirection: "row", fontFamily: "monospace", gap: "10px", my: "10px" })}
       >
         <div
           className={css({
@@ -175,8 +184,8 @@ export const SkillsSection = () => {
               Sort by:
             </label>
             <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
-              <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
-              <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
+              <option value={SORT_OPTIONS.name}>{capatalizeFirstWord(SORT_OPTIONS.name)}</option>
+              <option value={SORT_OPTIONS.category}>{capatalizeFirstWord(SORT_OPTIONS.category)}</option>
             </select>
           </div>
           <div
@@ -246,7 +255,7 @@ export const SkillsSection = () => {
               ...Object.keys(filters).map((k) => {
                 // key == tag
                 return (
-                  <span key={k} className={css({ fontVariant: "small-caps" })}>
+                  <span key={k} className={css({})}>
                     <input
                       type="checkbox"
                       checked={filters[k]}
@@ -263,7 +272,7 @@ export const SkillsSection = () => {
                         }
                       }}
                     />
-                    <span className={css({ ml: "4px" })}>{k}</span>
+                    <span className={css({ ml: "4px", fontVariant: "titling-caps" })}>{capatalizeFirstWord(k)}</span>
                   </span>
                 );
               }),
