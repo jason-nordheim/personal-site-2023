@@ -1,26 +1,16 @@
-import { SKILLS, SKILL_CATEGORY, SkillCategory, TAGS, skillHasTag } from "../lib";
+import { SKILLS, SKILL_CATEGORY, Skill, SkillCategory, TAGS, skillHasTag } from "../lib";
 import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
-import { section, sectionSubTitle, sectionTitle } from "../styles";
-import { container, stack } from "../styled-system/patterns";
+import { section, sectionTitle } from "../styles";
+import { container } from "../styled-system/patterns";
 import { sortAscending } from "../lib/utils/sorting";
 import { css } from "../styled-system/css";
-import { PropertyValue } from "../styled-system/types/csstype";
 
 type FilterCategories = SkillCategory & "All";
 
 const SORT_OPTIONS = {
   name: "name",
   category: "category",
-};
-
-const ColorMap = {
-  [SKILL_CATEGORY.Concept]: "blue.100",
-  [SKILL_CATEGORY.Framework]: "blue.200",
-  [SKILL_CATEGORY.Language]: "blue.300",
-  [SKILL_CATEGORY.Library]: "blue.400",
-  [SKILL_CATEGORY.Software]: "blue.500",
-  [SKILL_CATEGORY.Technology]: "blue.600",
 };
 
 const makeStillStyles = (category: SkillCategory) => {
@@ -34,17 +24,17 @@ const makeStillStyles = (category: SkillCategory) => {
   };
   switch (category.trim().toLowerCase()) {
     case SKILL_CATEGORY.Concept.toLowerCase():
-      return css({ ...baseStyles, backgroundColor: "blue.100" });
+      return css({ ...baseStyles, backgroundColor: "yellow.200" });
     case SKILL_CATEGORY.Framework.toLowerCase():
-      return css({ ...baseStyles, backgroundColor: "blue.200" });
+      return css({ ...baseStyles, backgroundColor: "red.300" });
     case SKILL_CATEGORY.Language.toLowerCase():
       return css({ ...baseStyles, backgroundColor: "blue.300" });
     case SKILL_CATEGORY.Library.toLowerCase():
-      return css({ ...baseStyles, backgroundColor: "blue.400" });
+      return css({ ...baseStyles, backgroundColor: "green.300" });
     case SKILL_CATEGORY.Software.toLowerCase():
-      return css({ ...baseStyles, backgroundColor: "blue.500" });
+      return css({ ...baseStyles, backgroundColor: "orange.300" });
     case SKILL_CATEGORY.Technology.toLowerCase():
-      return css({ ...baseStyles, backgroundColor: "blue.600" });
+      return css({ ...baseStyles, backgroundColor: "amber.300" });
     default:
       return css({ ...baseStyles, backgroundColor: "blue.100" });
   }
@@ -58,22 +48,11 @@ const allPropertiesTruthy = (obj: object) => {
   return Object.values(obj).every((x) => x == true);
 };
 
-const useSortedAndFilteredSkills = (
-  sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name,
-  filters: TagFilters,
-  selectedCategory: FilterCategories = "All"
-) => {
-  const sortedSkills = useMemo(() => {
-    if (sortBy === SORT_OPTIONS.category) {
-      return SKILLS.sort((a, b) => sortAscending(a.category, b.category));
-    }
-    return SKILLS.sort((a, b) => sortAscending(a.name, b.name));
-  }, [sortBy]);
-
+const useTagFilter = (skills: Skill[], filters: TagFilters) => {
   const skillsFilteredByTag = useMemo(() => {
-    if (!filters || allPropertiesTruthy(filters)) return sortedSkills;
+    if (!filters || allPropertiesTruthy(filters)) return skills;
 
-    return sortedSkills.filter((skill) => {
+    return skills.filter((skill) => {
       const selectedFilters = Object.keys(filters).filter((x) => filters[x]);
       for (let i = 0; i < selectedFilters.length; i++) {
         const tag = selectedFilters[i];
@@ -91,17 +70,33 @@ const useSortedAndFilteredSkills = (
       });
       return false;
     });
-  }, [sortedSkills, filters]);
+  }, [skills, filters]);
 
-  const skillsFilteredByCategory = useMemo(() => {
-    return skillsFilteredByTag.filter((skill) => {
-      if (selectedCategory === "All") return true;
-      if (skill.category === selectedCategory) return true;
-      return false;
-    });
-  }, [skillsFilteredByTag, selectedCategory]);
+  return skillsFilteredByTag;
+};
 
-  return skillsFilteredByCategory;
+const useCategoryFilter = (skills: Skill[], category: FilterCategories) => {
+  return skills.filter((skill) => {
+    if (category === "All") return true;
+    if (skill.category == category) return true;
+    return false;
+  });
+};
+
+const useSortedAndFilteredSkills = (
+  sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name,
+  filters: TagFilters,
+  selectedCategory: FilterCategories = "All"
+) => {
+  const sortedSkills =
+    SORT_OPTIONS.category == sortBy
+      ? SKILLS.sort((a, b) => sortAscending(a.category, b.category))
+      : SKILLS.sort((a, b) => sortAscending(a.name, b.name));
+
+  const skillsFilteredByTag = useTagFilter(sortedSkills, filters);
+  const categoryFilteredSkills = useCategoryFilter(skillsFilteredByTag, selectedCategory);
+
+  return categoryFilteredSkills;
 };
 
 export const SkillsSection = () => {
@@ -130,50 +125,100 @@ export const SkillsSection = () => {
       >
         <div
           className={css({
-            bg: "gray.100",
             width: "20%",
             display: "flex",
             flexDirection: "column",
-            px: "10px",
-            rounded: "md",
-            border: "1px solid gray",
+            justifyContent: "space-between",
           })}
         >
-          <label htmlFor="sortOption">Sort by:</label>
-          <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
-            <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
-            <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
-          </select>
-          <label htmlFor="filterBy">Filter by:</label>
-          <select id="filterBy" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-            {[
-              <option key={"All"} value={"All"}>
-                All
-              </option>,
-              ...Object.values(SKILL_CATEGORY).map((category) => {
-                return (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                );
-              }),
-            ]}
-          </select>
+          <div
+            className={css({
+              display: "flex",
+              flexDirection: "column",
+              rounded: "md",
+              border: "1px solid gray",
+            })}
+          >
+            <label
+              className={css({
+                textAlign: "center",
+                borderBottom: "1px solid black",
+                w: "100%",
+                fontWeight: "bold",
+                bg: "blue.300",
+              })}
+              htmlFor="sortOption"
+            >
+              Sort by:
+            </label>
+            <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
+              <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
+              <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
+            </select>
+          </div>
+          <div
+            className={css({
+              bg: "gray.100",
+              display: "flex",
+              flexDirection: "column",
+              rounded: "md",
+              border: "1px solid gray",
+            })}
+          >
+            <label
+              className={css({
+                textAlign: "center",
+                borderBottom: "1px solid black",
+                w: "100%",
+                fontWeight: "bold",
+                bg: "blue.300",
+              })}
+              htmlFor="filterBy"
+            >
+              Filter by:
+            </label>
+            <select
+              id="filterBy"
+              value={filterCategory}
+              onChange={(e) => setFilterCategory(e.target.value as FilterCategories)}
+            >
+              {[
+                <option key={"All"} value={"All"}>
+                  All
+                </option>,
+                ...Object.values(SKILL_CATEGORY).map((category) => {
+                  return (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  );
+                }),
+              ]}
+            </select>
+          </div>
         </div>
         <div
           className={css({
             display: "flex",
-            bg: "gray.100",
             rounded: "md",
             flexDirection: "column",
             border: "1px solid gray",
             flexGrow: 1,
           })}
         >
-          <label className={css({ alignSelf: "center" })} htmlFor="filterOptions">
+          <label
+            className={css({
+              textAlign: "center",
+              borderBottom: "1px solid black",
+              w: "100%",
+              fontWeight: "bold",
+              bg: "blue.300",
+            })}
+            htmlFor="filterOptions"
+          >
             Show skills related to:
           </label>
-          <div className={css({ ml: "10px", display: "grid", gridTemplateColumns: 4 })}>
+          <div className={css({ ml: "10px", display: "grid", gridTemplateColumns: 3 })}>
             {Object.keys(filters).map((k) => {
               // key == tag
               return (
@@ -188,7 +233,7 @@ export const SkillsSection = () => {
                       });
                     }}
                   />
-                  {k}
+                  <span className={css({ ml: "4px" })}>{k}</span>
                 </span>
               );
             })}
@@ -197,10 +242,10 @@ export const SkillsSection = () => {
       </form>
       <div
         className={container({
+          display: "flow",
           textAlign: "center",
-          gap: "5",
-          border: "1px solid black",
-          bg: "gray.100",
+          flexFlow: "row",
+          opacity: 0.8,
           rounded: "md",
           lineHeight: "tight",
         })}
@@ -209,7 +254,10 @@ export const SkillsSection = () => {
           const styles = makeStillStyles(s.category);
           return (
             <span key={s.name} className={styles}>
-              {s.name}
+              <span className={css({ display: "flex", alignItems: "center", justifyContent: "center" })}>
+                {s.icon && <s.icon className={css({ mr: "5px", fontSize: "lg" })} />}
+                <span>{s.name}</span>
+              </span>
             </span>
           );
         })}
