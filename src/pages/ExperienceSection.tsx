@@ -57,8 +57,8 @@ const ExperienceCard: FC<Experience> = ({ description, employer, end, start, res
           mx: "10px",
         })}
       >
-        <span>{formatDateString(start, end)}</span>
-        {location && <span>{location}</span>}
+        {location && <span className={css({ alignSelf: "flex-start" })}>{location}</span>}
+        <span className={css({ alignSelf: "flex-end" })}>{formatDateString(start, end)}</span>
       </p>
       {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
       <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs" })}>

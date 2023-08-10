@@ -43,7 +43,8 @@ export const EXPERIENCE: Experience[] = [
   {
     employer: "Rochester Precision Optics",
     title: "Data Analyst & Developer",
-    description: "Rochester, NY",
+    location: "Rochester, NY",
+    description: "",
     responsibilities: [
       "Created dashboards and reports using SQL to query internal ERP systems to provide Business Intelligence and KPI information to upper-level management",
       'Developed internal application/tool (C#, .NET Framework, & MSSQL) to automate the creation of supplier "report cards" for the Directory of Supply Chain',
