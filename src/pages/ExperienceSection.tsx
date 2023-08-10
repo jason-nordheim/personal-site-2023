@@ -95,8 +95,8 @@ export const ExperienceSection = () => {
       <div
         className={css({
           display: "grid",
-          sm: { gridTemplateColumns: "1" },
-          md: { gridTemplateColumns: "2" },
+          md: { gridTemplateColumns: "1" },
+          lg: { gridTemplateColumns: "2" },
           gap: "10px",
         })}
       >

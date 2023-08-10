@@ -9,23 +9,35 @@ const getTabStyle = (selected: boolean) => {
     mx: "10px",
     fontVariant: "small-caps",
     fontWeight: "bold",
-    bg: "gray.200",
     p: "3px",
     textAlign: "center",
     rounded: "md",
-    border: "1px solid black",
+    alignSelf: "center",
+    maxWidth: "200px",
     color: selected ? "blue.600" : undefined,
+    _hover: {
+      cursor: "pointer",
+      transition: "ease-in-out",
+      textDecoration: "underline",
+    },
   });
 };
 
-type TabProps = {
+export type TabProps = {
   tab: string;
   onTabChange: (newTab: string) => void;
 };
 
 export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
   return (
-    <ul className={css({ listStyle: "none", display: "flex", justifyContent: "space-around" })}>
+    <ul
+      className={css({
+        listStyle: "none",
+        display: "flex",
+        flexDirection: "row",
+        flex: 1,
+      })}
+    >
       {Object.values(TABS).map((t) => {
         const isSelected = tab == t;
         const style = getTabStyle(isSelected);

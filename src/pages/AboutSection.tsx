@@ -1,10 +1,12 @@
 import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
 import { stack } from "../styled-system/patterns";
+import { Hero } from "../components/Hero";
 
 export const AboutSection = () => {
   return (
     <section id="about" className={section({})}>
       <p className={sectionTitle({})}>About Me</p>
+      <Hero />
       <br />
       <p className={sectionSubTitle({})}>Software Engineer</p>
       <p className={sectionCaption({})}>
