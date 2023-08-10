@@ -1,15 +1,26 @@
 import { FC } from "react";
 import { css } from "../styled-system/css";
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { IconType } from "react-icons";
+import { MdEmail } from "react-icons/md";
 
 type FooterLinkProps = {
   href: string;
+  Icon: IconType;
+  text: string;
 };
 
-export const FooterLink: FC<React.PropsWithChildren<FooterLinkProps>> = ({ href, children }) => {
+export const FooterLink: FC<FooterLinkProps> = ({ href, Icon, text }) => {
   return (
     <li>
-      <a className={css({ color: "blue.500", textDecoration: "none" })} href={href}>
-        {children}
+      <a
+        className={css({ color: "blue.500", textDecoration: "none", display: "flex", alignItems: "center" })}
+        href={href}
+      >
+        <span>
+          <Icon />
+        </span>
+        <span className={css({ ml: "5px" })}>{text}</span>
       </a>
     </li>
   );
@@ -19,9 +30,9 @@ export const Footer = () => {
   return (
     <footer>
       <ul className={css({ display: "flex", justifyContent: "space-evenly", bg: "gray.200", mt: "10px", py: "10px" })}>
-        <FooterLink href="#">Github</FooterLink>
-        <FooterLink href="#">LinkedIn</FooterLink>
-        <FooterLink href="#">Email</FooterLink>
+        <FooterLink Icon={SiGithub} href="https://github.com/jason-nordheim" text="Github" />
+        <FooterLink Icon={SiLinkedin} href="https://www.linkedin.com/in/jasonnordheim/" text="LinkedIn" />
+        <FooterLink Icon={MdEmail} href="mailto: jason.nordheim@gmail.com" text="Email" />
       </ul>
     </footer>
   );
