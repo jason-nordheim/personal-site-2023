@@ -55,16 +55,29 @@ const ExperienceCard: FC<Experience> = ({
         rounded: "md",
         border: "1px solid black",
         my: "10px",
-        px: "5px",
+        px: "10px",
         py: "10px",
+        maxWidth: "lg",
+        justifySelf: "center",
         boxShadow: "5px 5px 5px gray",
       })}
     >
-      <p className={css({ textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{`${title} | ${employer}`}</p>
+      <p className={css({ fontFamily: "serif", textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{title}</p>
 
       {image && (
         <img src={image} alt={`${employer} logo`} className={circle({ alignSelf: "center", width: "100px" })} />
       )}
+      <p
+        className={css({
+          fontFamily: "sans-serif",
+          textStyle: "md",
+          textAlign: "center",
+          lineHeight: "snug",
+          pt: "10px",
+        })}
+      >
+        {employer}
+      </p>
       <span className={css({ borderBottom: "1px solid gray", mb: "10px", textStyle: "sm" })}>
         <p
           className={css({
@@ -79,7 +92,7 @@ const ExperienceCard: FC<Experience> = ({
         </p>
       </span>
       {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
-      <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs" })}>
+      <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs", px: "10px" })}>
         {responsibilities.map((r) => (
           <li key={r}>{r}</li>
         ))}
