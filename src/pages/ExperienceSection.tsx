@@ -43,8 +43,8 @@ const ExperienceCard: FC<Experience> = ({ description, employer, end, start, res
         flexDirection: "column",
         rounded: "md",
         border: "1px solid black",
-        my: 10,
-        p: 5,
+        my: "10px",
+        p: "5px",
       })}
     >
       <p className={css({ textStyle: "lg", fontWeight: "bold", textAlign: "center" })}>{`${title} | ${employer}`}</p>
