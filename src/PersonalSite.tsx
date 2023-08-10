@@ -13,7 +13,7 @@ export const PersonalSite = () => {
     setTab(newTab);
   };
   return (
-    <div className={css({})}>
+    <div className={css({ overflow: "hidden", display: "flex", flexDirection: "column", height: "100%" })}>
       <Header tab={tab} onTabChange={handleTabChange} />
       {tab == TABS.ABOUT && <AboutSection />}
       {tab == TABS.SKILL && <SkillsSection />}

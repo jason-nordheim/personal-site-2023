@@ -1,5 +1,4 @@
 import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
-import { stack } from "../styled-system/patterns";
 import { Hero } from "../components/Hero";
 
 export const AboutSection = () => {

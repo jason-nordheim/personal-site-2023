@@ -4,7 +4,14 @@ import { TabProps, Tabs } from "./Tabs";
 
 export const Header: FC<TabProps> = ({ tab, onTabChange }) => {
   return (
-    <header className={css({ position: "sticky", display: "flex", flexDirection: "row", bg: "blue.100" })}>
+    <header
+      className={css({
+        position: "sticky",
+        display: "flex",
+        flexDirection: "row",
+        bg: "blue.100",
+      })}
+    >
       <h1
         className={css({
           display: "flex",

@@ -4,15 +4,16 @@ import { SystemStyleObject } from "../styled-system/types";
 
 export const section = (styles: SystemStyleObject) =>
   container({
-    my: 2,
-    px: 1,
-    py: 1,
-    w: "100%",
-    mb: "10",
+    display: "flex",
+    flexDirection: "column",
+    px: "10px",
+    py: "10px",
+    pb: "50px",
     bg: "gray.100",
     border: "1px solid black",
     rounded: "md",
     m: "10px",
+    flex: 1,
     ...styles,
   });
 export const sectionTitle = (styles: SystemStyleObject) =>
