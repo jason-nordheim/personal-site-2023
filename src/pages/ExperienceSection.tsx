@@ -2,6 +2,7 @@ import { FC } from "react";
 import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
 import { section, sectionTitle } from "../styles";
+import { circle } from "../styled-system/patterns";
 
 const MONTHS = [
   "January",
@@ -56,29 +57,27 @@ const ExperienceCard: FC<Experience> = ({
         my: "10px",
         px: "5px",
         py: "10px",
+        boxShadow: "5px 5px 5px gray",
       })}
     >
-      {image && (
-        <img
-          src={image}
-          alt={`${employer} logo`}
-          className={css({ height: "100px", width: "100px", alignSelf: "center" })}
-        />
-      )}
       <p className={css({ textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{`${title} | ${employer}`}</p>
 
-      <p
-        className={css({
-          textStyle: "md",
-          display: "flex",
-          justifyContent: "space-between",
-          fontVariant: "small-caps",
-          mx: "10px",
-        })}
-      >
-        {location && <span className={css({ alignSelf: "flex-start" })}>{location}</span>}
-        <span className={css({ alignSelf: "flex-end" })}>{formatDateString(start, end)}</span>
-      </p>
+      {image && (
+        <img src={image} alt={`${employer} logo`} className={circle({ alignSelf: "center", width: "100px" })} />
+      )}
+      <span className={css({ borderBottom: "1px solid gray", mb: "10px", textStyle: "sm" })}>
+        <p
+          className={css({
+            display: "flex",
+            justifyContent: "space-between",
+            fontVariant: "small-caps",
+            mx: "10px",
+          })}
+        >
+          {location && <span className={css({ alignSelf: "flex-start" })}>{location}</span>}
+          <span className={css({ alignSelf: "flex-end" })}>{formatDateString(start, end)}</span>
+        </p>
+      </span>
       {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
       <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs" })}>
         {responsibilities.map((r) => (
@@ -93,7 +92,14 @@ export const ExperienceSection = () => {
   return (
     <section id="experience" className={section({})}>
       <h2 className={sectionTitle({})}>Experience</h2>
-      <div className={css({ display: "grid", gridTemplateColumns: 2, gap: "10px" })}>
+      <div
+        className={css({
+          display: "grid",
+          sm: { gridTemplateColumns: "1" },
+          md: { gridTemplateColumns: "2" },
+          gap: "10px",
+        })}
+      >
         {EXPERIENCE.map((e) => (
           <ExperienceCard key={e.title} {...e} />
         ))}
