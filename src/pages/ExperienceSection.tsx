@@ -47,9 +47,18 @@ const ExperienceCard: FC<Experience> = ({ description, employer, end, start, res
         p: "5px",
       })}
     >
-      <p className={css({ textStyle: "lg", fontWeight: "bold", textAlign: "center" })}>{`${title} | ${employer}`}</p>
-      <p className={css({ textStyle: "md", fontVariant: "small-caps" })}>
-        {location ? `${formatDateString(start, end)}, ${location}` : formatDateString(start, end)}
+      <p className={css({ textStyle: "lg", textAlign: "center" })}>{`${title} | ${employer}`}</p>
+      <p
+        className={css({
+          textStyle: "md",
+          display: "flex",
+          justifyContent: "space-between",
+          fontVariant: "small-caps",
+          mx: "10px",
+        })}
+      >
+        <span>{formatDateString(start, end)}</span>
+        {location && <span>{location}</span>}
       </p>
       {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
       <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs" })}>
