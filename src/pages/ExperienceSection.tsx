@@ -44,8 +44,13 @@ const ExperienceCard: FC<Experience> = ({ description, employer, end, start, res
         sx={{ ml: (theme) => theme.spacing(2) }}
       >{`${title} | ${employer}`}</Typography>
       <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
-        {formatDateString(start, end)}
+        {location ? `${formatDateString(start, end)}, ${location}` : formatDateString(start, end)}
       </Typography>
+      {description && (
+        <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
+          {description}
+        </Typography>
+      )}
       <List dense>
         {responsibilities.map((r) => (
           <ListItem key={r}>
