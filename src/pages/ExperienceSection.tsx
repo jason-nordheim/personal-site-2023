@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
-import { section } from "../styles";
+import { section, sectionTitle } from "../styles";
 
 const MONTHS = [
   "January",
@@ -72,7 +72,8 @@ const ExperienceCard: FC<Experience> = ({ description, employer, end, start, res
 
 export const ExperienceSection = () => {
   return (
-    <section id="skills" className={section({})}>
+    <section id="experience" className={section({})}>
+      <h2 className={sectionTitle({})}>Experience</h2>
       {EXPERIENCE.map((e) => (
         <ExperienceCard key={e.title} {...e} />
       ))}
