@@ -1,7 +1,7 @@
-import { Paper, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { Section } from "../components/Section";
 
-export const About = () => {
+export const AboutSection = () => {
   return (
     <Section id="about">
       <Stack>

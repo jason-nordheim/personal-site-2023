@@ -43,6 +43,13 @@ const Bubble = styled("span")(({ theme }) => ({
   boxShadow: `${theme.spacing(0.5)} ${theme.spacing(0.5)} ${theme.spacing(0.25)}`,
 }));
 
+const StyledFormControl = styled(FormControl)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+  marginBottom: theme.spacing(2),
+  display: "flex",
+  flexDirection: "column",
+}));
+
 const ColorMap = {
   [SKILL_CATEGORY.Concept]: "#0096C7",
   [SKILL_CATEGORY.Framework]: "#00B4D8",
@@ -93,7 +100,7 @@ const useSortedAndFilteredSkills = (sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_
   return filteredSkills;
 };
 
-export const Skills = () => {
+export const SkillsSection = () => {
   const [filterOptions, setFilterOptions] = useState<string[]>([]);
   const [sortField, setSortField] = useState(SORT_OPTIONS.name);
 
@@ -107,25 +114,18 @@ export const Skills = () => {
         </Typography>
         <Grid container>
           <Grid item xs={4}>
-            <FormControl variant="outlined" sx={{ mx: 2, display: "flex", flexDirection: "column" }}>
+            <StyledFormControl variant="outlined">
               <InputLabel id="sortOption" size="small">
                 Sort by:
               </InputLabel>
-              <NativeSelect
-                inputProps={{
-                  name: "",
-                  id: "sortOption",
-                }}
-                value={sortField}
-                onChange={(e) => setSortField(e.target.value)}
-              >
-                <option value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</option>
-                <option value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</option>
-              </NativeSelect>
-            </FormControl>
+              <Select labelId="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
+                <MenuItem value={SORT_OPTIONS.name}>{SORT_OPTIONS.name}</MenuItem>
+                <MenuItem value={SORT_OPTIONS.category}>{SORT_OPTIONS.category}</MenuItem>
+              </Select>
+            </StyledFormControl>
           </Grid>
           <Grid item xs={4}>
-            <FormControl variant="outlined" sx={{ px: 2, display: "flex", flexDirection: "column" }}>
+            <StyledFormControl variant="outlined">
               <InputLabel id="filterOptions" size="small">
                 Filter
               </InputLabel>
@@ -152,7 +152,7 @@ export const Skills = () => {
                   );
                 })}
               </Select>
-            </FormControl>
+            </StyledFormControl>
           </Grid>
         </Grid>
       </Stack>
