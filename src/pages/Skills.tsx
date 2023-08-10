@@ -137,7 +137,6 @@ export const Skills = () => {
                 variant="outlined"
                 renderValue={(selected) => selected.join(", ")}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   // is an array
                   if (typeof e.target.value === "object") {
                     setFilterOptions(e.target.value);
