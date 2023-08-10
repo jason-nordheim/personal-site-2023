@@ -35,19 +35,38 @@ const formatDateString = (start: string, end: string) => {
   return `${makeMonthDayString(start)} - ${makeMonthDayString(end)}`;
 };
 
-const ExperienceCard: FC<Experience> = ({ description, employer, end, start, responsibilities, title, location }) => {
+const ExperienceCard: FC<Experience> = ({
+  description,
+  employer,
+  end,
+  start,
+  responsibilities,
+  title,
+  location,
+  image,
+}) => {
   return (
     <article
       className={css({
+        bg: "gray.100",
         display: "flex",
         flexDirection: "column",
         rounded: "md",
         border: "1px solid black",
         my: "10px",
-        p: "5px",
+        px: "5px",
+        py: "10px",
       })}
     >
-      <p className={css({ textStyle: "lg", textAlign: "center" })}>{`${title} | ${employer}`}</p>
+      {image && (
+        <img
+          src={image}
+          alt={`${employer} logo`}
+          className={css({ height: "100px", width: "100px", alignSelf: "center" })}
+        />
+      )}
+      <p className={css({ textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{`${title} | ${employer}`}</p>
+
       <p
         className={css({
           textStyle: "md",
@@ -74,9 +93,11 @@ export const ExperienceSection = () => {
   return (
     <section id="experience" className={section({})}>
       <h2 className={sectionTitle({})}>Experience</h2>
-      {EXPERIENCE.map((e) => (
-        <ExperienceCard key={e.title} {...e} />
-      ))}
+      <div className={css({ display: "grid", gridTemplateColumns: 2, gap: "10px" })}>
+        {EXPERIENCE.map((e) => (
+          <ExperienceCard key={e.title} {...e} />
+        ))}
+      </div>
     </section>
   );
 };

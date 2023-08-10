@@ -2,6 +2,7 @@ export type Experience = {
   employer: string;
   title: string;
   description: string;
+  image?: string;
   location?: string;
   start: string;
   end: string;
@@ -13,6 +14,7 @@ export const EXPERIENCE: Experience[] = [
     employer: "Alteryx",
     title: "Software Engineer",
     location: "Denver, Colorado - Remote",
+    image: "https://community.alteryx.com/t5/image/serverpage/image-id/259688iF6C1C4BD0BC11851?v=v2",
     description: "",
     responsibilities: [
       "Collaborated with UX team to build rich & intuitive user-interfaces in React/TypeScript matching (InVision/Figma) mocks using internal component library",
@@ -29,6 +31,7 @@ export const EXPERIENCE: Experience[] = [
     employer: "Paychex",
     title: "Desktop Engineer",
     location: "Webster, New York",
+    image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/paychex_logo_icon_170867.png",
     description: "",
     responsibilities: [
       "Created Powershell/VB scripts and applications to streamline the management of endpoints (~20,000) within a SCCM environment",
@@ -43,6 +46,7 @@ export const EXPERIENCE: Experience[] = [
   {
     employer: "Rochester Precision Optics",
     title: "Data Analyst & Developer",
+    image: "https://www.rpoptics.com/hubfs/RPO-logo-300x247.png",
     location: "Rochester, NY",
     description: "",
     responsibilities: [
