@@ -18,7 +18,7 @@ export const EXPERIENCE: Experience[] = [
     description: "",
     responsibilities: [
       "Collaborated with UX team to build rich & intuitive user-interfaces in React/TypeScript matching (InVision/Figma) mocks using internal component library",
-      "Conducted thorough code reviews ensuring the highest possible quality by providing other engineers feedback on performance, maintainability, testing.",
+      "Conducted thorough code reviews ensuring the highest possible quality by providing other engineers feedback on performance, maintainability, and testing",
       "Created technical documentation and architecture plans using UML to guide/coordinate the implementation of new features and technologies",
       "Developed automated tests using Jest, Mocha, Enzyme and Test Cafe to verify application functionality",
       "Provided estimation of deliverables leveraging Agile Methodologies (stories/points, scrum, kanban, etc.)",
@@ -57,5 +57,21 @@ export const EXPERIENCE: Experience[] = [
     ],
     start: "05/2017",
     end: "06/2018",
+  },
+  {
+    employer: "Rochester Institute of Technology",
+    title: "Data Analyst",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rochester_Institute_of_Technology_seal.svg/1024px-Rochester_Institute_of_Technology_seal.svg.png",
+    location: "Rochester, NY",
+    description: "",
+    responsibilities: [
+      "Leverage relational database management systems to query, join, and sanitize data from Oracle PL/SQL databases",
+      "Analyze and reduce large data-sets to provide accurate, clear and concise reports to support various university efforts including fundraising, networking and marketing activities",
+      "Create dashboards charts, and other data-visualizations with Tableau, Excel, and PowerBI",
+      "Update and maintain database documentation using unified modeling language (UML)",
+    ],
+    start: "05/2016",
+    end: "08/2016",
   },
 ];
