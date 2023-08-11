@@ -17,6 +17,13 @@ export const section = (styles: SystemStyleObject) =>
     ...styles,
   });
 export const sectionTitle = (styles: SystemStyleObject) =>
-  css({ textAlign: "center", textStyle: "2xl", fontFamily: "serif", ...styles });
-export const sectionSubTitle = (styles: SystemStyleObject) => css({ fontSize: "md", ...styles });
-export const sectionCaption = (styles: SystemStyleObject) => css({ textStyle: "sm", ...styles });
+  css({
+    textAlign: "center",
+    textStyle: "2xl",
+    fontFamily: "serif",
+    fontWeight: "semibold",
+    ...styles,
+  });
+export const sectionSubTitle = (styles: SystemStyleObject) =>
+  css({ fontSize: "md", fontWeight: "semibold", borderBottom: "1px solid black", ...styles });
+export const sectionCaption = (styles: SystemStyleObject) => css({ textStyle: "sm", mt: "2", ...styles });
