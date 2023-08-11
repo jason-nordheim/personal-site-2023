@@ -19,12 +19,25 @@ import {
   SiTypescript,
   SiMaterialdesign,
   SiNextdotjs,
+  SiDotnet,
   SiCsharp,
+  SiPowershell,
+  SiBootstrap,
   SiHtml5,
   SiJest,
+  SiFoodpanda,
+  SiVitest,
+  SiGnubash,
 } from "react-icons/si/index";
+import { BiSolidBinoculars } from "react-icons/bi/index";
 import { LiaProjectDiagramSolid, LiaCalculatorSolid } from "react-icons/lia/index";
-import { MdOutlineEmojiEmotions, MdLocalLibrary, MdOutlineMiscellaneousServices } from "react-icons/md/index";
+import {
+  MdOutlineEmojiEmotions,
+  MdLocalLibrary,
+  MdOutlineMiscellaneousServices,
+  MdOutlineRouter,
+  MdOutlineFactory,
+} from "react-icons/md/index";
 import { TfiMicrosoftAlt } from "react-icons/tfi/index";
 import {
   TbApi,
@@ -36,15 +49,19 @@ import {
   TbBrandCypress,
   TbBrandGolang,
   TbBrandPython,
+  TbPlant,
   TbSql,
+  TbMarkdown,
 } from "react-icons/tb/index";
 import { GrTest } from "react-icons/gr/index";
 import { IoLogoGoogle, IoLogoSlack, IoLogoSass } from "react-icons/io/index";
-import { BsFiletypeXml, BsKanban, BsGit, BsServer, BsDiagram3Fill } from "react-icons/bs/index";
-import { FaReact, FaJava } from "react-icons/fa/index";
-import { GiTeleport } from "react-icons/gi/index";
-import { GrNode } from "react-icons/gr/index";
+import { BsFiletypeXml, BsKanban, BsGit, BsServer, BsDiagram3Fill, BsFiletypeJson } from "react-icons/bs/index";
+import { FaReact, FaJava, FaFigma } from "react-icons/fa/index";
+import { GiPowerGenerator, GiTeleport } from "react-icons/gi/index";
+import { GrNode, GrCloudComputer, GrUserWorker } from "react-icons/gr/index";
 import { BiLogoPostgresql, BiLogoMongodb, BiSolidFileCss } from "react-icons/bi/index";
+import { VscSymbolInterface } from "react-icons/vsc/index";
+import { RxComponentInstance } from "react-icons/rx/index";
 import { IconType } from "react-icons";
 
 export const TAGS = {
@@ -82,6 +99,66 @@ export type Skill = {
 
 export const SKILLS: Skill[] = [
   {
+    name: "Singleton Pattern",
+    category: SKILL_CATEGORY.Concept,
+    icon: RxComponentInstance,
+    tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Observer Pattern",
+    category: SKILL_CATEGORY.Concept,
+    icon: BiSolidBinoculars,
+    tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Command Pattern",
+    category: SKILL_CATEGORY.Concept,
+    icon: GrUserWorker,
+    tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Factory Pattern",
+    category: SKILL_CATEGORY.Concept,
+    icon: MdOutlineFactory,
+    tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Adapter Pattern",
+    category: SKILL_CATEGORY.Concept,
+    icon: VscSymbolInterface,
+    tags: [TAGS.Api, TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Generator Functions",
+    category: SKILL_CATEGORY.Concept,
+    icon: GiPowerGenerator,
+    tags: [TAGS.FrontEnd, TAGS.Backend],
+  },
+  {
+    name: "Plant UML",
+    category: SKILL_CATEGORY.Library,
+    icon: TbPlant,
+    tags: [TAGS.DevOps, TAGS.Documentation, TAGS.Databases, TAGS.DevOps],
+  },
+  {
+    name: "Figma",
+    category: SKILL_CATEGORY.Software,
+    icon: FaFigma,
+    tags: [TAGS.Collaboration, TAGS.Software, TAGS.Documentation],
+  },
+  {
+    name: "VMWare",
+    category: SKILL_CATEGORY.Software,
+    icon: GrCloudComputer,
+    tags: [TAGS.DevOps, TAGS.Software],
+  },
+  {
+    name: "Bash/Zsh",
+    category: SKILL_CATEGORY.Technology,
+    icon: SiGnubash,
+    tags: [TAGS.DevOps],
+  },
+  {
     name: "SharePoint",
     category: SKILL_CATEGORY.Software,
     icon: SiMicrosoftsharepoint,
@@ -104,6 +181,12 @@ export const SKILLS: Skill[] = [
     category: SKILL_CATEGORY.Framework,
     icon: SiSwagger,
     tags: [TAGS.Api, TAGS.Backend, TAGS.Documentation],
+  },
+  {
+    name: "Bootstrap",
+    category: SKILL_CATEGORY.Framework,
+    icon: SiBootstrap,
+    tags: [TAGS.FrontEnd],
   },
   {
     name: "Emotion (styled components)",
@@ -190,10 +273,22 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.DevOps, TAGS.Api],
   },
   {
+    name: "Powershell",
+    icon: SiPowershell,
+    category: SKILL_CATEGORY.Technology,
+    tags: [TAGS.DevOps, TAGS.Api],
+  },
+  {
     name: "Vite",
     category: SKILL_CATEGORY.Technology,
     icon: TbBrandVite,
     tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.DevOps],
+  },
+  {
+    name: "Vitest",
+    category: SKILL_CATEGORY.Library,
+    icon: SiVitest,
+    tags: [TAGS.FrontEnd, TAGS.Backend, TAGS.Testing],
   },
   {
     name: "Cypress",
@@ -262,6 +357,18 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.ProjectManagement, TAGS.Collaboration],
   },
   {
+    name: "JSON/JSON5",
+    category: SKILL_CATEGORY.Language,
+    icon: BsFiletypeJson,
+    tags: [TAGS.Backend, TAGS.FrontEnd, TAGS.Documentation, TAGS.Databases],
+  },
+  {
+    name: "Markdown",
+    category: SKILL_CATEGORY.Language,
+    icon: TbMarkdown,
+    tags: [TAGS.Backend, TAGS.FrontEnd, TAGS.Documentation, TAGS.Databases],
+  },
+  {
     name: "Node",
     category: SKILL_CATEGORY.Technology,
     icon: GrNode,
@@ -283,6 +390,12 @@ export const SKILLS: Skill[] = [
     name: "React",
     category: SKILL_CATEGORY.Framework,
     icon: FaReact,
+    tags: [TAGS.FrontEnd],
+  },
+  {
+    name: "React Router",
+    category: SKILL_CATEGORY.Framework,
+    icon: MdOutlineRouter,
     tags: [TAGS.FrontEnd],
   },
   {
@@ -319,6 +432,12 @@ export const SKILLS: Skill[] = [
     name: "PostgreSQL",
     category: SKILL_CATEGORY.Language,
     icon: BiLogoPostgresql,
+    tags: [TAGS.Backend, TAGS.Databases],
+  },
+  {
+    name: "Panda CSS",
+    category: SKILL_CATEGORY.Library,
+    icon: SiFoodpanda,
     tags: [TAGS.Backend, TAGS.Databases],
   },
   {
@@ -373,6 +492,12 @@ export const SKILLS: Skill[] = [
     name: "TypeScript",
     category: SKILL_CATEGORY.Language,
     icon: SiTypescript,
+    tags: [TAGS.FrontEnd],
+  },
+  {
+    name: ".NET Framework/Core",
+    category: SKILL_CATEGORY.Framework,
+    icon: SiDotnet,
     tags: [TAGS.FrontEnd],
   },
   {
