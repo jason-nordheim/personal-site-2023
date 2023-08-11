@@ -37,7 +37,7 @@ const formatDateString = (start: string, end: string) => {
   return `${makeMonthDayString(start)} - ${makeMonthDayString(end)}`;
 };
 
-const getCardImageWidth = () => {
+const getLogoImageSize = () => {
   const screenSize = getScreenSize();
   switch (screenSize) {
     case PANDA_BREAKPOINTS.sm:
@@ -63,7 +63,7 @@ const ExperienceCard: FC<Experience> = ({
   location,
   image,
 }) => {
-  const imageWidth = getCardImageWidth();
+  const logoSize = getLogoImageSize();
   return (
     <article
       className={css({
@@ -83,6 +83,7 @@ const ExperienceCard: FC<Experience> = ({
       <p
         className={css({
           fontFamily: "serif",
+          fontWeight: "semibold",
           textStyle: "xl",
           textAlign: "center",
           lineHeight: "loose",
@@ -93,7 +94,7 @@ const ExperienceCard: FC<Experience> = ({
       </p>
       {image && (
         <div
-          style={{ width: imageWidth }}
+          style={{ height: logoSize, width: logoSize }}
           className={circle({
             display: "flex",
             alignContent: "center",
