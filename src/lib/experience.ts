@@ -1,5 +1,6 @@
 export type Experience = {
   employer: string;
+  department?: string;
   title: string;
   description: string;
   image?: string;
@@ -13,6 +14,7 @@ export const EXPERIENCE: Experience[] = [
   {
     employer: "Alteryx",
     title: "Software Engineer",
+    department: "Cloud Products",
     location: "Denver, Colorado - Remote",
     image: "https://community.alteryx.com/t5/image/serverpage/image-id/259688iF6C1C4BD0BC11851?v=v2",
     description: "",
@@ -29,7 +31,8 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     employer: "Paychex",
-    title: "Desktop Engineer",
+    title: "Desktop Engineer II",
+    department: "Enterprise Technology Services",
     location: "Webster, New York",
     image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/paychex_logo_icon_170867.png",
     description: "",
@@ -45,6 +48,7 @@ export const EXPERIENCE: Experience[] = [
   },
   {
     employer: "Rochester Precision Optics",
+    department: "IT Services",
     title: "Data Analyst & Developer",
     image: "https://www.rpoptics.com/hubfs/RPO-logo-300x247.png",
     location: "Rochester, NY",
@@ -61,6 +65,7 @@ export const EXPERIENCE: Experience[] = [
   {
     employer: "Rochester Institute of Technology",
     title: "Data Analyst",
+    department: "Alumni Relations",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rochester_Institute_of_Technology_seal.svg/1024px-Rochester_Institute_of_Technology_seal.svg.png",
     location: "Rochester, NY",
