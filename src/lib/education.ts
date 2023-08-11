@@ -4,6 +4,7 @@ export type Education = {
     name: string;
     type: string;
   };
+  logoUrl?: string;
   minors?: string[];
   concentrations?: string[];
   gpa?: number;
@@ -17,6 +18,8 @@ const RIT: Education = {
   location: { city: "Henrietta", state: "NY" },
   institution: "Rochester Institute of Technology",
   gpa: 3.49,
+  logoUrl:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rochester_Institute_of_Technology_seal.svg/1024px-Rochester_Institute_of_Technology_seal.svg.png",
   major: { name: "Management Information Systems", type: "Bachelor's of Science (BS)" },
   minors: ["Digital Business", "Web Development"],
   concentrations: ["Psychology"],
@@ -27,6 +30,7 @@ const RIT: Education = {
 
 const FLATIRON: Education = {
   institution: "Flatiron School",
+  logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/61/FS_wiki.png",
   location: { city: "Denver", state: "CO" },
   start: "04/2020",
   end: "08/2020",
