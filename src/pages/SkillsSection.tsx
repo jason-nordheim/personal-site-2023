@@ -19,8 +19,12 @@ const SORT_OPTIONS = {
   category: "category",
 };
 
-const makeStillStyles = (category: SkillCategory) => {
+const makeSkillStyles = (category: SkillCategory) => {
   const baseStyles = {
+    smDown: {
+      fontSize: "xs",
+      p: "3px, 5px",
+    },
     display: "inline-block",
     fontSize: "sm",
     borderRadius: "md",
@@ -157,14 +161,21 @@ export const SkillsSection = () => {
       >
         <div
           className={css({
-            width: "20%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
+            sm: {
+              width: "50%",
+            },
+            md: {
+              width: "20%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            },
           })}
         >
           <div
             className={css({
+              smDown: { mb: "2" },
+
               display: "flex",
               flexDirection: "column",
               rounded: "md",
@@ -190,6 +201,7 @@ export const SkillsSection = () => {
           </div>
           <div
             className={css({
+              smDown: { mt: "4" },
               bg: "gray.100",
               display: "flex",
               flexDirection: "column",
@@ -250,7 +262,20 @@ export const SkillsSection = () => {
           >
             Show skills related to:
           </label>
-          <div className={css({ ml: "10px", display: "grid", gridTemplateColumns: 3 })}>
+          <div
+            className={css({
+              smDown: {
+                my: "5px",
+                display: "grid",
+                gridTemplateColumns: "1",
+                "& span": {
+                  "& span": { ml: "2" },
+                  "& input": { ml: "2" },
+                },
+              },
+              md: { ml: "10px", display: "grid", gridTemplateColumns: 3 },
+            })}
+          >
             {[
               ...Object.keys(filters).map((k) => {
                 // key == tag
@@ -292,7 +317,7 @@ export const SkillsSection = () => {
         })}
       >
         {skills.map((s) => {
-          const styles = makeStillStyles(s.category);
+          const styles = makeSkillStyles(s.category);
           return (
             <span key={s.name} className={styles}>
               <span className={css({ display: "flex", alignItems: "center", justifyContent: "center" })}>

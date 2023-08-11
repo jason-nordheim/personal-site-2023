@@ -3,6 +3,7 @@ import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
 import { section, sectionTitle } from "../styles";
 import { circle } from "../styled-system/patterns";
+import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 
 const MONTHS = [
   "January",
@@ -36,6 +37,22 @@ const formatDateString = (start: string, end: string) => {
   return `${makeMonthDayString(start)} - ${makeMonthDayString(end)}`;
 };
 
+const getCardImageWidth = () => {
+  const screenSize = getScreenSize();
+  switch (screenSize) {
+    case PANDA_BREAKPOINTS.sm:
+      return "75px";
+    case PANDA_BREAKPOINTS.md:
+      return "100px";
+    case PANDA_BREAKPOINTS.lg:
+      return "125px";
+    case PANDA_BREAKPOINTS.xl:
+    case PANDA_BREAKPOINTS["2xl"]:
+    default:
+      return "150px";
+  }
+};
+
 const ExperienceCard: FC<Experience> = ({
   description,
   employer,
@@ -46,6 +63,7 @@ const ExperienceCard: FC<Experience> = ({
   location,
   image,
 }) => {
+  const imageWidth = getCardImageWidth();
   return (
     <article
       className={css({
@@ -62,14 +80,36 @@ const ExperienceCard: FC<Experience> = ({
         boxShadow: "5px 5px 5px gray",
       })}
     >
-      <p className={css({ fontFamily: "serif", textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{title}</p>
-
+      <p
+        className={css({
+          fontFamily: "serif",
+          textStyle: "xl",
+          textAlign: "center",
+          lineHeight: "loose",
+          smDown: { "& div": { width: "50px" } },
+        })}
+      >
+        {title}
+      </p>
       {image && (
-        <div className={circle({ display: "flex", alignContent: "center", placeContent: "center" })}>
+        <div
+          style={{ width: imageWidth }}
+          className={circle({
+            display: "flex",
+            alignContent: "center",
+            placeContent: "center",
+            alignSelf: "center",
+          })}
+        >
           <img
             src={image}
             alt={`${employer} logo`}
-            className={circle({ alignSelf: "center", width: "100px", overflow: "hidden" })}
+            className={circle({
+              justifySelf: "center",
+              alignSelf: "center",
+              width: "100px",
+              overflow: "hidden",
+            })}
           />
         </div>
       )}
@@ -80,21 +120,38 @@ const ExperienceCard: FC<Experience> = ({
           textAlign: "center",
           lineHeight: "snug",
           pt: "10px",
+          smDown: {
+            fontSize: "xl",
+            fontFamily: "serif",
+          },
         })}
       >
         {employer}
       </p>
-      <span className={css({ borderBottom: "1px solid gray", mb: "10px", textStyle: "sm" })}>
+      <span
+        className={css({
+          borderBottom: "1px solid gray",
+          mb: "10px",
+          textStyle: "sm",
+        })}
+      >
         <p
           className={css({
             display: "flex",
             justifyContent: "space-between",
             fontVariant: "small-caps",
             mx: "10px",
+            smDown: { display: "flex", flexDirection: "column", fontSize: "14px", fontWeight: "semibold" },
           })}
         >
-          {location && <span className={css({ alignSelf: "flex-start" })}>{location}</span>}
-          <span className={css({ alignSelf: "flex-end" })}>{formatDateString(start, end)}</span>
+          {location && (
+            <span className={css({ smDown: { alignSelf: "center" }, lg: { alignSelf: "flex-start" } })}>
+              {location}
+            </span>
+          )}
+          <span className={css({ smDown: { alignSelf: "center" }, alignSelf: "flex-end" })}>
+            {formatDateString(start, end)}
+          </span>
         </p>
       </span>
       {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
