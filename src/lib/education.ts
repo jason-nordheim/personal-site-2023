@@ -4,6 +4,11 @@ export type DegreeMajor = {
   type: string;
 };
 
+export type Location = {
+  city: string;
+  state: string;
+};
+
 export type Education = {
   institution: string;
   major?: DegreeMajor;
@@ -14,7 +19,7 @@ export type Education = {
   start: string;
   end: string;
   description: string[];
-  location: { city: string; state: string };
+  location: Location;
 };
 
 const RIT: Education = {

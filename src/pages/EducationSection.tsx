@@ -3,6 +3,7 @@ import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
 import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
+import { MdInbox } from "react-icons/md";
 
 const detailsStyle = { smDown: { fontSize: "sm", fontStretch: "condensed", lineHeight: "sm" } };
 
@@ -66,38 +67,31 @@ const EducationDescription: FC<{ descriptions: string[] }> = ({ descriptions }) 
   descriptions.sort((a, b) => b.length - a.length);
   return (
     <>
-      <ul className={css({ listStyle: "outside", ml: "4" })}>
-        {descriptions?.map((d) => (
-          <li className={css({ ...detailsStyle })} key={d}>
-            {d}
-          </li>
-        ))}
-      </ul>
+      {descriptions?.map((d) => (
+        <li className={css({ ...detailsStyle })} key={d}>
+          {d}
+        </li>
+      ))}
     </>
   );
 };
 
-const EducationLogo: FC<any> = () => {};
+const EducationMinors: FC<{ minors?: string[] }> = ({ minors }) => {
+  if (!minors) return null;
+  return <li className={css({ ...detailsStyle })}>{`Minors: ${minors.join(", ")}`}</li>;
+};
 
-const EducationCard: FC<Education> = ({
-  description,
-  end,
-  start,
-  institution,
-  location,
-  concentrations,
-  gpa,
-  logoUrl,
-  major,
-  minors,
-}) => {
+const EducationCard: FC<Education> = ({ description, end, start, institution, location, gpa, major, minors }) => {
   return (
     <div id={`education_${institution}`} className={css({ my: "10px" })}>
       <EducationCardHeader institution={institution} start={start} end={end} />
-      <EducationMajor major={major} />
-      <EducationLocation city={location.city} state={location.state} />
-      <GradePoint gpa={gpa} />
-      <EducationDescription descriptions={description} />
+      <ul className={css({ listStyle: "outside", ml: "4" })}>
+        <EducationMajor major={major} />
+        <EducationMinors minors={minors} />
+        <EducationLocation city={location.city} state={location.state} />
+        <GradePoint gpa={gpa} />
+        <EducationDescription descriptions={description} />
+      </ul>
     </div>
   );
 };
