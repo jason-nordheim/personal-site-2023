@@ -267,6 +267,7 @@ export const SkillsSection = () => {
                         } else {
                           setFilters({
                             ...filters,
+                            None: false,
                             [k]: !filters[k],
                           });
                         }
