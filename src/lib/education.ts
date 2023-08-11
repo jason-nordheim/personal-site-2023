@@ -1,9 +1,12 @@
+export type DegreeMajor = {
+  name: string;
+  typeAbbr: string;
+  type: string;
+};
+
 export type Education = {
   institution: string;
-  major?: {
-    name: string;
-    type: string;
-  };
+  major?: DegreeMajor;
   logoUrl?: string;
   minors?: string[];
   concentrations?: string[];
@@ -20,7 +23,7 @@ const RIT: Education = {
   gpa: 3.49,
   logoUrl:
     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rochester_Institute_of_Technology_seal.svg/1024px-Rochester_Institute_of_Technology_seal.svg.png",
-  major: { name: "Management Information Systems", type: "Bachelor's of Science (BS)" },
+  major: { name: "Management Information Systems", type: "Bachelor's of Science", typeAbbr: "BS" },
   minors: ["Digital Business", "Web Development"],
   concentrations: ["Psychology"],
   start: "08/2013",
