@@ -9,7 +9,7 @@ export const section = (styles: SystemStyleObject) =>
     px: "10px",
     py: "10px",
     pb: "50px",
-    bg: "gray.100",
+    bg: "#f7f7f7",
     border: "1px solid gray",
     rounded: "md",
     m: "10px",

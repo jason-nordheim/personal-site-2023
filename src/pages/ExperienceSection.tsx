@@ -67,11 +67,11 @@ const ExperienceCard: FC<Experience> = ({
   return (
     <article
       className={css({
-        bg: "gray.100",
+        bg: "#gray.100",
         display: "flex",
         flexDirection: "column",
         rounded: "md",
-        border: "1px solid black",
+        border: "1px solid gray",
         my: "10px",
         px: "10px",
         py: "10px",
