@@ -35,6 +35,7 @@ export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
         listStyle: "none",
         display: "flex",
         flexDirection: "row",
+        justifyContent: "flex-end",
         flex: 1,
         smDown: {
           fontSize: "sm",
