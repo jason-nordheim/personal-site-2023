@@ -11,6 +11,7 @@ export type Location = {
 
 export type Education = {
   institution: string;
+  url?: string;
   major?: DegreeMajor;
   logoUrl?: string;
   minors?: string[];
@@ -25,6 +26,7 @@ export type Education = {
 const RIT: Education = {
   location: { city: "Henrietta", state: "NY" },
   institution: "Rochester Institute of Technology",
+  url: "https://www.rit.edu",
   gpa: 3.49,
   logoUrl:
     "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Rochester_Institute_of_Technology_seal.svg/1024px-Rochester_Institute_of_Technology_seal.svg.png",
@@ -38,6 +40,7 @@ const RIT: Education = {
 
 const FLATIRON: Education = {
   institution: "Flatiron School",
+  url: "https://flatironschool.com",
   logoUrl: "https://upload.wikimedia.org/wikipedia/commons/6/61/FS_wiki.png",
   location: { city: "Denver", state: "CO" },
   start: "04/2020",

@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
-import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
+import { section, sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
-import { MdInbox } from "react-icons/md";
 
 const detailsStyle = { smDown: { fontSize: "sm", fontStretch: "condensed", lineHeight: "sm" } };
 
@@ -20,16 +19,21 @@ const formatMajor = (major: DegreeMajor, screenSize: PandaBreakpoints) => {
   }
 };
 
-const EducationCardHeader: FC<{ institution: string; start: string; end: string }> = ({ institution, start, end }) => {
+const EducationCardHeader: FC<{ institution: string; start: string; end: string; url?: string }> = ({
+  institution,
+  start,
+  end,
+  url,
+}) => {
   return (
-    <span className={css({ display: "flex", mb: "4px" })}>
+    <a href={url || "#"} className={css({ display: "flex", mb: "4px" })}>
       <h3 className={sectionSubTitle({ flex: 1, ...detailsStyle })}>{institution}</h3>
       <h3
         className={sectionSubTitle({
           ...detailsStyle,
         })}
       >{`${start} - ${end}`}</h3>
-    </span>
+    </a>
   );
 };
 
@@ -81,10 +85,10 @@ const EducationMinors: FC<{ minors?: string[] }> = ({ minors }) => {
   return <li className={css({ ...detailsStyle })}>{`Minors: ${minors.join(", ")}`}</li>;
 };
 
-const EducationCard: FC<Education> = ({ description, end, start, institution, location, gpa, major, minors }) => {
+const EducationCard: FC<Education> = ({ description, end, start, institution, location, gpa, major, minors, url }) => {
   return (
     <div id={`education_${institution}`} className={css({ my: "10px" })}>
-      <EducationCardHeader institution={institution} start={start} end={end} />
+      <EducationCardHeader institution={institution} start={start} end={end} url={url} />
       <ul className={css({ listStyle: "outside", ml: "4" })}>
         <EducationMajor major={major} />
         <EducationMinors minors={minors} />
