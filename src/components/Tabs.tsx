@@ -14,11 +14,16 @@ const getTabStyle = (selected: boolean) => {
     rounded: "md",
     alignSelf: "center",
     maxWidth: "200px",
+    transitionDuration: "0.5s",
     color: selected ? "blue.600" : undefined,
     _hover: {
       cursor: "pointer",
       transition: "ease-in-out",
+      transitionDuration: "0.5s",
       textDecoration: "underline",
+    },
+    sm: {
+      p: "2px",
     },
   });
 };
