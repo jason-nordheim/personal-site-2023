@@ -85,17 +85,52 @@ const EducationMinors: FC<{ minors?: string[] }> = ({ minors }) => {
   return <li className={css({ ...detailsStyle })}>{`Minors: ${minors.join(", ")}`}</li>;
 };
 
-const EducationCard: FC<Education> = ({ description, end, start, institution, location, gpa, major, minors, url }) => {
+const EducationLogo: FC<{ logoUrl: string | undefined; url: string | undefined }> = ({ logoUrl, url }) => {
+  const logoSize = "120px";
+  if (!logoUrl) return null;
+  return (
+    <a
+      href={url || "#"}
+      className={css({
+        display: "flex",
+        flex: 1,
+        justifyContent: "flex-end",
+        alignItems: "center",
+        mdDown: {
+          display: "none",
+        },
+      })}
+    >
+      <img className={css({ overflow: "hidden", maxHeight: logoSize, maxWidth: logoSize })} src={logoUrl} />
+    </a>
+  );
+};
+
+const EducationCard: FC<Education> = ({
+  description,
+  end,
+  start,
+  institution,
+  location,
+  gpa,
+  major,
+  minors,
+  url,
+  logoUrl,
+}) => {
   return (
     <div id={`education_${institution}`} className={css({ my: "10px" })}>
       <EducationCardHeader institution={institution} start={start} end={end} url={url} />
-      <ul className={css({ listStyle: "outside", ml: "4" })}>
-        <EducationMajor major={major} />
-        <EducationMinors minors={minors} />
-        <EducationLocation city={location.city} state={location.state} />
-        <GradePoint gpa={gpa} />
-        <EducationDescription descriptions={description} />
-      </ul>
+      <div className={css({ mdTo2xl: { display: "grid", gridTemplateColumns: "2" } })}>
+        <ul className={css({ listStyle: "outside", ml: "4" })}>
+          <EducationMajor major={major} />
+          <EducationMinors minors={minors} />
+          <EducationLocation city={location.city} state={location.state} />
+          <GradePoint gpa={gpa} />
+          <EducationDescription descriptions={description} />
+        </ul>
+        <EducationLogo logoUrl={logoUrl} url={url} />
+      </div>
     </div>
   );
 };
