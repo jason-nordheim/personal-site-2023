@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { css } from "../styled-system/css";
 
-export const TABS = { ABOUT: "About Me", SKILL: "Skills", EXPERIENCE: "Experience" };
+export const TABS = { ABOUT: "About", SKILL: "Skills", EXPERIENCE: "Experience" };
 
 const getTabStyle = (selected: boolean) => {
   return css({
