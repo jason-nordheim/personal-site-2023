@@ -1,3 +1,5 @@
+import { ValueOf } from "ts-essentials";
+
 /** enum representing the panda breakpoints */
 export const PANDA_BREAKPOINTS = {
   sm: "sm",
@@ -6,6 +8,8 @@ export const PANDA_BREAKPOINTS = {
   xl: "xl",
   "2xl": "2xl",
 } as const;
+
+export type PandaBreakpoints = ValueOf<typeof PANDA_BREAKPOINTS>;
 
 /* width of screen in pixels */
 const PANDA_BREAK_POINT_WIDTHS = {
@@ -18,10 +22,11 @@ const PANDA_BREAK_POINT_WIDTHS = {
 
 /** returns the enumerated screen size based on its width (in accordance with Panda breakpoints) */
 export const getScreenSize = () => {
-  const width = window.screen.width;
-  if (width <= PANDA_BREAK_POINT_WIDTHS.sm) return PANDA_BREAKPOINTS.sm;
-  if (width <= PANDA_BREAK_POINT_WIDTHS.md) return PANDA_BREAKPOINTS.md;
-  if (width <= PANDA_BREAK_POINT_WIDTHS.lg) return PANDA_BREAKPOINTS.lg;
-  if (width <= PANDA_BREAK_POINT_WIDTHS.xl) return PANDA_BREAKPOINTS.xl;
+  const width = window.innerWidth;
+  console.log({ width });
+  if (width < PANDA_BREAK_POINT_WIDTHS.sm) return PANDA_BREAKPOINTS.sm;
+  if (width < PANDA_BREAK_POINT_WIDTHS.md) return PANDA_BREAKPOINTS.md;
+  if (width < PANDA_BREAK_POINT_WIDTHS.lg) return PANDA_BREAKPOINTS.lg;
+  if (width < PANDA_BREAK_POINT_WIDTHS.xl) return PANDA_BREAKPOINTS.xl;
   return PANDA_BREAKPOINTS["2xl"];
 };
