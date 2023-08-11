@@ -11,6 +11,10 @@ export const Navigation: FC<TabProps> = ({ tab, onTabChange }) => {
         display: "flex",
         flexDirection: "row",
         bg: "blue.100",
+        smDown: {
+          height: "50px",
+          lineHeight: "50px",
+        },
       })}
     >
       {/* <h1
@@ -34,6 +38,9 @@ export const Navigation: FC<TabProps> = ({ tab, onTabChange }) => {
       </h1> */}
       <div
         className={css({
+          smDown: {
+            display: "none",
+          },
           display: "flex",
           placeContent: "center",
           fontSize: "4xl",

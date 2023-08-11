@@ -6,6 +6,7 @@ import { ExperienceSection } from "./pages/ExperienceSection";
 import { useState } from "react";
 import { TABS } from "./components/Tabs";
 import { css } from "./styled-system/css";
+import { EducationSection } from "./pages/EducationSection";
 
 export const PersonalSite = () => {
   const [tab, setTab] = useState(TABS.ABOUT);
@@ -26,6 +27,7 @@ export const PersonalSite = () => {
       {tab == TABS.ABOUT && <AboutSection />}
       {tab == TABS.SKILL && <SkillsSection />}
       {tab == TABS.EXPERIENCE && <ExperienceSection />}
+      {tab == TABS.EDUCATION && <EducationSection />}
       <Footer />
     </div>
   );

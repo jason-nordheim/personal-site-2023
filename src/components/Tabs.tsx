@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { css } from "../styled-system/css";
 
-export const TABS = { ABOUT: "About", SKILL: "Skills", EXPERIENCE: "Experience" };
+export const TABS = { ABOUT: "About", SKILL: "Skills", EXPERIENCE: "Experience", EDUCATION: "Education" };
 
 const getTabStyle = (selected: boolean) => {
   return css({
@@ -36,6 +36,10 @@ export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
         display: "flex",
         flexDirection: "row",
         flex: 1,
+        smDown: {
+          fontSize: "sm",
+          fontStretch: "condensed",
+        },
       })}
     >
       {Object.values(TABS).map((t) => {
