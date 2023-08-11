@@ -149,7 +149,7 @@ const ExperienceCard: FC<Experience> = ({
               {location}
             </span>
           )}
-          <span className={css({ smDown: { alignSelf: "center" }, alignSelf: "flex-end" })}>
+          <span className={css({ smDown: { alignSelf: "center", color: "gray.800" }, alignSelf: "flex-end" })}>
             {formatDateString(start, end)}
           </span>
         </p>
