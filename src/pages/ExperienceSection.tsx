@@ -1,7 +1,8 @@
 import { FC } from "react";
-import { Section } from "../components/Section";
 import { EXPERIENCE, Experience } from "../lib";
-import { Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { css } from "../styled-system/css";
+import { section, sectionTitle } from "../styles";
+import { circle } from "../styled-system/patterns";
 
 const MONTHS = [
   "January",
@@ -35,39 +36,87 @@ const formatDateString = (start: string, end: string) => {
   return `${makeMonthDayString(start)} - ${makeMonthDayString(end)}`;
 };
 
-const ExperienceCard: FC<Experience> = ({ description, employer, end, start, responsibilities, title, location }) => {
+const ExperienceCard: FC<Experience> = ({
+  description,
+  employer,
+  end,
+  start,
+  responsibilities,
+  title,
+  location,
+  image,
+}) => {
   return (
-    <Grid item>
-      <Typography
-        fontWeight="800"
-        variant="subtitle1"
-        sx={{ ml: (theme) => theme.spacing(2) }}
-      >{`${title} | ${employer}`}</Typography>
-      <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
-        {location ? `${formatDateString(start, end)}, ${location}` : formatDateString(start, end)}
-      </Typography>
-      {description && (
-        <Typography variant="subtitle2" sx={{ ml: (theme) => theme.spacing(2) }}>
-          {description}
-        </Typography>
+    <article
+      className={css({
+        bg: "gray.100",
+        display: "flex",
+        flexDirection: "column",
+        rounded: "md",
+        border: "1px solid black",
+        my: "10px",
+        px: "10px",
+        py: "10px",
+        maxWidth: "lg",
+        justifySelf: "center",
+        boxShadow: "5px 5px 5px gray",
+      })}
+    >
+      <p className={css({ fontFamily: "serif", textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{title}</p>
+
+      {image && (
+        <img src={image} alt={`${employer} logo`} className={circle({ alignSelf: "center", width: "100px" })} />
       )}
-      <List dense>
+      <p
+        className={css({
+          fontFamily: "sans-serif",
+          textStyle: "md",
+          textAlign: "center",
+          lineHeight: "snug",
+          pt: "10px",
+        })}
+      >
+        {employer}
+      </p>
+      <span className={css({ borderBottom: "1px solid gray", mb: "10px", textStyle: "sm" })}>
+        <p
+          className={css({
+            display: "flex",
+            justifyContent: "space-between",
+            fontVariant: "small-caps",
+            mx: "10px",
+          })}
+        >
+          {location && <span className={css({ alignSelf: "flex-start" })}>{location}</span>}
+          <span className={css({ alignSelf: "flex-end" })}>{formatDateString(start, end)}</span>
+        </p>
+      </span>
+      {description && <p className={css({ textStyle: "sm" })}>{description}</p>}
+      <ul className={css({ listStyle: "outside", ml: 5, fontSize: "xs", px: "10px" })}>
         {responsibilities.map((r) => (
-          <ListItem key={r}>
-            <ListItemText>{r}</ListItemText>
-          </ListItem>
+          <li key={r}>{r}</li>
         ))}
-      </List>
-    </Grid>
+      </ul>
+    </article>
   );
 };
 
 export const ExperienceSection = () => {
   return (
-    <Section id="experience">
-      {EXPERIENCE.map((e) => (
-        <ExperienceCard {...e} />
-      ))}
-    </Section>
+    <section id="experience" className={section({})}>
+      <h2 className={sectionTitle({})}>Experience</h2>
+      <div
+        className={css({
+          display: "grid",
+          md: { gridTemplateColumns: "1" },
+          lg: { gridTemplateColumns: "2" },
+          gap: "10px",
+        })}
+      >
+        {EXPERIENCE.map((e) => (
+          <ExperienceCard key={e.title} {...e} />
+        ))}
+      </div>
+    </section>
   );
 };
