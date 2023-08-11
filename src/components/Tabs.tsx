@@ -38,6 +38,7 @@ export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
         justifyContent: "flex-end",
         flex: 1,
         smDown: {
+          justifyContent: "center",
           fontSize: "sm",
           fontStretch: "condensed",
         },
