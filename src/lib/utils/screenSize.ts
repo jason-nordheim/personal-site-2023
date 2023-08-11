@@ -23,10 +23,9 @@ const PANDA_BREAK_POINT_WIDTHS = {
 /** returns the enumerated screen size based on its width (in accordance with Panda breakpoints) */
 export const getScreenSize = () => {
   const width = window.innerWidth;
-  console.log({ width });
-  if (width < PANDA_BREAK_POINT_WIDTHS.sm) return PANDA_BREAKPOINTS.sm;
-  if (width < PANDA_BREAK_POINT_WIDTHS.md) return PANDA_BREAKPOINTS.md;
-  if (width < PANDA_BREAK_POINT_WIDTHS.lg) return PANDA_BREAKPOINTS.lg;
-  if (width < PANDA_BREAK_POINT_WIDTHS.xl) return PANDA_BREAKPOINTS.xl;
+  if (width <= PANDA_BREAK_POINT_WIDTHS.sm) return PANDA_BREAKPOINTS.sm;
+  if (width <= PANDA_BREAK_POINT_WIDTHS.md) return PANDA_BREAKPOINTS.md;
+  if (width <= PANDA_BREAK_POINT_WIDTHS.lg) return PANDA_BREAKPOINTS.lg;
+  if (width <= PANDA_BREAK_POINT_WIDTHS.xl) return PANDA_BREAKPOINTS.xl;
   return PANDA_BREAKPOINTS["2xl"];
 };
