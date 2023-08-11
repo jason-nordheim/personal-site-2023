@@ -28,8 +28,9 @@ import {
   SiFoodpanda,
   SiVitest,
   SiGnubash,
+  SiRubyonrails,
 } from "react-icons/si/index";
-import { BiSolidBinoculars } from "react-icons/bi/index";
+import { BiLogoJquery, BiSolidBinoculars } from "react-icons/bi/index";
 import { LiaProjectDiagramSolid, LiaCalculatorSolid } from "react-icons/lia/index";
 import {
   MdOutlineEmojiEmotions,
@@ -60,9 +61,10 @@ import { FaReact, FaJava, FaFigma } from "react-icons/fa/index";
 import { GiPowerGenerator, GiTeleport } from "react-icons/gi/index";
 import { GrNode, GrCloudComputer, GrUserWorker } from "react-icons/gr/index";
 import { BiLogoPostgresql, BiLogoMongodb, BiSolidFileCss } from "react-icons/bi/index";
-import { VscSymbolInterface } from "react-icons/vsc/index";
+import { VscRuby, VscSymbolInterface } from "react-icons/vsc/index";
 import { RxComponentInstance } from "react-icons/rx/index";
 import { IconType } from "react-icons";
+import { sortAscending } from "./utils/sorting";
 
 export const TAGS = {
   Backend: "back-end",
@@ -98,6 +100,24 @@ export type Skill = {
 };
 
 export const SKILLS: Skill[] = [
+  {
+    name: "Jquery",
+    category: SKILL_CATEGORY.Framework,
+    icon: BiLogoJquery,
+    tags: [TAGS.FrontEnd],
+  },
+  {
+    name: "Rails",
+    category: SKILL_CATEGORY.Framework,
+    icon: SiRubyonrails,
+    tags: [TAGS.Api, TAGS.Backend, TAGS.FrontEnd],
+  },
+  {
+    name: "Ruby",
+    category: SKILL_CATEGORY.Language,
+    icon: VscRuby,
+    tags: [TAGS.Api, TAGS.Backend, TAGS.FrontEnd],
+  },
   {
     name: "Singleton Pattern",
     category: SKILL_CATEGORY.Concept,
@@ -435,7 +455,7 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.Backend, TAGS.Databases],
   },
   {
-    name: "Panda CSS",
+    name: "PandaCSS",
     category: SKILL_CATEGORY.Library,
     icon: SiFoodpanda,
     tags: [TAGS.Backend, TAGS.Databases],
@@ -447,7 +467,7 @@ export const SKILLS: Skill[] = [
     tags: [TAGS.FrontEnd],
   },
   {
-    name: "Mongo DB",
+    name: "MongoDB",
     category: SKILL_CATEGORY.Language,
     icon: BiLogoMongodb,
     tags: [TAGS.Backend, TAGS.Databases],
@@ -540,16 +560,10 @@ export const SKILLS: Skill[] = [
 
 export const makeSkillsString = (skills: Skill[]) => {
   return skills
-    .sort((a, b) => {
-      const x = a.name.toLowerCase();
-      const y = b.name.toLowerCase();
-      if (x < y) return 1;
-      if (y > x) return -1;
-      return 0;
-    })
-    .filter((s) => s.category !== SKILL_CATEGORY.Software)
+    .sort((a, b) => sortAscending(a.name, b.name))
+    .filter((s) => s.category !== SKILL_CATEGORY.Software && s.category !== SKILL_CATEGORY.Concept)
     .map((s) => s.name)
-    .join(" ,");
+    .join(", ");
 };
 
 export const skillHasTag = (skill: Skill, tag: SkillTag): boolean => skill.tags.includes(tag);
