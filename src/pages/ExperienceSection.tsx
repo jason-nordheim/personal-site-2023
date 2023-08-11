@@ -65,7 +65,13 @@ const ExperienceCard: FC<Experience> = ({
       <p className={css({ fontFamily: "serif", textStyle: "xl", textAlign: "center", lineHeight: "loose" })}>{title}</p>
 
       {image && (
-        <img src={image} alt={`${employer} logo`} className={circle({ alignSelf: "center", width: "100px" })} />
+        <div className={circle({ display: "flex", alignContent: "center", placeContent: "center" })}>
+          <img
+            src={image}
+            alt={`${employer} logo`}
+            className={circle({ alignSelf: "center", width: "100px", overflow: "hidden" })}
+          />
+        </div>
       )}
       <p
         className={css({
