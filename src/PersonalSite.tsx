@@ -1,6 +1,6 @@
 import { AboutSection } from "./pages/AboutSection";
 import { SkillsSection } from "./pages/SkillsSection";
-import { Header } from "./components/Header";
+import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { ExperienceSection } from "./pages/ExperienceSection";
 import { useState } from "react";
@@ -22,7 +22,7 @@ export const PersonalSite = () => {
         height: "100%",
       })}
     >
-      <Header tab={tab} onTabChange={handleTabChange} />
+      <Navigation tab={tab} onTabChange={handleTabChange} />
       {tab == TABS.ABOUT && <AboutSection />}
       {tab == TABS.SKILL && <SkillsSection />}
       {tab == TABS.EXPERIENCE && <ExperienceSection />}
