@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
-import { TabProps, Tabs } from "./Tabs";
+import { TabsProps, Tabs } from "./Tabs";
 import { MdEngineering } from "react-icons/md";
+import { IconType } from "react-icons";
 
-export const Navigation: FC<TabProps> = ({ selectedTab: tab, onTabChange }) => {
+const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
     <header
       className={css({
@@ -20,31 +21,45 @@ export const Navigation: FC<TabProps> = ({ selectedTab: tab, onTabChange }) => {
         borderRadius: "lg",
       })}
     >
-      <div
+      {children}
+    </header>
+  );
+};
+
+const Logo: FC<{ Icon: IconType }> = ({ Icon }) => {
+  return (
+    <div
+      className={css({
+        smDown: {
+          display: "none",
+        },
+        display: "flex",
+        justifyContent: "center",
+      })}
+    >
+      <span
         className={css({
-          smDown: {
-            display: "none",
-          },
-          display: "flex",
-          justifyContent: "center",
+          width: "50px",
+          flexGrow: 0,
+          fontSize: "4xl",
+          borderRadius: "full",
+          p: "2",
+          m: "5px",
+          bg: "white",
+          boxShadow: "sm",
         })}
       >
-        <span
-          className={css({
-            width: "50px",
-            flexGrow: 0,
-            fontSize: "4xl",
-            borderRadius: "full",
-            p: "2",
-            m: "5px",
-            bg: "white",
-            boxShadow: "sm",
-          })}
-        >
-          <MdEngineering />
-        </span>
-      </div>
+        <Icon />
+      </span>
+    </div>
+  );
+};
+
+export const Navigation: FC<TabsProps> = ({ selectedTab: tab, onTabChange }) => {
+  return (
+    <NavigationContainer>
+      <Logo Icon={MdEngineering} />
       <Tabs selectedTab={tab} onTabChange={onTabChange} />
-    </header>
+    </NavigationContainer>
   );
 };
