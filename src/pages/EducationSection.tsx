@@ -3,7 +3,7 @@ import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
 import { section, sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
-import { CardWrapper } from "../components/CardWrapper";
+import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
 
 const detailsStyle = {
@@ -123,7 +123,7 @@ const EducationCard: FC<Education> = ({
   logoUrl,
 }) => {
   return (
-    <CardWrapper id={`education_${institution}`}>
+    <CardContainer id={`education_${institution}`}>
       <EducationCardHeader institution={institution} start={start} end={end} url={url} />
       <div className={css({ mdTo2xl: { display: "grid", gridTemplateColumns: "75% 25%" } })}>
         <ul className={css({ listStyle: "outside", ml: "4" })}>
@@ -135,7 +135,7 @@ const EducationCard: FC<Education> = ({
         </ul>
         <EducationLogo logoUrl={logoUrl} url={url} />
       </div>
-    </CardWrapper>
+    </CardContainer>
   );
 };
 

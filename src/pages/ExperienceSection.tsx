@@ -4,7 +4,7 @@ import { css } from "../styled-system/css";
 import { section, sectionTitle } from "../styles";
 import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
-import { CardWrapper } from "../components/CardWrapper";
+import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
 
 const MONTHS = [
@@ -67,7 +67,7 @@ const ExperienceCard: FC<Experience> = ({
 }) => {
   const logoSize = getLogoImageSize();
   return (
-    <CardWrapper>
+    <CardContainer>
       <p
         className={css({
           fontFamily: "serif",
@@ -149,7 +149,7 @@ const ExperienceCard: FC<Experience> = ({
           <li key={r}>{r}</li>
         ))}
       </ul>
-    </CardWrapper>
+    </CardContainer>
   );
 };
 

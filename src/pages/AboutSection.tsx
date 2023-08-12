@@ -1,7 +1,7 @@
 import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
 import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
-import { CardWrapper } from "../components/CardWrapper";
+import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
@@ -21,7 +21,7 @@ export const AboutSection = () => {
       <Hero />
       <br />
       <CardGrid lg={{ gridTemplateColumns: "1" }}>
-        <CardWrapper>
+        <CardContainer>
           <Section
             title="Introduction"
             caption="Jason Nordheim is an accomplished Full-stack Engineer with an unyielding passion for crafting exceptional
@@ -76,7 +76,7 @@ export const AboutSection = () => {
             exceptional web applications aligning with the company's vision, and his passion for pushing boundaries will
             positions him to be a top contributor in the world of software development."
           />
-        </CardWrapper>
+        </CardContainer>
       </CardGrid>
     </section>
   );
