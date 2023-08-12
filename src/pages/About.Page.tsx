@@ -1,15 +1,14 @@
-import { sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
 import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
 import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
-import { PageContainer, PageTitle } from "./common";
+import { Caption, PageContainer, PageTitle, SubTitle } from "./common";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
   return (
     <>
-      {title ? <p className={sectionSubTitle({})}>{title}</p> : null}
-      <p className={sectionCaption({})}>{caption}</p>
+      {title ? <SubTitle>{title}</SubTitle> : null}
+      <Caption>{caption}</Caption>
       <br />
     </>
   );

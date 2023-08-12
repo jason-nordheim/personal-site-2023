@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
-import { sectionTitle } from "../styles";
 import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 import { CardContainer } from "../components/CardContainer";

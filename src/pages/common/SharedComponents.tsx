@@ -1,9 +1,7 @@
-import { DetailedHTMLProps, FC, PropsWithChildren, HTMLAttributes } from "react";
+import { FC, PropsWithChildren } from "react";
 import { container } from "../../styled-system/patterns";
 import { css, cx } from "../../styled-system/css";
-
-type PageContainerProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
-type PageTitleProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+import { HTMLElementProps, HeadingProps, PProps } from "./ElementProps";
 
 const BASE_STYLES = {
   Container: container({
@@ -24,9 +22,11 @@ const BASE_STYLES = {
     fontFamily: "serif",
     fontWeight: "semibold",
   }),
+  Subtitle: css({ fontSize: "md", fontWeight: "semibold", borderBottom: "1px solid black" }),
+  Caption: css({ textStyle: "sm", mt: "2" }),
 };
 
-export const PageContainer: FC<PropsWithChildren<PageContainerProps>> = ({ children, className, ...rest }) => {
+export const PageContainer: FC<PropsWithChildren<HTMLElementProps>> = ({ children, className, ...rest }) => {
   return (
     <section {...rest} className={cx(BASE_STYLES.Container, className)}>
       {children}
@@ -34,10 +34,26 @@ export const PageContainer: FC<PropsWithChildren<PageContainerProps>> = ({ child
   );
 };
 
-export const PageTitle: FC<PropsWithChildren<PageTitleProps>> = ({ children, className, ...rest }) => {
+export const PageTitle: FC<PropsWithChildren<HeadingProps>> = ({ children, className, ...rest }) => {
   return (
     <h1 className={cx(BASE_STYLES.Title, className)} {...rest}>
       {children}
     </h1>
+  );
+};
+
+export const SubTitle: FC<PropsWithChildren<HeadingProps>> = ({ children, className, ...rest }) => {
+  return (
+    <h3 className={cx(BASE_STYLES.Subtitle, className)} {...rest}>
+      {children}
+    </h3>
+  );
+};
+
+export const Caption: FC<PropsWithChildren<PProps>> = ({ children, className, ...rest }) => {
+  return (
+    <p className={cx(BASE_STYLES.Caption, className)} {...rest}>
+      {children}
+    </p>
   );
 };

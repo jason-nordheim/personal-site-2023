@@ -1,11 +1,10 @@
 import { FC } from "react";
 import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
-import { sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer, PageTitle } from "./common";
+import { PageContainer, PageTitle, SubTitle } from "./common";
 
 const detailsStyle = {
   fontStretch: "condensed",
@@ -31,14 +30,14 @@ const EducationCardHeader: FC<{ institution: string; start: string; end: string;
   end,
   url,
 }) => {
+  const additionalStyles = {
+    institution: css({ flex: 1, ...detailsStyle }),
+    date: css({ ...detailsStyle }),
+  };
   return (
     <a href={url || "#"} className={css({ display: "flex", mb: "4px" })}>
-      <h3 className={sectionSubTitle({ flex: 1, ...detailsStyle })}>{institution}</h3>
-      <h3
-        className={sectionSubTitle({
-          ...detailsStyle,
-        })}
-      >{`${start} - ${end}`}</h3>
+      <SubTitle className={additionalStyles.institution}>{institution}</SubTitle>
+      <SubTitle className={additionalStyles.date}>{`${start} - ${end}`}</SubTitle>
     </a>
   );
 };
