@@ -8,6 +8,14 @@ export const Hero = () => {
         className={css({
           height: "200px",
           width: "200px",
+          md: {
+            height: "400px",
+            width: "400px",
+          },
+          lg: {
+            height: "500px",
+            width: "500px",
+          },
           overflow: "hidden",
           rounded: "50%",
           border: "1px solid black",
