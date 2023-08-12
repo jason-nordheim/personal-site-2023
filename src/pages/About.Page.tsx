@@ -3,7 +3,7 @@ import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
 import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
-import { PageContainer } from "./common/PageContainer";
+import { PageContainer, PageTitle } from "./common";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
   return (
@@ -18,7 +18,7 @@ const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) =>
 export const AboutPage = () => {
   return (
     <PageContainer>
-      <p className={sectionTitle({})}>About</p>
+      <PageTitle>About</PageTitle>
       <Hero />
       <br />
       <CardGrid lg={{ gridTemplateColumns: "1" }}>

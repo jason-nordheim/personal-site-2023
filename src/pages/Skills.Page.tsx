@@ -7,20 +7,8 @@ import { sortAscending } from "../lib/utils/sorting";
 import { css } from "../styled-system/css";
 import { SystemStyleObject } from "../styled-system/types";
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { PageContainer } from "./common/PageContainer";
-
-type FilterCategories = SkillCategory & "All";
-
-const capitalizeFirstWord = (str: string) => {
-  const firstChar = str[0].toUpperCase();
-  const updatedStr = `${firstChar}${str.slice(1)}`;
-  return updatedStr;
-};
-
-const SORT_OPTIONS = {
-  name: "name",
-  category: "category",
-};
+import { PageContainer, PageTitle } from "./common";
+import { FilterCategories, SORT_OPTIONS, SortOptions, capitalizeFirstChar } from "./Skills.Lib";
 
 const BASE_SKILL_BUBBLE_STYLES: SystemStyleObject = {
   smDown: {
@@ -187,14 +175,28 @@ const FILTER_NONE = {
 
 export const SkillsPage = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
-  const [sortField, setSortField] = useState(SORT_OPTIONS.category);
+  const [sortField, setSortField] = useState<SortOptions>(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
+
+  const onFilterChange = (filterKey: string) => {
+    if (filterKey == "None") {
+      setFilters(FILTER_NONE);
+    } else if (filterKey == "All") {
+      setFilters(FILTERS_ALL);
+    } else {
+      setFilters({
+        ...filters,
+        None: false,
+        [filterKey]: !filters[filterKey],
+      });
+    }
+  };
 
   const skills = useSortedAndFilteredSkills(sortField, filters, filterCategory);
 
   return (
     <PageContainer>
-      <p className={sectionTitle({})}>Skills</p>
+      <PageTitle>Skills</PageTitle>
       <form
         className={css({ display: "flex", flexDirection: "row", fontFamily: "monospace", gap: "10px", my: "10px" })}
       >
@@ -233,9 +235,9 @@ export const SkillsPage = () => {
             >
               Sort by:
             </label>
-            <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
-              <option value={SORT_OPTIONS.name}>{capitalizeFirstWord(SORT_OPTIONS.name)}</option>
-              <option value={SORT_OPTIONS.category}>{capitalizeFirstWord(SORT_OPTIONS.category)}</option>
+            <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value as SortOptions)}>
+              <option value={SORT_OPTIONS.name}>{capitalizeFirstChar(SORT_OPTIONS.name)}</option>
+              <option value={SORT_OPTIONS.category}>{capitalizeFirstChar(SORT_OPTIONS.category)}</option>
             </select>
           </div>
           <div
@@ -320,24 +322,8 @@ export const SkillsPage = () => {
                 // key == tag
                 return (
                   <span key={k} className={css({})}>
-                    <input
-                      type="checkbox"
-                      checked={filters[k]}
-                      onChange={() => {
-                        if (k == "None") {
-                          setFilters(FILTER_NONE);
-                        } else if (k == "All") {
-                          setFilters(FILTERS_ALL);
-                        } else {
-                          setFilters({
-                            ...filters,
-                            None: false,
-                            [k]: !filters[k],
-                          });
-                        }
-                      }}
-                    />
-                    <span className={css({ ml: "4px", fontVariant: "titling-caps" })}>{capitalizeFirstWord(k)}</span>
+                    <input type="checkbox" checked={filters[k]} onChange={() => onFilterChange(k)} />
+                    <span className={css({ ml: "4px", fontVariant: "titling-caps" })}>{capitalizeFirstChar(k)}</span>
                   </span>
                 );
               }),

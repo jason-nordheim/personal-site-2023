@@ -5,7 +5,7 @@ import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils
 import { css } from "../styled-system/css";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer } from "./common/PageContainer";
+import { PageContainer, PageTitle } from "./common";
 
 const detailsStyle = {
   fontStretch: "condensed",
@@ -143,7 +143,7 @@ const EducationCard: FC<Education> = ({
 export const EducationPage = () => {
   return (
     <PageContainer>
-      <h1 className={sectionTitle({})}>Education</h1>
+      <PageTitle>Education</PageTitle>
       <CardGrid lg={{ gridTemplateColumns: "1" }}>
         {EDUCATION.map((e) => (
           <EducationCard key={e.institution} {...e} />

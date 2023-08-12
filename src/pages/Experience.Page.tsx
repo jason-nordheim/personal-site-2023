@@ -6,7 +6,7 @@ import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer } from "./common/PageContainer";
+import { PageContainer, PageTitle } from "./common";
 
 const MONTHS = [
   "January",
@@ -157,7 +157,7 @@ const ExperienceCard: FC<Experience> = ({
 export const ExperiencePage = () => {
   return (
     <PageContainer>
-      <h2 className={sectionTitle({})}>Experience</h2>
+      <PageTitle>Experience</PageTitle>
       <CardGrid>
         {EXPERIENCE.map((e) => (
           <ExperienceCard key={e.title} {...e} />
