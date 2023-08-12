@@ -1,10 +1,10 @@
 import { SKILLS, SKILL_CATEGORY, Skill, SkillCategory, SkillTag, TAGS, skillHasTag } from "../lib";
-import { FC, DetailedHtmlProps, HTMLAttributes, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { ValueOf } from "ts-essentials";
-import { section, sectionTitle } from "../styles";
+import { sectionTitle } from "../styles";
 import { container } from "../styled-system/patterns";
 import { sortAscending } from "../lib/utils/sorting";
-import { css, cx } from "../styled-system/css";
+import { css } from "../styled-system/css";
 import { SystemStyleObject } from "../styled-system/types";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { PageContainer } from "./common/PageContainer";
