@@ -19,6 +19,7 @@ const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
           lineHeight: "50px",
         },
         borderRadius: "lg",
+        border: "1px solid gray",
       })}
     >
       {children}
