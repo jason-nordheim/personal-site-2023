@@ -13,7 +13,12 @@ export const CardContainer: FC<PropsWithChildren<{ id?: string }>> = ({ children
         my: "10px",
         px: "10px",
         py: "10px",
-        width: "lg",
+        width: "xl",
+        xl: {
+          transition: "linear",
+          transitionDuration: "normal",
+          width: "2xl",
+        },
         justifySelf: "center",
         boxShadow: "5px 5px 5px gray",
       })}
