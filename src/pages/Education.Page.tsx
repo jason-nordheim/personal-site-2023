@@ -139,7 +139,7 @@ const EducationCard: FC<Education> = ({
   );
 };
 
-export const EducationSection = () => {
+export const EducationPage = () => {
   return (
     <section id="education" className={section({})}>
       <h1 className={sectionTitle({})}>Education</h1>

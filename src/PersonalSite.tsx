@@ -1,12 +1,12 @@
-import { AboutSection } from "./pages/AboutSection";
-import { SkillsSection } from "./pages/SkillsSection";
+import { AboutPage } from "./pages/About.Page";
+import { SkillsPage } from "./pages/Skills.Page";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
-import { ExperienceSection } from "./pages/ExperienceSection";
+import { ExperiencePage } from "./pages/Experience.Page";
 import { useState } from "react";
 import { TABS } from "./components/Tabs";
 import { css } from "./styled-system/css";
-import { EducationSection } from "./pages/EducationSection";
+import { EducationPage } from "./pages/Education.Page";
 
 export const PersonalSite = () => {
   const [tab, setTab] = useState(TABS.ABOUT);
@@ -24,10 +24,10 @@ export const PersonalSite = () => {
       })}
     >
       <Navigation selectedTab={tab} onTabChange={handleTabChange} />
-      {tab == TABS.ABOUT && <AboutSection />}
-      {tab == TABS.SKILL && <SkillsSection />}
-      {tab == TABS.EXPERIENCE && <ExperienceSection />}
-      {tab == TABS.EDUCATION && <EducationSection />}
+      {tab == TABS.ABOUT && <AboutPage />}
+      {tab == TABS.SKILL && <SkillsPage />}
+      {tab == TABS.EXPERIENCE && <ExperiencePage />}
+      {tab == TABS.EDUCATION && <EducationPage />}
       <Footer />
     </div>
   );

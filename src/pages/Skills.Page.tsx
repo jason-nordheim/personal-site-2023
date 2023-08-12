@@ -146,7 +146,7 @@ const FILTER_NONE = {
   None: true,
 };
 
-export const SkillsSection = () => {
+export const SkillsPage = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
   const [sortField, setSortField] = useState(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");

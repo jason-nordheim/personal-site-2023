@@ -14,7 +14,7 @@ const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) =>
   );
 };
 
-export const AboutSection = () => {
+export const AboutPage = () => {
   return (
     <section id="about" className={section({})}>
       <p className={sectionTitle({})}>About</p>

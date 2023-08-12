@@ -153,7 +153,7 @@ const ExperienceCard: FC<Experience> = ({
   );
 };
 
-export const ExperienceSection = () => {
+export const ExperiencePage = () => {
   return (
     <section id="experience" className={section({})}>
       <h2 className={sectionTitle({})}>Experience</h2>
