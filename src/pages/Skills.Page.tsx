@@ -8,7 +8,7 @@ import { css } from "../styled-system/css";
 
 type FilterCategories = SkillCategory & "All";
 
-const capatalizeFirstWord = (str: string) => {
+const capitalizeFirstWord = (str: string) => {
   const firstChar = str[0].toUpperCase();
   const updatedStr = `${firstChar}${str.slice(1)}`;
   return updatedStr;
@@ -195,8 +195,8 @@ export const SkillsPage = () => {
               Sort by:
             </label>
             <select id="sortOption" value={sortField} onChange={(e) => setSortField(e.target.value)}>
-              <option value={SORT_OPTIONS.name}>{capatalizeFirstWord(SORT_OPTIONS.name)}</option>
-              <option value={SORT_OPTIONS.category}>{capatalizeFirstWord(SORT_OPTIONS.category)}</option>
+              <option value={SORT_OPTIONS.name}>{capitalizeFirstWord(SORT_OPTIONS.name)}</option>
+              <option value={SORT_OPTIONS.category}>{capitalizeFirstWord(SORT_OPTIONS.category)}</option>
             </select>
           </div>
           <div
@@ -298,7 +298,7 @@ export const SkillsPage = () => {
                         }
                       }}
                     />
-                    <span className={css({ ml: "4px", fontVariant: "titling-caps" })}>{capatalizeFirstWord(k)}</span>
+                    <span className={css({ ml: "4px", fontVariant: "titling-caps" })}>{capitalizeFirstWord(k)}</span>
                   </span>
                 );
               }),
