@@ -209,7 +209,7 @@ export const SkillsPage = () => {
               {[
                 <option key={"All"} value={"All"}>
                   All
-                </option>,
+                </option>
                 ...Object.values(SKILL_CATEGORY).map((category) => {
                   return (
                     <option key={category} value={category}>
