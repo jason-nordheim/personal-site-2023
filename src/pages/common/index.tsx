@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, FC, PropsWithChildren, HTMLAttributes } from "react";
 import { container } from "../../styled-system/patterns";
 import { css, cx } from "../../styled-system/css";
-import { sectionTitle } from "../../styles";
 
 type PageContainerProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 type PageTitleProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;

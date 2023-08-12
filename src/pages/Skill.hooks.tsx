@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { SKILLS, Skill, skillHasTag } from "../lib";
-import { FilterCategories, SORT_OPTIONS } from "./Skills.Lib";
+import { FilterCategories, SORT_OPTIONS, TagFilters } from "./Skills.Lib";
 import { sortAscending } from "../lib/utils/sorting";
 import { ValueOf } from "ts-essentials";
 
@@ -8,7 +8,7 @@ const allPropertiesTruthy = (obj: object) => {
   return Object.values(obj).every((x) => x == true);
 };
 
-const useTagFilter = (skills: Skill[], filters: NewType) => {
+const useTagFilter = (skills: Skill[], filters: TagFilters) => {
   const skillsFilteredByTag = useMemo(() => {
     if (!filters || allPropertiesTruthy(filters) || filters["All"]) return skills;
 
@@ -25,7 +25,6 @@ const useTagFilter = (skills: Skill[], filters: NewType) => {
         return false;
       }
       selectedFilters.forEach((tag) => {
-        console.log({ tag, hasTag: skillHasTag(skill, tag), skill });
         if (skillHasTag(skill, tag)) {
           return true;
         }
