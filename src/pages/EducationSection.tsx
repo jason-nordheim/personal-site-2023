@@ -3,6 +3,8 @@ import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
 import { section, sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
+import { CardWrapper } from "../components/CardWrapper";
+import { CardGrid } from "../components/CardGrid";
 
 const detailsStyle = { smDown: { fontSize: "sm", fontStretch: "condensed", lineHeight: "sm" } };
 
@@ -119,7 +121,7 @@ const EducationCard: FC<Education> = ({
   logoUrl,
 }) => {
   return (
-    <div id={`education_${institution}`} className={css({ my: "10px" })}>
+    <CardWrapper id={`education_${institution}`} className={css({ my: "10px" })}>
       <EducationCardHeader institution={institution} start={start} end={end} url={url} />
       <div className={css({ mdTo2xl: { display: "grid", gridTemplateColumns: "2" } })}>
         <ul className={css({ listStyle: "outside", ml: "4" })}>
@@ -131,7 +133,7 @@ const EducationCard: FC<Education> = ({
         </ul>
         <EducationLogo logoUrl={logoUrl} url={url} />
       </div>
-    </div>
+    </CardWrapper>
   );
 };
 
@@ -139,9 +141,11 @@ export const EducationSection = () => {
   return (
     <section id="education" className={section({})}>
       <h1 className={sectionTitle({})}>Education</h1>
-      {EDUCATION.map((e) => (
-        <EducationCard key={e.institution} {...e} />
-      ))}
+      <CardGrid>
+        {EDUCATION.map((e) => (
+          <EducationCard key={e.institution} {...e} />
+        ))}
+      </CardGrid>
     </section>
   );
 };

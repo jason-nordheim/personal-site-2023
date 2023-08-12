@@ -1,9 +1,11 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
 import { section, sectionTitle } from "../styles";
 import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
+import { CardWrapper } from "../components/CardWrapper";
+import { CardGrid } from "../components/CardGrid";
 
 const MONTHS = [
   "January",
@@ -65,21 +67,7 @@ const ExperienceCard: FC<Experience> = ({
 }) => {
   const logoSize = getLogoImageSize();
   return (
-    <article
-      className={css({
-        bg: "#gray.100",
-        display: "flex",
-        flexDirection: "column",
-        rounded: "md",
-        border: "1px solid gray",
-        my: "10px",
-        px: "10px",
-        py: "10px",
-        maxWidth: "lg",
-        justifySelf: "center",
-        boxShadow: "5px 5px 5px gray",
-      })}
-    >
+    <CardWrapper>
       <p
         className={css({
           fontFamily: "serif",
@@ -161,7 +149,7 @@ const ExperienceCard: FC<Experience> = ({
           <li key={r}>{r}</li>
         ))}
       </ul>
-    </article>
+    </CardWrapper>
   );
 };
 
@@ -169,18 +157,11 @@ export const ExperienceSection = () => {
   return (
     <section id="experience" className={section({})}>
       <h2 className={sectionTitle({})}>Experience</h2>
-      <div
-        className={css({
-          display: "grid",
-          md: { gridTemplateColumns: "1" },
-          lg: { gridTemplateColumns: "2" },
-          gap: "10px",
-        })}
-      >
+      <CardGrid>
         {EXPERIENCE.map((e) => (
           <ExperienceCard key={e.title} {...e} />
         ))}
-      </div>
+      </CardGrid>
     </section>
   );
 };
