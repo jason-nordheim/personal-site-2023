@@ -1,18 +1,13 @@
 import { SKILL_CATEGORY, Skill } from "../lib";
 import {
-  AnchorHTMLAttributes,
-  DetailedHTMLProps,
   FC,
-  FormHTMLAttributes,
-  HTMLAttributes,
-  LabelHTMLAttributes,
   PropsWithChildren,
   useState,
 } from "react";
 import { container } from "../styled-system/patterns";
 import { css } from "../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { PageContainer, PageTitle } from "./common";
+import { PageContainer, PageTitle, FormProps, DivProps, LabelProps, AnchorProps  } from "./common";
 import {
   FILTERS_ALL,
   FILTER_NONE,
@@ -24,11 +19,6 @@ import {
 } from "./Skills.Lib";
 import { useSortedAndFilteredSkills } from "./Skill.hooks";
 import { capitalizeFirstChar } from "../lib/utils/strings";
-
-type FormProps = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-type LabelProps = DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>;
-type AnchorProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>;
 
 const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => {
   return (
