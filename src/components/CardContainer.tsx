@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
 
-export const CardWrapper: FC<PropsWithChildren<{ id?: string }>> = ({ children }) => {
+export const CardContainer: FC<PropsWithChildren<{ id?: string }>> = ({ children }) => {
   return (
     <article
       className={css({
@@ -13,7 +13,7 @@ export const CardWrapper: FC<PropsWithChildren<{ id?: string }>> = ({ children }
         my: "10px",
         px: "10px",
         py: "10px",
-        maxWidth: "lg",
+        width: "lg",
         justifySelf: "center",
         boxShadow: "5px 5px 5px gray",
       })}
