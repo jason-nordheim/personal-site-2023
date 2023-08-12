@@ -6,7 +6,10 @@ import { css } from "../styled-system/css";
 import { CardWrapper } from "../components/CardWrapper";
 import { CardGrid } from "../components/CardGrid";
 
-const detailsStyle = { smDown: { fontSize: "sm", fontStretch: "condensed", lineHeight: "sm" } };
+const detailsStyle = {
+  fontStretch: "condensed",
+  smDown: { fontSize: "sm", fontStretch: "condensed", lineHeight: "sm" },
+};
 
 const formatMajor = (major: DegreeMajor, screenSize: PandaBreakpoints) => {
   switch (screenSize) {
@@ -95,7 +98,6 @@ const EducationLogo: FC<{ logoUrl: string | undefined; url: string | undefined }
       href={url || "#"}
       className={css({
         display: "flex",
-        flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",
         mdDown: {
@@ -121,9 +123,9 @@ const EducationCard: FC<Education> = ({
   logoUrl,
 }) => {
   return (
-    <CardWrapper id={`education_${institution}`} className={css({ my: "10px" })}>
+    <CardWrapper id={`education_${institution}`}>
       <EducationCardHeader institution={institution} start={start} end={end} url={url} />
-      <div className={css({ mdTo2xl: { display: "grid", gridTemplateColumns: "2" } })}>
+      <div className={css({ mdTo2xl: { display: "grid", gridTemplateColumns: "75% 25%" } })}>
         <ul className={css({ listStyle: "outside", ml: "4" })}>
           <EducationMajor major={major} />
           <EducationMinors minors={minors} />
