@@ -14,9 +14,12 @@ export const CardContainer: FC<PropsWithChildren<{ id?: string }>> = ({ children
         px: "10px",
         py: "10px",
         width: "xl",
+        transition: "linear",
+        transitionDuration: "normal",
+        smDown: {
+          width: "md",
+        },
         xl: {
-          transition: "linear",
-          transitionDuration: "normal",
           width: "2xl",
         },
         justifySelf: "center",
