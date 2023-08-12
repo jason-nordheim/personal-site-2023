@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { DegreeMajor, EDUCATION, Education, Location } from "../lib/education";
-import { section, sectionSubTitle, sectionTitle } from "../styles";
+import { sectionSubTitle, sectionTitle } from "../styles";
 import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils/screenSize";
 import { css } from "../styled-system/css";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
+import { PageContainer } from "./common/PageContainer";
 
 const detailsStyle = {
   fontStretch: "condensed",
@@ -141,13 +142,13 @@ const EducationCard: FC<Education> = ({
 
 export const EducationPage = () => {
   return (
-    <section id="education" className={section({})}>
+    <PageContainer>
       <h1 className={sectionTitle({})}>Education</h1>
       <CardGrid lg={{ gridTemplateColumns: "1" }}>
         {EDUCATION.map((e) => (
           <EducationCard key={e.institution} {...e} />
         ))}
       </CardGrid>
-    </section>
+    </PageContainer>
   );
 };

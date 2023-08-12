@@ -1,11 +1,12 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 import { EXPERIENCE, Experience } from "../lib";
 import { css } from "../styled-system/css";
-import { section, sectionTitle } from "../styles";
+import { sectionTitle } from "../styles";
 import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
+import { PageContainer } from "./common/PageContainer";
 
 const MONTHS = [
   "January",
@@ -155,13 +156,13 @@ const ExperienceCard: FC<Experience> = ({
 
 export const ExperiencePage = () => {
   return (
-    <section id="experience" className={section({})}>
+    <PageContainer>
       <h2 className={sectionTitle({})}>Experience</h2>
       <CardGrid>
         {EXPERIENCE.map((e) => (
           <ExperienceCard key={e.title} {...e} />
         ))}
       </CardGrid>
-    </section>
+    </PageContainer>
   );
 };

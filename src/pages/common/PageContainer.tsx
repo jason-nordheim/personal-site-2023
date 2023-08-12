@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, FC, PropsWithChildren, HTMLAttributes } from "react";
-import { container } from "../styled-system/patterns";
-import { cx } from "../styled-system/css";
+import { container } from "../../styled-system/patterns";
+import { cx } from "../../styled-system/css";
 
 type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 
@@ -16,8 +16,6 @@ const BASE_STYLES = container({
   m: "10px",
   flex: 1,
 });
-
-
 
 export const PageContainer: FC<PropsWithChildren<Props>> = ({ children, className, ...rest }) => {
   return (

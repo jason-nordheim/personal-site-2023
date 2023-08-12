@@ -1,8 +1,9 @@
-import { section, sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
+import { sectionCaption, sectionSubTitle, sectionTitle } from "../styles";
 import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
 import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
+import { PageContainer } from "./common/PageContainer";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
   return (
@@ -16,7 +17,7 @@ const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) =>
 
 export const AboutPage = () => {
   return (
-    <section id="about" className={section({})}>
+    <PageContainer>
       <p className={sectionTitle({})}>About</p>
       <Hero />
       <br />
@@ -78,6 +79,6 @@ export const AboutPage = () => {
           />
         </CardContainer>
       </CardGrid>
-    </section>
+    </PageContainer>
   );
 };
