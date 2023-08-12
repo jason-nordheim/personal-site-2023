@@ -11,6 +11,7 @@ export const Hero = () => {
           overflow: "hidden",
           rounded: "50%",
           border: "1px solid black",
+          zIndex: -1,
         })}
       >
         <img src={profile} alt="jason nordheim" height="350px" className={css({ translate: "0px 70px", mt: "-20" })} />
