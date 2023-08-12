@@ -1,13 +1,9 @@
 import { SKILL_CATEGORY, Skill } from "../lib";
-import {
-  FC,
-  PropsWithChildren,
-  useState,
-} from "react";
+import { FC, PropsWithChildren, useState } from "react";
 import { container } from "../styled-system/patterns";
 import { css } from "../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { PageContainer, PageTitle, FormProps, DivProps, LabelProps, AnchorProps  } from "./common";
+import { PageContainer, PageTitle, FormProps, DivProps, LabelProps, AnchorProps } from "./common";
 import {
   FILTERS_ALL,
   FILTER_NONE,
@@ -197,9 +193,9 @@ export const SkillsPage = () => {
               onChange={(e) => setFilterCategory(e.target.value as FilterCategories)}
             >
               {[
-                <option key={"All"} value={"All"}>
+                <option key="All" value={"All"}>
                   All
-                </option>
+                </option>,
                 ...Object.values(SKILL_CATEGORY).map((category) => {
                   return (
                     <option key={category} value={category}>
