@@ -57,12 +57,6 @@ const BASE_SKILL_BUBBLE_STYLES: SystemStyleObject = {
   p: "5px 10px",
 };
 
-export const capitalizeFirstChar = (str: string) => {
-  const firstChar = str[0].toUpperCase();
-  const updatedStr = `${firstChar}${str.slice(1)}`;
-  return updatedStr;
-};
-
 export const makeSkillStyles = (category: SkillCategory) => {
   switch (category.trim().toLowerCase()) {
     case SKILL_CATEGORY.Concept.toLowerCase():
