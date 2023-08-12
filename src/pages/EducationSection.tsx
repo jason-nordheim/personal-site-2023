@@ -141,7 +141,7 @@ export const EducationSection = () => {
   return (
     <section id="education" className={section({})}>
       <h1 className={sectionTitle({})}>Education</h1>
-      <CardGrid>
+      <CardGrid lg={{ gridTemplateColumns: "1" }}>
         {EDUCATION.map((e) => (
           <EducationCard key={e.institution} {...e} />
         ))}
