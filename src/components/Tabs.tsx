@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, MouseEventHandler, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
 
 export const TABS = { ABOUT: "About", SKILL: "Skills", EXPERIENCE: "Experience", EDUCATION: "Education" };
@@ -28,29 +28,36 @@ const getTabStyle = (selected: boolean) => {
   });
 };
 
-export type TabProps = {
-  tab: string;
-  onTabChange: (newTab: string) => void;
-};
-
-export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
+const TabContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
     <ul
       className={css({
         listStyle: "none",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "flex-end",
+        justifyContent: "center",
         flex: 1,
         smDown: {
-          justifyContent: "center",
           fontSize: "sm",
           fontStretch: "condensed",
         },
       })}
     >
+      {children}
+    </ul>
+  );
+};
+
+export type TabsProps = {
+  selectedTab: string;
+  onTabChange: (newTab: string) => void;
+};
+
+export const Tabs: FC<TabsProps> = ({ selectedTab, onTabChange }) => {
+  return (
+    <TabContainer>
       {Object.values(TABS).map((t) => {
-        const isSelected = tab == t;
+        const isSelected = selectedTab == t;
         const style = getTabStyle(isSelected);
         return (
           <li className={style} onClick={() => onTabChange(t)} key={t}>
@@ -58,6 +65,6 @@ export const Tabs: FC<TabProps> = ({ tab, onTabChange }) => {
           </li>
         );
       })}
-    </ul>
+    </TabContainer>
   );
 };

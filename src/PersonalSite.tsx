@@ -23,7 +23,7 @@ export const PersonalSite = () => {
         height: "100%",
       })}
     >
-      <Navigation tab={tab} onTabChange={handleTabChange} />
+      <Navigation selectedTab={tab} onTabChange={handleTabChange} />
       {tab == TABS.ABOUT && <AboutSection />}
       {tab == TABS.SKILL && <SkillsSection />}
       {tab == TABS.EXPERIENCE && <ExperienceSection />}
