@@ -1,177 +1,20 @@
-import { SKILLS, SKILL_CATEGORY, Skill, SkillCategory, SkillTag, TAGS, skillHasTag } from "../lib";
-import { useMemo, useState } from "react";
-import { ValueOf } from "ts-essentials";
-import { sectionTitle } from "../styles";
+import { SKILL_CATEGORY } from "../lib";
+import { useState } from "react";
 import { container } from "../styled-system/patterns";
-import { sortAscending } from "../lib/utils/sorting";
 import { css } from "../styled-system/css";
-import { SystemStyleObject } from "../styled-system/types";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { PageContainer, PageTitle } from "./common";
-import { FilterCategories, SORT_OPTIONS, SortOptions, capitalizeFirstChar } from "./Skills.Lib";
-
-const BASE_SKILL_BUBBLE_STYLES: SystemStyleObject = {
-  smDown: {
-    fontSize: "xs",
-    p: "3px, 5px",
-  },
-  lgTo2xl: {
-    fontWeight: "bold",
-  },
-  display: "inline-block",
-  fontSize: "sm",
-  borderRadius: "md",
-  border: "1px solid black",
-  fontWeight: "semibold",
-  fontStretch: "condensed",
-  margin: "10px",
-  minWidth: "100px",
-  p: "5px 10px",
-};
-
-const makeSkillStyles = (category: SkillCategory) => {
-  switch (category.trim().toLowerCase()) {
-    case SKILL_CATEGORY.Concept.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "yellow.200",
-      });
-    case SKILL_CATEGORY.Framework.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "red.300",
-      });
-    case SKILL_CATEGORY.Language.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "blue.300",
-      });
-    case SKILL_CATEGORY.Library.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "green.300",
-      });
-    case SKILL_CATEGORY.SoftwareAndTools.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "orange.300",
-      });
-    case SKILL_CATEGORY.Technology.toLowerCase():
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "amber.300",
-      });
-    default:
-      return css({
-        ...BASE_SKILL_BUBBLE_STYLES,
-        backgroundColor: "blue.100",
-      });
-  }
-};
-
-type Filters = SkillTag | "All" | "None";
-
-type TagFilters = {
-  [k: Filters]: boolean;
-};
-
-const allPropertiesTruthy = (obj: object) => {
-  return Object.values(obj).every((x) => x == true);
-};
-
-const useTagFilter = (skills: Skill[], filters: TagFilters) => {
-  const skillsFilteredByTag = useMemo(() => {
-    if (!filters || allPropertiesTruthy(filters) || filters["All"]) return skills;
-
-    if (filters["None"]) return [];
-
-    return skills.filter((skill) => {
-      const selectedFilters = Object.keys(filters).filter((x) => filters[x]);
-      for (let i = 0; i < selectedFilters.length; i++) {
-        const tag = selectedFilters[i];
-        if (skillHasTag(skill, tag)) {
-          i = selectedFilters.length - 1;
-          return true;
-        }
-        return false;
-      }
-      selectedFilters.forEach((tag) => {
-        console.log({ tag, hasTag: skillHasTag(skill, tag), skill });
-        if (skillHasTag(skill, tag)) {
-          return true;
-        }
-      });
-      return false;
-    });
-  }, [skills, filters]);
-
-  return skillsFilteredByTag;
-};
-
-const useCategoryFilter = (skills: Skill[], category: FilterCategories) => {
-  return skills.filter((skill) => {
-    if (category === "All") return true;
-    if (skill.category == category) return true;
-    return false;
-  });
-};
-
-const useSortedAndFilteredSkills = (
-  sortBy: ValueOf<typeof SORT_OPTIONS> = SORT_OPTIONS.name,
-  filters: TagFilters,
-  selectedCategory: FilterCategories = "All"
-) => {
-  const sortedSkills =
-    SORT_OPTIONS.category == sortBy
-      ? SKILLS.sort((a, b) => sortAscending(a.category, b.category))
-      : SKILLS.sort((a, b) => sortAscending(a.name, b.name));
-
-  const skillsFilteredByTag = useTagFilter(sortedSkills, filters);
-  const categoryFilteredSkills = useCategoryFilter(skillsFilteredByTag, selectedCategory);
-
-  return categoryFilteredSkills;
-};
-
-const FILTERS_ALL = {
-  [TAGS.Api]: true,
-  [TAGS.Backend]: true,
-  [TAGS.Collaboration]: true,
-  [TAGS.Databases]: true,
-  [TAGS.DevOps]: true,
-  [TAGS.Documentation]: true,
-  [TAGS.FrontEnd]: true,
-  [TAGS.ProjectManagement]: true,
-  [TAGS.Software]: true,
-  [TAGS.Testing]: true,
-  All: true,
-  None: false,
-};
-
-const FILTER_NONE = {
-  [TAGS.Api]: false,
-  [TAGS.Backend]: false,
-  [TAGS.Collaboration]: false,
-  [TAGS.Databases]: false,
-  [TAGS.DevOps]: false,
-  [TAGS.Documentation]: false,
-  [TAGS.FrontEnd]: false,
-  [TAGS.ProjectManagement]: false,
-  [TAGS.Software]: false,
-  [TAGS.Testing]: false,
-  All: false,
-  None: true,
-};
-
-// type SpanProps = DetailedHtmlProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>;
-
-// const DownArrow: FC<SpanProps> = ({ className, ...rest }) => {
-//   const baseStyles = css({ px: "1" });
-//   return (
-//     <span className={cx(baseStyles, className)} {...rest}>
-//       <AiOutlineArrowDown />
-//     </span>
-//   );
-// };
+import {
+  FILTERS_ALL,
+  FILTER_NONE,
+  FilterCategories,
+  SORT_OPTIONS,
+  SortOptions,
+  TagFilters,
+  capitalizeFirstChar,
+  makeSkillStyles,
+} from "./Skills.Lib";
+import { useSortedAndFilteredSkills } from "./Skill.hooks";
 
 export const SkillsPage = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
