@@ -57,6 +57,24 @@ export const UDEMY_CERTS: Certification[] = [
     vendor: CERTIFICATION_VENDORS.Udemy,
     tags: [],
   },
+  {
+    title: "Getting started with WebAssembly & Emscripten",
+    certificateUrl: "https://drive.google.com/file/d/15p4hr6qut_kCvt8BA4N58wiUw_JEKVey/view?usp=sharing",
+    vendor: CERTIFICATION_VENDORS.Udemy,
+    tags: [],
+  },
+  {
+    title: "Go: The Complete Developer's Guide (Golang)",
+    certificateUrl: "https://drive.google.com/file/d/1LqdpM16dcWG63xP5zJYraaUWTiyeqtPs/view?usp=sharing",
+    vendor: CERTIFICATION_VENDORS.Udemy,
+    tags: [],
+  },
+  {
+    title: "Automate the Boring Stuff with Python Programming",
+    certificateUrl: "https://drive.google.com/file/d/1clk7ChhfNsCSdKgnXTkWgQRHD5mJ_8L7/view?usp=sharing",
+    vendor: CERTIFICATION_VENDORS.Udemy,
+    tags: [],
+  },
 ];
 
 export const LINKEDIN_CERTS: Certification[] = [
