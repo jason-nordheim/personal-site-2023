@@ -16,7 +16,7 @@ export const CardContainer: FC<PropsWithChildren<{ id?: string }>> = ({ children
         width: "xl",
         transition: "linear",
         transitionDuration: "normal",
-        smDown: {
+        lgDown: {
           width: "md",
         },
         xl: {
