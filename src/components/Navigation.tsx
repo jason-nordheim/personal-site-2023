@@ -1,30 +1,56 @@
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { css } from "../styled-system/css";
 import { TabsProps, Tabs } from "./Tabs";
 import { MdEngineering } from "react-icons/md";
 import { IconType } from "react-icons";
 
-const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <header
-      className={css({
+const CLASSES = {
+  Nav: {
+    Container: {
+      loaded: css({
         position: "sticky",
         display: "flex",
         flexDirection: "column",
         bg: "blue.100",
-        py: "10px",
-        top: "-10px",
+        pt: "20px",
+        pb: "10px",
+        translate: "0 -10px",
         smDown: {
           height: "50px",
           lineHeight: "50px",
         },
         borderRadius: "lg",
         border: "1px solid gray",
-      })}
-    >
-      {children}
-    </header>
-  );
+      }),
+      initial: css({
+        position: "sticky",
+        display: "flex",
+        flexDirection: "column",
+        transition: "ease",
+        transitionDelay: "1s",
+        bg: "blue.100",
+        py: "10px",
+        translate: "0 -20px",
+        smDown: {
+          height: "50px",
+          lineHeight: "50px",
+        },
+        borderRadius: "lg",
+        border: "1px solid gray",
+      }),
+    },
+  },
+};
+
+const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
+  const [rendered, setRendered] = useState(false);
+  useEffect(() => {
+    setRendered(true);
+  }, []);
+
+  const { initial, loaded } = CLASSES.Nav.Container;
+
+  return <header className={rendered ? loaded : initial}>{children}</header>;
 };
 
 const Logo: FC<{ Icon: IconType }> = ({ Icon }) => {
