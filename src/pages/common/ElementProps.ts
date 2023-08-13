@@ -4,6 +4,7 @@ import {
   FormHTMLAttributes,
   HTMLAttributes,
   LabelHTMLAttributes,
+  LiHTMLAttributes,
 } from "react";
 
 export type FormProps = DetailedHTMLProps<FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
@@ -13,3 +14,4 @@ export type AnchorProps = DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorEleme
 export type PProps = DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>;
 export type HTMLElementProps = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>;
 export type HeadingProps = DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>;
+export type LiProps = DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
