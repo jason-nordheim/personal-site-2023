@@ -59,7 +59,6 @@ const Logo: FC<{ Icon: IconType }> = ({ Icon }) => {
 export const Navigation: FC<TabsProps> = ({ selectedTab: tab, onTabChange }) => {
   return (
     <NavigationContainer>
-      <Logo Icon={MdEngineering} />
       <Tabs selectedTab={tab} onTabChange={onTabChange} />
     </NavigationContainer>
   );
