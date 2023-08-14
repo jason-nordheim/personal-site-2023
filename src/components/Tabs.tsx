@@ -1,13 +1,7 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 import { css } from "../styled-system/css";
-
-export const TABS = {
-  ABOUT: "About",
-  KNOWLEDGE: "Knowledge",
-  PROJECTS: "Projects",
-  EXPERIENCE: "Experience",
-  EDUCATION: "Education",
-};
+import { TabContainer } from "./TabContainer";
+import { TABS } from "./common/lib";
 
 const getTabStyle = (selected: boolean) => {
   return css({
@@ -32,26 +26,6 @@ const getTabStyle = (selected: boolean) => {
       p: "2px",
     },
   });
-};
-
-const TabContainer: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <ul
-      className={css({
-        listStyle: "none",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        flex: 1,
-        smDown: {
-          fontSize: "sm",
-          fontStretch: "condensed",
-        },
-      })}
-    >
-      {children}
-    </ul>
-  );
 };
 
 export type TabsProps = {
