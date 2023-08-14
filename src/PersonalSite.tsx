@@ -7,6 +7,7 @@ import { useState } from "react";
 import { TABS } from "./components/Tabs";
 import { css } from "./styled-system/css";
 import { EducationPage } from "./pages/Education.Page";
+import { ProjectsPage } from "./pages/Projects.Page";
 
 export const PersonalSite = () => {
   const [tab, setTab] = useState(TABS.ABOUT);
@@ -28,6 +29,7 @@ export const PersonalSite = () => {
       {tab == TABS.KNOWLEDGE && <SkillsPage />}
       {tab == TABS.EXPERIENCE && <ExperiencePage />}
       {tab == TABS.EDUCATION && <EducationPage />}
+      {tab === TABS.PROJECTS && <ProjectsPage />}
       <Footer />
     </div>
   );
