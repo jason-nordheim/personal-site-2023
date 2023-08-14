@@ -1,11 +1,9 @@
 import { FC } from "react";
-import { Caption, CardContainer, PageContainer, PageTitle, SubTitle } from "../components";
-import { CardGrid } from "../components/CardGrid";
+import { Caption, CardContainer, PageContainer, PageTitle, SubTitle, CardGrid } from "../components";
 import { AiFillGithub } from "react-icons/ai";
 import { MdOutlinePreview } from "react-icons/md";
 import { css } from "../styled-system/css";
-import { sortAscending } from "../lib/utils";
-import { PROJECTS } from "../lib/projects";
+import { sortAscending, PROJECTS } from "../lib/";
 
 type ProjectSubtitleProps = {
   projectName: string;
