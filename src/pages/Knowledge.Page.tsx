@@ -1,12 +1,11 @@
-import { CertificationsSection } from "../components/sections/CertificationsSection";
-import { PageContainer, PageTitle } from "../components/common";
-import { SkillsSection } from "../components/sections/SkillsSection";
+import { PageContainer, PageTitle, CertificationsSection, SkillsSection } from "../components";
 
 export const KnowledgePage = () => {
   return (
     <PageContainer>
       <PageTitle>Skills</PageTitle>
       <SkillsSection />
+      <hr />
       <CertificationsSection />
     </PageContainer>
   );
