@@ -4,14 +4,14 @@ import {
   LINKEDIN_CERTS,
   PLURALSIGHT_CERTS,
   UDEMY_CERTS,
-} from "../lib/certifications";
-import { sortAscending, sortDescending } from "../lib/utils/sorting";
-import { CardGrid } from "./CardGrid";
-import { CardContainer } from "./CardContainer";
+} from "../../lib/certifications";
+import { sortAscending, sortDescending } from "../../lib/utils/sorting";
+import { CardGrid } from "../CardGrid";
+import { CardContainer } from "../CardContainer";
 import { FC, PropsWithChildren } from "react";
-import { LiProps } from "./common";
-import { Caption, PageTitle, SubTitle } from "./common/SharedComponents";
-import { css } from "../styled-system/css";
+import { LiProps } from "../common";
+import { Caption, PageTitle, SubTitle } from "../common/SharedComponents";
+import { css } from "../../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
 
 type UseCertificationOptions = {
@@ -84,7 +84,7 @@ const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ tit
   );
 };
 
-export const Certifications = () => {
+export const CertificationsSection = () => {
   const udemy = useCertificationsFilters(UDEMY_CERTS, { sortDirection: "ascending" });
   const pluralsight = useCertificationsFilters(PLURALSIGHT_CERTS, { sortDirection: "ascending" });
   const linkedIn = useCertificationsFilters(LINKEDIN_CERTS, { sortDirection: "ascending" });

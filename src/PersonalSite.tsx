@@ -1,5 +1,5 @@
 import { AboutPage } from "./pages/About.Page";
-import { SkillsPage } from "./pages/Skills.Page";
+import { KnowledgePage } from "./pages/Knowledge.Page";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { ExperiencePage } from "./pages/Experience.Page";
@@ -26,7 +26,7 @@ export const PersonalSite = () => {
     >
       <Navigation selectedTab={tab} onTabChange={handleTabChange} />
       {tab == TABS.ABOUT && <AboutPage />}
-      {tab == TABS.KNOWLEDGE && <SkillsPage />}
+      {tab == TABS.KNOWLEDGE && <KnowledgePage />}
       {tab == TABS.EXPERIENCE && <ExperiencePage />}
       {tab == TABS.EDUCATION && <EducationPage />}
       {tab === TABS.PROJECTS && <ProjectsPage />}

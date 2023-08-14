@@ -1,7 +1,7 @@
-import { SKILL_CATEGORY, Skill } from "../lib";
+import { SKILL_CATEGORY, Skill } from "../../lib";
 import { FC, PropsWithChildren, useState } from "react";
-import { container } from "../styled-system/patterns";
-import { css } from "../styled-system/css";
+import { container } from "../../styled-system/patterns";
+import { css } from "../../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import {
   FILTERS_ALL,
@@ -11,11 +11,10 @@ import {
   SortOptions,
   TagFilters,
   makeSkillStyles,
-} from "./Skills.Lib";
-import { useSortedAndFilteredSkills } from "./Skill.hooks";
-import { capitalizeFirstChar } from "../lib/utils/strings";
-import { Certifications } from "../components/Certifications";
-import { AnchorProps, DivProps, FormProps, LabelProps, PageContainer, PageTitle } from "../components/common";
+} from "../../pages/Skills.Lib";
+import { useSortedAndFilteredSkills } from "../../pages/Skill.hooks";
+import { capitalizeFirstChar } from "../../lib/utils/strings";
+import { AnchorProps, DivProps, FormProps, LabelProps } from "../common";
 
 const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => {
   return (
@@ -27,7 +26,6 @@ const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => 
     </form>
   );
 };
-
 const SortAndFilterColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -48,7 +46,6 @@ const SortAndFilterColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...res
     </div>
   );
 };
-
 const TagSelectionColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -65,7 +62,6 @@ const TagSelectionColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest
     </div>
   );
 };
-
 const SortFilterContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -82,7 +78,6 @@ const SortFilterContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...res
     </div>
   );
 };
-
 const SortFilterLabel: FC<PropsWithChildren<LabelProps>> = ({ children, ...rest }) => {
   return (
     <label
@@ -99,7 +94,6 @@ const SortFilterLabel: FC<PropsWithChildren<LabelProps>> = ({ children, ...rest 
     </label>
   );
 };
-
 const TagSelectionContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -121,7 +115,6 @@ const TagSelectionContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...r
     </div>
   );
 };
-
 const SkillBubbleContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -139,9 +132,7 @@ const SkillBubbleContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...re
     </div>
   );
 };
-
 type SkillBubbleProps = FC<AnchorProps & { skill: Skill }>;
-
 const SkillBubble: SkillBubbleProps = ({ skill, ...rest }) => {
   return (
     <a href={skill.href} key={skill.name} {...rest}>
@@ -152,8 +143,7 @@ const SkillBubble: SkillBubbleProps = ({ skill, ...rest }) => {
     </a>
   );
 };
-
-export const SkillsPage = () => {
+export const SkillsSection = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
   const [sortField, setSortField] = useState<SortOptions>(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
@@ -173,10 +163,8 @@ export const SkillsPage = () => {
   };
 
   const skills = useSortedAndFilteredSkills(sortField, filters, filterCategory);
-
   return (
-    <PageContainer>
-      <PageTitle>Skills</PageTitle>
+    <>
       <SkillsForm>
         <SortAndFilterColumn>
           <SortFilterContainer>
@@ -246,7 +234,6 @@ export const SkillsPage = () => {
           return <SkillBubble key={s.name} className={styles} skill={s} />;
         })}
       </SkillBubbleContainer>
-      <Certifications />
-    </PageContainer>
+    </>
   );
 };
