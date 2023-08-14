@@ -2,7 +2,7 @@ import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
 import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
-import { Caption, PageContainer, PageTitle, SubTitle } from "./common";
+import { Caption, PageContainer, PageTitle, SubTitle } from "../components/common";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
   return (

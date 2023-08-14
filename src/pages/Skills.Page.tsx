@@ -3,7 +3,6 @@ import { FC, PropsWithChildren, useState } from "react";
 import { container } from "../styled-system/patterns";
 import { css } from "../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
-import { PageContainer, PageTitle, FormProps, DivProps, LabelProps, AnchorProps } from "./common";
 import {
   FILTERS_ALL,
   FILTER_NONE,
@@ -15,6 +14,8 @@ import {
 } from "./Skills.Lib";
 import { useSortedAndFilteredSkills } from "./Skill.hooks";
 import { capitalizeFirstChar } from "../lib/utils/strings";
+import { Certifications } from "../components/Certifications";
+import { AnchorProps, DivProps, FormProps, LabelProps, PageContainer, PageTitle } from "../components/common";
 
 const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => {
   return (
@@ -245,6 +246,7 @@ export const SkillsPage = () => {
           return <SkillBubble key={s.name} className={styles} skill={s} />;
         })}
       </SkillBubbleContainer>
+      <Certifications />
     </PageContainer>
   );
 };
