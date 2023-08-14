@@ -60,7 +60,7 @@ import { IoLogoGoogle, IoLogoSlack, IoLogoSass } from "react-icons/io/index";
 import { BsFiletypeXml, BsKanban, BsGit, BsServer, BsDiagram3Fill, BsFiletypeJson } from "react-icons/bs/index";
 import { FaReact, FaJava, FaFigma } from "react-icons/fa/index";
 import { GiPowerGenerator, GiTeleport } from "react-icons/gi/index";
-import { GrNode, GrCloudComputer, GrUserWorker } from "react-icons/gr/index";
+import { GrNode, GrUserWorker } from "react-icons/gr/index";
 import { BiLogoPostgresql, BiLogoMongodb, BiSolidFileCss } from "react-icons/bi/index";
 import { VscRuby, VscSymbolInterface } from "react-icons/vsc/index";
 import { RxComponentInstance } from "react-icons/rx/index";
