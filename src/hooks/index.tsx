@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { SKILLS, Skill, TagFilters, skillHasTag } from "../lib";
-import { sortAscending } from "../lib/utils/sorting";
+import { FilterCategories, SKILLS, SORT_OPTIONS, Skill, TagFilters, skillHasTag, sortAscending } from "../lib";
 import { ValueOf } from "ts-essentials";
 import { allPropertiesTruthy } from "../lib/utils/general";
 
