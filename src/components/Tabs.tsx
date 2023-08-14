@@ -1,7 +1,12 @@
-import { FC, MouseEventHandler, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
 
-export const TABS = { ABOUT: "About", SKILL: "Skills", EXPERIENCE: "Experience", EDUCATION: "Education" };
+export const TABS = {
+  ABOUT: "About",
+  KNOWLEDGE: "Knowledge",
+  EXPERIENCE: "Experience",
+  EDUCATION: "Education",
+};
 
 const getTabStyle = (selected: boolean) => {
   return css({

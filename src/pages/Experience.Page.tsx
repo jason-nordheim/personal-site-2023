@@ -5,7 +5,7 @@ import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer, PageTitle } from "./common";
+import { PageContainer, PageTitle } from "../components/common";
 
 const MONTHS = [
   "January",
