@@ -20,6 +20,10 @@ export const CardContainer: FC<PropsWithChildren<{ id?: string }>> = ({ children
           width: "md",
         },
         xl: {
+          width: "xl",
+        },
+        ["2xl"]: {
+          justifyContent: "space-around",
           width: "2xl",
         },
         justifySelf: "center",
