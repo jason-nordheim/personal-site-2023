@@ -20,6 +20,7 @@ export const PROJECTS: Project[] = [
       "Events (eventListeners)",
       "JavaScript",
       "HTML",
+      "CSS",
     ],
   },
   {
@@ -35,6 +36,7 @@ export const PROJECTS: Project[] = [
     repoUrl: "https://github.com/jason-nordheim/chatter-one",
     caption: "A simple chat application with a UI similar to Microsoft Teams, built using ChatEngine.io",
     technologies: [
+      "CSS",
       "React (hooks, JSX/babel)",
       "Ant Icons",
       "Axios",
