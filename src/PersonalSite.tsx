@@ -1,13 +1,7 @@
-import { AboutPage } from "./pages/About.Page";
-import { KnowledgePage } from "./pages/Knowledge.Page";
-import { Navigation } from "./components/Navigation";
-import { Footer } from "./components/Footer";
-import { ExperiencePage } from "./pages/Experience.Page";
 import { useState } from "react";
-import { TABS } from "./components/Tabs";
 import { css } from "./styled-system/css";
-import { EducationPage } from "./pages/Education.Page";
-import { ProjectsPage } from "./pages/Projects.Page";
+import { Footer, Navigation, TABS } from "./components";
+import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
 
 export const PersonalSite = () => {
   const [tab, setTab] = useState(TABS.ABOUT);
