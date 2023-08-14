@@ -13,7 +13,7 @@ type CardGridProps = {
 const DEFAULTS: CardGridProps = {
   sm: { gridTemplateColumns: "1" },
   md: { gridTemplateColumns: "1" },
-  lg: { gridTemplateColumns: "2" },
+  lg: { gridTemplateColumns: "1" },
 };
 
 export const CardGrid: FC<PropsWithChildren<CardGridProps>> = ({ children, id, sm, md, lg }) => {
