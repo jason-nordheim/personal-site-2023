@@ -291,6 +291,7 @@ export const SkillsSection = () => {
           return <SkillBubble key={s.name} className={styles} skill={s} />;
         })}
       </SkillBubbleContainer>
+      <br />
     </>
   );
 };
