@@ -25,7 +25,7 @@ export const PersonalSite = () => {
     >
       <Navigation selectedTab={tab} onTabChange={handleTabChange} />
       {tab == TABS.ABOUT && <AboutPage />}
-      {tab == TABS.SKILL && <SkillsPage />}
+      {tab == TABS.KNOWLEDGE && <SkillsPage />}
       {tab == TABS.EXPERIENCE && <ExperiencePage />}
       {tab == TABS.EDUCATION && <EducationPage />}
       <Footer />
