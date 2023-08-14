@@ -10,7 +10,9 @@ import { CardGrid } from "./CardGrid";
 import { CardContainer } from "./CardContainer";
 import { FC, PropsWithChildren } from "react";
 import { LiProps } from "./common";
-import { PageTitle } from "./common/SharedComponents";
+import { Caption, PageTitle, SubTitle } from "./common/SharedComponents";
+import { css } from "../styled-system/css";
+import { AiOutlineArrowDown } from "react-icons/ai";
 
 type UseCertificationOptions = {
   sortDirection: "ascending" | "descending";
@@ -41,9 +43,25 @@ const CourseListItem: FC<PropsWithChildren<LiProps>> = ({ children, ...rest }) =
 const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ title, subtitle, certifications }) => {
   return (
     <CardContainer>
-      <p>{title}</p>
-      <p>{subtitle}</p>
-      <ul>
+      <SubTitle>{title}</SubTitle>
+      <Caption>{subtitle}</Caption>
+      <div
+        className={css({
+          display: "flex",
+          justifyContent: "center",
+          textStyle: "xs",
+          fontVariant: "contextual",
+          color: "gray.700",
+          fontSize: "12px",
+          py: "2",
+          px: "1",
+        })}
+      >
+        <AiOutlineArrowDown />
+        <span className={css({ px: "2" })}>Click a course below for more information</span>
+        <AiOutlineArrowDown />
+      </div>
+      <ul className={css({ listStyle: "outside", ml: "15px", textStyle: "sm" })}>
         {certifications.map(({ courseUrl, title, certificateUrl }) => {
           if (certificateUrl) {
             return (
