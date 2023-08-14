@@ -1,21 +1,77 @@
-import { SKILL_CATEGORY, Skill } from "../lib";
-import { FC, PropsWithChildren, useState } from "react";
-import { container } from "../styled-system/patterns";
-import { css } from "../styled-system/css";
-import { AiOutlineArrowDown } from "react-icons/ai";
 import {
   FILTERS_ALL,
   FILTER_NONE,
   FilterCategories,
+  SKILL_CATEGORY,
   SORT_OPTIONS,
+  Skill,
+  SkillCategory,
   SortOptions,
   TagFilters,
-  makeSkillStyles,
-} from "./Skills.Lib";
-import { useSortedAndFilteredSkills } from "./Skill.hooks";
-import { capitalizeFirstChar } from "../lib/utils/strings";
-import { Certifications } from "../components/Certifications";
-import { AnchorProps, DivProps, FormProps, LabelProps, PageContainer, PageTitle } from "../components/common";
+} from "../../lib";
+import { FC, PropsWithChildren, useState } from "react";
+import { container } from "../../styled-system/patterns";
+import { css } from "../../styled-system/css";
+import { AiOutlineArrowDown } from "react-icons/ai";
+
+import { AnchorProps, DivProps, FormProps, LabelProps } from "../common";
+import { SystemStyleObject } from "../../styled-system/types";
+import { capitalizeFirstChar } from "../../lib/utils";
+import { useSortedAndFilteredSkills } from "../../hooks";
+
+const BASE_SKILL_BUBBLE_STYLES: SystemStyleObject = {
+  lgTo2xl: { fontWeight: "bold" },
+  smDown: { fontSize: "xs", p: "3px, 5px" },
+  display: "inline-block",
+  fontSize: "sm",
+  borderRadius: "md",
+  border: "1px solid black",
+  fontWeight: "semibold",
+  fontStretch: "condensed",
+  margin: "10px",
+  minWidth: "100px",
+  p: "5px 10px",
+};
+
+const makeSkillStyles = (category: SkillCategory) => {
+  switch (category.trim().toLowerCase()) {
+    case SKILL_CATEGORY.Concept.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "yellow.200",
+      });
+    case SKILL_CATEGORY.Framework.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "red.300",
+      });
+    case SKILL_CATEGORY.Language.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "blue.300",
+      });
+    case SKILL_CATEGORY.Library.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "green.300",
+      });
+    case SKILL_CATEGORY.SoftwareAndTools.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "orange.300",
+      });
+    case SKILL_CATEGORY.Technology.toLowerCase():
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "amber.300",
+      });
+    default:
+      return css({
+        ...BASE_SKILL_BUBBLE_STYLES,
+        backgroundColor: "blue.100",
+      });
+  }
+};
 
 const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => {
   return (
@@ -27,7 +83,6 @@ const SkillsForm: FC<PropsWithChildren<FormProps>> = ({ children, ...rest }) => 
     </form>
   );
 };
-
 const SortAndFilterColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -48,7 +103,6 @@ const SortAndFilterColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...res
     </div>
   );
 };
-
 const TagSelectionColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -65,7 +119,6 @@ const TagSelectionColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest
     </div>
   );
 };
-
 const SortFilterContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -82,7 +135,6 @@ const SortFilterContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...res
     </div>
   );
 };
-
 const SortFilterLabel: FC<PropsWithChildren<LabelProps>> = ({ children, ...rest }) => {
   return (
     <label
@@ -99,7 +151,6 @@ const SortFilterLabel: FC<PropsWithChildren<LabelProps>> = ({ children, ...rest 
     </label>
   );
 };
-
 const TagSelectionContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -121,7 +172,6 @@ const TagSelectionContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...r
     </div>
   );
 };
-
 const SkillBubbleContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
     <div
@@ -139,9 +189,7 @@ const SkillBubbleContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...re
     </div>
   );
 };
-
 type SkillBubbleProps = FC<AnchorProps & { skill: Skill }>;
-
 const SkillBubble: SkillBubbleProps = ({ skill, ...rest }) => {
   return (
     <a href={skill.href} key={skill.name} {...rest}>
@@ -152,8 +200,7 @@ const SkillBubble: SkillBubbleProps = ({ skill, ...rest }) => {
     </a>
   );
 };
-
-export const SkillsPage = () => {
+export const SkillsSection = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
   const [sortField, setSortField] = useState<SortOptions>(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
@@ -173,10 +220,8 @@ export const SkillsPage = () => {
   };
 
   const skills = useSortedAndFilteredSkills(sortField, filters, filterCategory);
-
   return (
-    <PageContainer>
-      <PageTitle>Skills</PageTitle>
+    <>
       <SkillsForm>
         <SortAndFilterColumn>
           <SortFilterContainer>
@@ -246,7 +291,7 @@ export const SkillsPage = () => {
           return <SkillBubble key={s.name} className={styles} skill={s} />;
         })}
       </SkillBubbleContainer>
-      <Certifications />
-    </PageContainer>
+      <br />
+    </>
   );
 };

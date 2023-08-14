@@ -4,14 +4,14 @@ import {
   LINKEDIN_CERTS,
   PLURALSIGHT_CERTS,
   UDEMY_CERTS,
-} from "../lib/certifications";
-import { sortAscending, sortDescending } from "../lib/utils/sorting";
-import { CardGrid } from "./CardGrid";
-import { CardContainer } from "./CardContainer";
+} from "../../lib/certifications";
+import { sortAscending, sortDescending } from "../../lib/utils/sorting";
+import { CardGrid } from "../CardGrid";
+import { CardContainer } from "../CardContainer";
 import { FC, PropsWithChildren } from "react";
-import { LiProps } from "./common";
-import { Caption, PageTitle, SubTitle } from "./common/SharedComponents";
-import { css } from "../styled-system/css";
+import { LiProps } from "../common";
+import { Caption, PageTitle, SubTitle } from "../common/SharedComponents";
+import { css } from "../../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
 
 type UseCertificationOptions = {
@@ -37,7 +37,11 @@ type CertificationCollectionCardProps = {
 };
 
 const CourseListItem: FC<PropsWithChildren<LiProps>> = ({ children, ...rest }) => {
-  return <li {...rest}>{children}</li>;
+  return (
+    <li className={css({ color: "gray.800" })} {...rest}>
+      {children}
+    </li>
+  );
 };
 
 const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ title, subtitle, certifications }) => {
@@ -53,7 +57,8 @@ const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ tit
           fontVariant: "contextual",
           color: "gray.700",
           fontSize: "12px",
-          py: "2",
+          pt: "3",
+          pb: "3",
           px: "1",
         })}
       >
@@ -61,7 +66,14 @@ const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ tit
         <span className={css({ px: "2" })}>Click a course below for more information</span>
         <AiOutlineArrowDown />
       </div>
-      <ul className={css({ listStyle: "outside", ml: "15px", textStyle: "sm" })}>
+      <ul
+        className={css({
+          listStyle: "outside",
+          ml: "15px",
+          textStyle: "sm",
+          fontFamily: "sans-serif",
+        })}
+      >
         {certifications.map(({ courseUrl, title, certificateUrl }) => {
           if (certificateUrl) {
             return (
@@ -84,13 +96,13 @@ const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ tit
   );
 };
 
-export const Certifications = () => {
+export const CertificationsSection = () => {
   const udemy = useCertificationsFilters(UDEMY_CERTS, { sortDirection: "ascending" });
   const pluralsight = useCertificationsFilters(PLURALSIGHT_CERTS, { sortDirection: "ascending" });
   const linkedIn = useCertificationsFilters(LINKEDIN_CERTS, { sortDirection: "ascending" });
 
   return (
-    <section id="certifications">
+    <section className={css({ mt: "5" })} id="certifications">
       <PageTitle>Certifications</PageTitle>
       <CardGrid>
         {udemy?.length && (
