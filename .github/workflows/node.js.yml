@@ -25,11 +25,6 @@ jobs:
           node-version: 16
       - name: "Install"
         run: npm i && npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: github-pages
-          path: dist # or path/to/artifact
 
   deploy:
     needs: build
@@ -40,6 +35,11 @@ jobs:
       pages: write # to deploy to Pages
       id-token: write # to verify the deployment originates from an appropriate source
     steps:
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: dist # or path/to/artifact
       - name: Deploy 🚀
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
