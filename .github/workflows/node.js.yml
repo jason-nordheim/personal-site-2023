@@ -7,7 +7,7 @@ on:
     branches:
       - main
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       pages: write # to deploy to Pages
@@ -31,6 +31,17 @@ jobs:
         with:
           name: my-artifact
           path: dist # or path/to/artifact
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    steps:
       - name: Deploy 🚀
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
