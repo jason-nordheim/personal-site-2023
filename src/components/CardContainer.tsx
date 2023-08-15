@@ -14,6 +14,10 @@ const baseStyles = css({
   width: "xl",
   transition: "linear",
   transitionDuration: "normal",
+  smDown: { width: "xs" },
+  md: {
+    width: "md",
+  },
   lgDown: {
     width: "md",
   },

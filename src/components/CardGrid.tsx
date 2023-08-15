@@ -2,13 +2,13 @@ import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
 import { Nested } from "../styled-system/types/conditions";
 import { CssVarProperties, SystemProperties } from "../styled-system/types/style-props";
+import { HTMLElementProps } from "./common";
 
 type CardGridProps = {
   sm?: Nested<SystemProperties & CssVarProperties> | undefined;
   md?: Nested<SystemProperties & CssVarProperties> | undefined;
   lg?: Nested<SystemProperties & CssVarProperties> | undefined;
-  id?: string;
-};
+} & HTMLElementProps;
 
 const DEFAULTS: CardGridProps = {
   sm: { gridTemplateColumns: "1" },
