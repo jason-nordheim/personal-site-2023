@@ -22,7 +22,11 @@ jobs:
           node-version: 16
       - name: "Install"
         run: npm i && npm run build
-
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-pages
+          path: dist # or path/to/artifact
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -36,11 +40,8 @@ jobs:
       #   uses: actions/checkout@v3 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
       #   with:
       #     persist-credentials: true
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: github-pages
-      #     path: dist # or path/to/artifact
+
       - name: Deploy 🚀
         id: deployment
         uses: actions/deploy-pages@v2 # or the latest "vX.X.X" version tag for this action
+
