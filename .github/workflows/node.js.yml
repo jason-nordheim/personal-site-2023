@@ -24,11 +24,14 @@ jobs:
           node-version: 16
       - name: "Install"
         run: npm i && npm run build
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: github-pages
-          path: dist # or path/to/artifact
+      - name: Fix permissions
+        run: |
+          chmod -v -R +rX "_site/" | while read line; do
+          echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
