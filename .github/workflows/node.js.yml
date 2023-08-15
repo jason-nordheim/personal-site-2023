@@ -18,9 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "npm"
-          cache-dependency-path: package-lock.json
-      - run: npm i
+      - name: "Install"
+        run: npm i
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
