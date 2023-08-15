@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
 import { ImMenu } from "react-icons/im";
 import { Animate } from "react-simple-animate";
@@ -32,14 +32,14 @@ const Desktop: TabContainerProps = ({ children }) => {
 
 const Mobile: TabContainerProps = ({ children, showTabs, onMenuClick }) => {
   return (
-    <>
-      <Animate
-        play={showTabs}
-        start={{ display: "none" }}
-        end={{ display: "flex", justifyContent: "flex-start", marginLeft: "12px" }}
-        duration={1.5}
-        easeType="ease"
-      >
+    <Animate
+      play={showTabs}
+      start={{ display: "none" }}
+      end={{ display: "flex", justifyContent: "flex-start", marginLeft: "12px" }}
+      duration={1.5}
+      easeType="ease"
+    >
+      <span onClick={() => onMenuClick && onMenuClick()}>
         <ul
           className={css({
             listStyle: "none",
@@ -47,19 +47,13 @@ const Mobile: TabContainerProps = ({ children, showTabs, onMenuClick }) => {
         >
           {children}
         </ul>
-      </Animate>
-      <span
-        onClick={() => onMenuClick && onMenuClick()}
-        className={css({ display: "flex", justifyContent: "flex-end", marginRight: "12px" })}
-      >
-        <ImMenu size={28} />
       </span>
-    </>
+    </Animate>
   );
 };
 
 export const TabContainer: TabContainerProps = ({ children, onMenuClick, showTabs }) => {
-  return window.innerWidth > 390 ? (
+  return window.innerWidth > 500 ? (
     <Desktop showTabs={showTabs} onMenuClick={onMenuClick}>
       {children}
     </Desktop>
