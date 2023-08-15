@@ -1,6 +1,6 @@
 {
   "name": "jn-personalsite-2023",
-  "homepage": "jason.nordheim.github.io/personal-site-2023",
+  "homepage": "jason-nordheim.github.io/personal-site-2023",
   "base": "jn-personalsite-2023",
   "private": true,
   "version": "1.0.0",
@@ -16,9 +16,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@pandacss/dev": "0.10.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@pandacss/dev": "0.10.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/react": "18.2.15",
@@ -29,6 +29,7 @@
     "eslint": "8.45.0",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.3",
+    "firebase": "10.1.0",
     "gh-pages": "6.0.0",
     "react-icons": "4.10.1",
     "react-simple-animate": "3.5.2",
