@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { css } from "../styled-system/css";
 import { TabContainer } from "./TabContainer";
 import { TABS } from "./common/lib";
@@ -22,7 +22,7 @@ const getTabStyle = (selected: boolean) => {
     },
     sm: {
       p: "2px",
-      textAlign: "left",
+      textAlign: "center",
     },
     mdTo2xl: {
       textAlign: "center",
@@ -38,8 +38,6 @@ export type TabsProps = {
 };
 
 export const Tabs: FC<TabsProps> = ({ selectedTab, showTabs, onTabClick, onMenuClick }) => {
-
-
   return (
     <TabContainer showTabs={showTabs} onMenuClick={onMenuClick}>
       {Object.values(TABS).map((t) => {

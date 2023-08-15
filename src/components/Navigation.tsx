@@ -1,13 +1,20 @@
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { css } from "../styled-system/css";
-import { TabsProps, Tabs } from "./Tabs";
+import { Tabs } from "./Tabs";
 import { Animate } from "react-simple-animate";
 
 type NavigationContainerProps = {
   showHeader: boolean;
+  onMenuClick: () => void;
+  tabsShown: boolean;
 };
 
-const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({ children, showHeader }) => {
+const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({
+  children,
+  tabsShown,
+  showHeader,
+  onMenuClick,
+}) => {
   return (
     <Animate start={{ translate: "0 -100%" }} end={{ translate: "0 -15px" }} play>
       <header
@@ -15,34 +22,40 @@ const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({ 
           position: "sticky",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: showHeader ? "space-evenly" : "space-between",
           bg: "#6c63ff",
           pt: "30px",
           pb: "15px",
           borderRadius: "lg",
           border: "1px solid gray",
           boxShadow: "lg",
-          "& span": {},
         })}
       >
-        <span
-          className={css({
-            fontVariant: "small-caps",
-            fontFamily: "mono",
-            fontSize: "xl",
-            ml: "15px",
-            display: showHeader ? "flex" : "none",
-          })}
-        >
-          Jason Nordheim
-        </span>
         {children}
+        {showHeader && !tabsShown ? (
+          <span
+            onClick={() => onMenuClick()}
+            className={css({
+              fontVariant: "small-caps",
+              fontFamily: "mono",
+              fontSize: "xl",
+              ml: "15px",
+              display: "flex",
+            })}
+          >
+            Jason Nordheim
+          </span>
+        ) : null}
       </header>
     </Animate>
   );
 };
 
-export const Navigation: FC<TabsProps> = ({ selectedTab, onTabChange }) => {
+export const Navigation: FC<{ selectedTab: string; onTabChange: (newTab: string) => void }> = ({
+  selectedTab,
+  onTabChange,
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
   const [showTabs, seShowTabs] = useState(false);
 
   const handleMenuClick = () => {
@@ -53,8 +66,15 @@ export const Navigation: FC<TabsProps> = ({ selectedTab, onTabChange }) => {
     onTabChange(tab);
     handleMenuClick();
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMobile(window.innerWidth < 500);
+    });
+  }, []);
+
   return (
-    <NavigationContainer showHeader={!showTabs}>
+    <NavigationContainer showHeader={isMobile} onMenuClick={handleMenuClick} tabsShown={showTabs}>
       <Tabs
         selectedTab={selectedTab}
         onMenuClick={handleMenuClick}
