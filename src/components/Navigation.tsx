@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from "react";
+import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { css } from "../styled-system/css";
 import { Tabs } from "./Tabs";
 import { Animate } from "react-simple-animate";
@@ -55,6 +55,7 @@ export const Navigation: FC<{ selectedTab: string; onTabChange: (newTab: string)
   selectedTab,
   onTabChange,
 }) => {
+  const [isMobile, setIsMobile] = useState(false);
   const [showTabs, seShowTabs] = useState(false);
 
   const handleMenuClick = () => {
@@ -65,8 +66,15 @@ export const Navigation: FC<{ selectedTab: string; onTabChange: (newTab: string)
     onTabChange(tab);
     handleMenuClick();
   };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMobile(window.innerWidth < 500);
+    });
+  }, []);
+
   return (
-    <NavigationContainer showHeader={window.innerWidth < 500} onMenuClick={handleMenuClick} tabsShown={showTabs}>
+    <NavigationContainer showHeader={isMobile} onMenuClick={handleMenuClick} tabsShown={showTabs}>
       <Tabs
         selectedTab={selectedTab}
         onMenuClick={handleMenuClick}
