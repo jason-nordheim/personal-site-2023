@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from "react";
 import { css } from "../styled-system/css";
-import { ImMenu } from "react-icons/im";
 import { Animate } from "react-simple-animate";
 
 type TabContainerProps = FC<

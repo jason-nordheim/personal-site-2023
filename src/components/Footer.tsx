@@ -3,7 +3,6 @@ import { css } from "../styled-system/css";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { IconType } from "react-icons";
 import { MdEmail } from "react-icons/md";
-import { Animate } from "react-simple-animate";
 
 type FooterLinkProps = {
   href: string;
