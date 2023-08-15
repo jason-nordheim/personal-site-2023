@@ -14,6 +14,7 @@ export const PersonalSite = () => {
         overflowY: "scroll",
         overflowX: "hidden",
         display: "flex",
+        bg: "#dbd9ff",
         flexDirection: "column",
         height: "100%",
       })}

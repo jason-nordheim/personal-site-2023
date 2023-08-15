@@ -3,7 +3,6 @@ import { css, cx } from "../styled-system/css";
 import { HTMLElementProps } from "./common";
 
 const baseStyles = css({
-  bg: "#gray.100",
   display: "flex",
   flexDirection: "column",
   rounded: "md",
@@ -15,11 +14,12 @@ const baseStyles = css({
   transition: "linear",
   transitionDuration: "normal",
   smDown: { width: "xs" },
+  sm: { width: "sm" },
   md: {
     width: "md",
   },
   lgDown: {
-    width: "md",
+    width: "lg",
   },
   xl: {
     width: "xl",

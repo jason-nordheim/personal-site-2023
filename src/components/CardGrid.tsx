@@ -11,7 +11,7 @@ type CardGridProps = {
 } & HTMLElementProps;
 
 const DEFAULTS: CardGridProps = {
-  sm: { gridTemplateColumns: "1" },
+  sm: { display: "flex" },
   md: { gridTemplateColumns: "1" },
   lg: { gridTemplateColumns: "1" },
 };

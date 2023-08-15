@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { css } from "../styled-system/css";
 import { TabContainer } from "./TabContainer";
 import { TABS } from "./common/lib";
@@ -9,13 +9,11 @@ const getTabStyle = (selected: boolean) => {
     mx: "10px",
     fontVariant: "small-caps",
     fontWeight: "bold",
-    p: "3px",
-    textAlign: "center",
     rounded: "md",
     alignSelf: "center",
     maxWidth: "200px",
     transitionDuration: "0.5s",
-    color: selected ? "blue.600" : undefined,
+    color: selected ? "white" : undefined,
     _hover: {
       cursor: "pointer",
       transition: "ease-in-out",
@@ -24,23 +22,31 @@ const getTabStyle = (selected: boolean) => {
     },
     sm: {
       p: "2px",
+      textAlign: "left",
+    },
+    mdTo2xl: {
+      textAlign: "center",
     },
   });
 };
 
 export type TabsProps = {
   selectedTab: string;
-  onTabChange: (newTab: string) => void;
+  showTabs: boolean;
+  onTabClick: (newTab: string) => void;
+  onMenuClick: () => void;
 };
 
-export const Tabs: FC<TabsProps> = ({ selectedTab, onTabChange }) => {
+export const Tabs: FC<TabsProps> = ({ selectedTab, showTabs, onTabClick, onMenuClick }) => {
+
+
   return (
-    <TabContainer>
+    <TabContainer showTabs={showTabs} onMenuClick={onMenuClick}>
       {Object.values(TABS).map((t) => {
         const isSelected = selectedTab == t;
         const style = getTabStyle(isSelected);
         return (
-          <li className={style} onClick={() => onTabChange(t)} key={t}>
+          <li className={style} onClick={() => onTabClick(t)} key={t}>
             {t}
           </li>
         );
