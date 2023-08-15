@@ -3,7 +3,7 @@
   "homepage": "jason.nordheim.github.io/personal-site-2023",
   "base": "jn-personalsite-2023",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "prepare": "panda codegen",
@@ -12,7 +12,7 @@
     "lint": "eslint . --ext ts,tsx --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "gh-pages -b main -d dist",
     "test": "vitest"
   },
   "dependencies": {
