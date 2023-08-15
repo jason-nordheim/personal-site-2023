@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from "react";
 import { container } from "../../styled-system/patterns";
 import { css, cx } from "../../styled-system/css";
 import { HTMLElementProps, HeadingProps, PProps } from "./ElementProps";
+import { Animate } from "react-simple-animate";
 
 const BASE_STYLES = {
   Container: container({
@@ -28,9 +29,11 @@ const BASE_STYLES = {
 
 export const PageContainer: FC<PropsWithChildren<HTMLElementProps>> = ({ children, className, ...rest }) => {
   return (
-    <section {...rest} className={cx(BASE_STYLES.Container, className)}>
-      {children}
-    </section>
+    <Animate duration={0.75} play start={{ opacity: 0 }} end={{ opacity: "100%" }}>
+      <section {...rest} className={cx(BASE_STYLES.Container, className)}>
+        {children}
+      </section>
+    </Animate>
   );
 };
 
