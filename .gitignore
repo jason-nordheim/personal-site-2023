@@ -25,3 +25,4 @@ dist-ssr
 src/styled-system
 src/styled-system-studio
 
+node_modules
