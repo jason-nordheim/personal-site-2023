@@ -3,6 +3,7 @@ import { css } from "../styled-system/css";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { IconType } from "react-icons";
 import { MdEmail } from "react-icons/md";
+import { Animate } from "react-simple-animate";
 
 type FooterLinkProps = {
   href: string;
@@ -28,21 +29,23 @@ export const FooterLink: FC<FooterLinkProps> = ({ href, Icon, text }) => {
 
 export const Footer = () => {
   return (
-    <footer
-      className={css({
-        position: "sticky",
-        bottom: "0",
-        width: "100%",
-        borderTop: "1px solid black",
-        mt: "10px",
-        bg: "gray.200",
-      })}
-    >
-      <ul className={css({ display: "flex", justifyContent: "space-evenly", py: "10px" })}>
-        <FooterLink Icon={SiGithub} href="https://github.com/jason-nordheim" text="Github" />
-        <FooterLink Icon={SiLinkedin} href="https://www.linkedin.com/in/jasonnordheim/" text="LinkedIn" />
-        <FooterLink Icon={MdEmail} href="mailto: jason.nordheim@gmail.com" text="Email" />
-      </ul>
-    </footer>
+    <Animate start={{ translate: "0 -100%" }} end={{ translate: "0 0" }} play>
+      <footer
+        className={css({
+          position: "sticky",
+          bottom: "0",
+          width: "100%",
+          borderTop: "1px solid black",
+          mt: "10px",
+          bg: "gray.200",
+        })}
+      >
+        <ul className={css({ display: "flex", justifyContent: "space-evenly", py: "10px" })}>
+          <FooterLink Icon={SiGithub} href="https://github.com/jason-nordheim" text="Github" />
+          <FooterLink Icon={SiLinkedin} href="https://www.linkedin.com/in/jasonnordheim/" text="LinkedIn" />
+          <FooterLink Icon={MdEmail} href="mailto: jason.nordheim@gmail.com" text="Email" />
+        </ul>
+      </footer>
+    </Animate>
   );
 };

@@ -60,7 +60,7 @@ import { IoLogoGoogle, IoLogoSlack, IoLogoSass } from "react-icons/io/index";
 import { BsFiletypeXml, BsKanban, BsGit, BsServer, BsDiagram3Fill, BsFiletypeJson } from "react-icons/bs/index";
 import { FaReact, FaJava, FaFigma } from "react-icons/fa/index";
 import { GiPowerGenerator, GiTeleport } from "react-icons/gi/index";
-import { GrNode, GrCloudComputer, GrUserWorker } from "react-icons/gr/index";
+import { GrNode, GrUserWorker } from "react-icons/gr/index";
 import { BiLogoPostgresql, BiLogoMongodb, BiSolidFileCss } from "react-icons/bi/index";
 import { VscRuby, VscSymbolInterface } from "react-icons/vsc/index";
 import { RxComponentInstance } from "react-icons/rx/index";
@@ -643,6 +643,46 @@ export const SKILLS: Skill[] = [
     href: "https://knexjs.org",
   },
 ];
+
+export type SortOptions = ValueOf<typeof SORT_OPTIONS>;
+export type Filters = SkillTag | "All" | "None";
+export type TagFilters = { [k: Filters]: boolean };
+export type FilterCategories = SkillCategory | "All";
+
+export const FILTERS_ALL = {
+  [TAGS.Api]: true,
+  [TAGS.Backend]: true,
+  [TAGS.Collaboration]: true,
+  [TAGS.Databases]: true,
+  [TAGS.DevOps]: true,
+  [TAGS.Documentation]: true,
+  [TAGS.FrontEnd]: true,
+  [TAGS.ProjectManagement]: true,
+  [TAGS.Software]: true,
+  [TAGS.Testing]: true,
+  All: true,
+  None: false,
+};
+
+export const FILTER_NONE = {
+  [TAGS.Api]: false,
+  [TAGS.Backend]: false,
+  [TAGS.Collaboration]: false,
+  [TAGS.Databases]: false,
+  [TAGS.DevOps]: false,
+  [TAGS.Documentation]: false,
+  [TAGS.FrontEnd]: false,
+  [TAGS.ProjectManagement]: false,
+  [TAGS.Software]: false,
+  [TAGS.Testing]: false,
+  All: false,
+  None: true,
+};
+
+export const SORT_OPTIONS = {
+  name: "name",
+  category: "category",
+} as const;
 
 export const makeSkillsString = (skills: Skill[]) => {
   return skills

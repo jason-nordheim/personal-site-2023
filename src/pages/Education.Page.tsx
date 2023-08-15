@@ -4,7 +4,7 @@ import { PANDA_BREAKPOINTS, PandaBreakpoints, getScreenSize } from "../lib/utils
 import { css } from "../styled-system/css";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer, PageTitle, SubTitle } from "./common";
+import { PageContainer, PageTitle, SubTitle } from "../components/common/SharedComponents";
 
 const detailsStyle = {
   fontStretch: "condensed",

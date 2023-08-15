@@ -3,27 +3,30 @@ import { css } from "../styled-system/css";
 import { TabsProps, Tabs } from "./Tabs";
 import { MdEngineering } from "react-icons/md";
 import { IconType } from "react-icons";
+import { Animate } from "react-simple-animate";
 
 const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <header
-      className={css({
-        position: "sticky",
-        display: "flex",
-        flexDirection: "column",
-        bg: "blue.100",
-        py: "10px",
-        top: "-10px",
-        smDown: {
-          height: "50px",
-          lineHeight: "50px",
-        },
-        borderRadius: "lg",
-        border: "1px solid gray",
-      })}
-    >
-      {children}
-    </header>
+    <Animate start={{ translate: "0 -100%" }} end={{ translate: 0 }} play>
+      <header
+        className={css({
+          position: "sticky",
+          display: "flex",
+          flexDirection: "column",
+          bg: "blue.100",
+          py: "10px",
+          top: "-10px",
+          smDown: {
+            height: "50px",
+            lineHeight: "50px",
+          },
+          borderRadius: "lg",
+          border: "1px solid gray",
+        })}
+      >
+        {children}
+      </header>
+    </Animate>
   );
 };
 
