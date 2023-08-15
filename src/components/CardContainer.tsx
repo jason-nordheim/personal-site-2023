@@ -4,6 +4,8 @@ import { HTMLElementProps } from "./common";
 
 const baseStyles = css({
   display: "flex",
+  bg: "white",
+  justifySelf: "center",
   flexDirection: "column",
   rounded: "md",
   border: "1px solid gray",
@@ -28,7 +30,6 @@ const baseStyles = css({
     justifyContent: "space-around",
     width: "2xl",
   },
-  justifySelf: "center",
   boxShadow: "5px 5px 5px gray",
 });
 type CardContainerProps = PropsWithChildren<HTMLElementProps>;
