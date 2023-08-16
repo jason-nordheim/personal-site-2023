@@ -15,7 +15,7 @@ export const Hero = () => {
         md: { height: "300px" },
       })}
     >
-      <img src={programmer} alt="jason nordheim" className={imageStyles} />
+      <img src={programmer} alt="programmer" className={imageStyles} />
     </section>
   );
 };

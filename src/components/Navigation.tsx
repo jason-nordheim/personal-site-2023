@@ -16,15 +16,17 @@ const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({
   onMenuClick,
 }) => {
   return (
-    <Animate start={{ translate: "0 -100%" }} end={{ translate: "0 -15px" }} play>
+    <Animate start={{ translate: "0 -100%" }} end={{ translate: "0 -10px" }} play>
       <header
         className={css({
           position: "sticky",
           display: "flex",
           flexDirection: "row",
-          justifyContent: showHeader ? "space-evenly" : "space-between",
+          transition: "ease-in-out",
+          transitionDuration: "0.3s",
+          justifyContent: "center",
           bg: "#6c63ff",
-          pt: "30px",
+          pt: showHeader ? "40px" : "30px",
           pb: "15px",
           borderRadius: "lg",
           border: "1px solid gray",
@@ -32,20 +34,19 @@ const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({
         })}
       >
         {children}
-        {showHeader && !tabsShown ? (
-          <span
-            onClick={() => onMenuClick()}
-            className={css({
-              fontVariant: "small-caps",
-              fontFamily: "mono",
-              fontSize: "xl",
-              ml: "15px",
-              display: "flex",
-            })}
-          >
-            Jason Nordheim
-          </span>
-        ) : null}
+        <span
+          onClick={() => onMenuClick()}
+          className={css({
+            textAlign: "center",
+            fontVariant: "small-caps",
+            fontFamily: "mono",
+            fontSize: "xl",
+            ml: "15px",
+            display: showHeader && !tabsShown ? "flex" : "none",
+          })}
+        >
+          Jason Nordheim
+        </span>
       </header>
     </Animate>
   );
@@ -69,7 +70,8 @@ export const Navigation: FC<{ selectedTab: string; onTabChange: (newTab: string)
 
   useEffect(() => {
     window.addEventListener("resize", () => {
-      setIsMobile(window.innerWidth < 500);
+      console.log({ width: window.innerWidth });
+      setIsMobile(window.innerWidth <= 500);
     });
   }, []);
 
