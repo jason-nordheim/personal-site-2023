@@ -34,7 +34,7 @@ const Mobile: TabContainerProps = ({ children, showTabs, onMenuClick }) => {
     <Animate
       play={showTabs}
       start={{ display: "none" }}
-      end={{ display: "flex", justifyContent: "flex-start", marginLeft: "12px" }}
+      end={{ display: "flex", marginLeft: "12px" }}
       duration={1.5}
       easeType="ease"
     >
