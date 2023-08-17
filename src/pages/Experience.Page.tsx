@@ -82,17 +82,17 @@ const ExperienceCard: FC<Experience> = ({
       </p>
       {image && (
         <div
-          style={{ height: logoSize, width: logoSize }}
           className={circle({
             display: "flex",
             alignContent: "center",
-            placeContent: "center",
             alignSelf: "center",
+            textAlign: "center",
           })}
         >
           <img
             src={image}
             alt={`${employer} logo`}
+            style={{ height: logoSize, width: logoSize }}
             className={circle({
               justifySelf: "center",
               alignSelf: "center",
