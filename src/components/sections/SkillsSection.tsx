@@ -31,6 +31,9 @@ const BASE_SKILL_BUBBLE_STYLES: SystemStyleObject = {
   margin: "10px",
   minWidth: "100px",
   p: "5px 10px",
+  _hover: {
+    textDecoration: "underline",
+  },
 };
 
 const makeSkillStyles = (category: SkillCategory) => {

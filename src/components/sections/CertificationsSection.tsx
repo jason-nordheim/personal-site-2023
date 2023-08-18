@@ -38,7 +38,7 @@ type CertificationCollectionCardProps = {
 
 const CourseListItem: FC<PropsWithChildren<LiProps>> = ({ children, ...rest }) => {
   return (
-    <li className={css({ color: "gray.800" })} {...rest}>
+    <li className={css({ color: "gray.800", _hover: { textDecoration: "underline" } })} {...rest}>
       {children}
     </li>
   );
