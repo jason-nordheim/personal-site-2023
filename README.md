@@ -4,12 +4,13 @@ This site was designed to be minimalistic. I simply wanted to create a virtual r
 
 ### Technologies/Libraries Used:
 
-- TypesScript (`typescript`)
-- React (`react`)
-- Panda CSS (`@pandacss/dev`)
-- React Icons (`react-icons`)
-- TypeScript Essentials (`ts-essentials`)
-- Eslint `eslint`
-- React Simple Animate (`react-simple-animate`)
-- Vite (`vite`)
-- Vitest (`vitest`)
+- TypesScript (`typescript`) - Type-safe JavaScript
+- React (`react`) - Rendering Framework
+- Panda CSS (`@pandacss/dev`) - Minimal JSS in CSS Library
+- React Icons (`react-icons`) - Icon Library
+- TypeScript Essentials (`ts-essentials`) - utils for working with TypeScript
+- Eslint `eslint` - linting and formatting
+- React Simple Animate (`react-simple-animate`) - basic animations
+- Vite (`vite`) - Built tool
+- Vitest (`vitest`) - Test Framework
+- Firebase (`firebase`) - Deployment/Hosting
