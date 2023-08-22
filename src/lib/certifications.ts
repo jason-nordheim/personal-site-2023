@@ -71,13 +71,13 @@ export const LINKEDIN_CERTS: Certification[] = [
   {
     title: "Programming Foundations: Object-Oriented Design",
     courseUrl:
-      "http://www.linkedin.com/learning/programming-foundations-object-oriented-design-3?trk=flagship-lil_details_certification&trk=lil_details_certification",
+      "https://www.linkedin.com/learning/certificates/dd85fedf2b97cb8e2884f4784205090fb9b8de12d6f124f9d194085f35d9e3fe",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Python for Data Science Essential Training Part 1",
     courseUrl:
-      "https://www.linkedin.com/learning/python-for-data-science-essential-training-part-1/data-science-life-hacks",
+      "https://www.linkedin.com/learning/certificates/512e2a33c9249b5a8bc747313382766d2ea28b08a4c969396301629e109d86d4",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
@@ -93,6 +93,18 @@ export const LINKEDIN_CERTS: Certification[] = [
   {
     title: "Programming Foundations: Algorithms",
     courseUrl: "https://www.linkedin.com/learning/programming-foundations-algorithms",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
+  {
+    title: "Polygot Web Development",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/e2bd605a5a90ff463c417d4995df856dde9d156635f9c905b2704942f0dcc48e",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
+  {
+    title: "Git Workflows",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/4bece8764f67377b48f2c3a3402085c21db85e106c6ffdf71c2b949352cb3655",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
 ];
