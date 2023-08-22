@@ -70,29 +70,35 @@ export const UDEMY_CERTS: Certification[] = [
 export const LINKEDIN_CERTS: Certification[] = [
   {
     title: "Programming Foundations: Object-Oriented Design",
-    courseUrl:
+    certificateUrl:
       "https://www.linkedin.com/learning/certificates/dd85fedf2b97cb8e2884f4784205090fb9b8de12d6f124f9d194085f35d9e3fe",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Python for Data Science Essential Training Part 1",
-    courseUrl:
+    certificateUrl:
       "https://www.linkedin.com/learning/certificates/512e2a33c9249b5a8bc747313382766d2ea28b08a4c969396301629e109d86d4",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "SQL Essential Training",
     courseUrl: "https://www.linkedin.com/learning/sql-essential-training-3/understanding-sql",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/a1cc5ce579dda6a03b98a105fa8256c992705f731a097ab981afdf00c76e9909",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Data Science & Analytics Career Paths & Certifications: First Steps",
     courseUrl: "https://www.linkedin.com/learning/data-science-analytics-career-paths-certifications-first-steps-3",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/2fcef4ba176f1d930b448da40806913bb4a37a645350a91dbd24c945a2826be6",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Programming Foundations: Algorithms",
     courseUrl: "https://www.linkedin.com/learning/programming-foundations-algorithms",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/74810b4b1d2fbe52fdf79cb139d539856ba0683c200cb4b8efb834c306dfefd8",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
