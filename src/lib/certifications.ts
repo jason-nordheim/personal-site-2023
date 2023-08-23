@@ -115,6 +115,7 @@ export const LINKEDIN_CERTS: Certification[] = [
   },
   {
     title: "Build Three Real-World Python Applications",
+    courseUrl: "https://www.linkedin.com/learning/build-three-real-world-python-applications?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/24721b8fef5760a56f495e2ea1e88226636c2cc167c88c0bd36f0e4db355bea7",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
