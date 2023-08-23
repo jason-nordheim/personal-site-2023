@@ -113,6 +113,12 @@ export const LINKEDIN_CERTS: Certification[] = [
       "https://www.linkedin.com/learning/certificates/4bece8764f67377b48f2c3a3402085c21db85e106c6ffdf71c2b949352cb3655",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
+  {
+    title: "Build Three Real-World Python Applications",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/24721b8fef5760a56f495e2ea1e88226636c2cc167c88c0bd36f0e4db355bea7",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
 ];
 
 export const PLURALSIGHT_CERTS: Certification[] = [
