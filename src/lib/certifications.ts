@@ -70,12 +70,14 @@ export const UDEMY_CERTS: Certification[] = [
 export const LINKEDIN_CERTS: Certification[] = [
   {
     title: "Programming Foundations: Object-Oriented Design",
+    courseUrl: "https://www.linkedin.com/learning/programming-foundations-object-oriented-design-3?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/dd85fedf2b97cb8e2884f4784205090fb9b8de12d6f124f9d194085f35d9e3fe",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Python for Data Science Essential Training Part 1",
+    courseUrl: "https://www.linkedin.com/learning/python-for-data-science-essential-training-part-1?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/512e2a33c9249b5a8bc747313382766d2ea28b08a4c969396301629e109d86d4",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
@@ -103,20 +105,31 @@ export const LINKEDIN_CERTS: Certification[] = [
   },
   {
     title: "Polygot Web Development",
+    courseUrl: "https://www.linkedin.com/learning/polyglot-web-development?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/e2bd605a5a90ff463c417d4995df856dde9d156635f9c905b2704942f0dcc48e",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Git Workflows",
+    courseUrl:
+      "https://www.linkedin.com/learning/git-workflows/collaborating-more-effectively-with-git-using-workflows?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/4bece8764f67377b48f2c3a3402085c21db85e106c6ffdf71c2b949352cb3655",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
   {
     title: "Build Three Real-World Python Applications",
+    courseUrl: "https://www.linkedin.com/learning/build-three-real-world-python-applications?u=67698794",
     certificateUrl:
       "https://www.linkedin.com/learning/certificates/24721b8fef5760a56f495e2ea1e88226636c2cc167c88c0bd36f0e4db355bea7",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
+  {
+    title: "Python for Algorithmic Thinking: Problem-Solving skills",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/eff7af3b896fcbd86b23571bcb8f26afeb08bfe2d79b3b0988de47e5d0708a27",
+    courseUrl: "",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
 ];
