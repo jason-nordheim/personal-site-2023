@@ -44,25 +44,48 @@ const ProjectSubtitle: FC<ProjectSubtitleProps> = ({ projectName, repoUrl, liveD
 type ProjectCardProps = ProjectSubtitleProps & {
   caption: string;
   technologies?: string[];
+  conceptsAndPatterns?: string[];
 };
 
-const ProjectCard: FC<ProjectCardProps> = ({ caption, projectName, liveDemoUrl, repoUrl, technologies }) => {
+const ProjectCard: FC<ProjectCardProps> = ({
+  caption,
+  projectName,
+  liveDemoUrl,
+  repoUrl,
+  technologies,
+  conceptsAndPatterns,
+}) => {
+  const columns = technologies?.length && conceptsAndPatterns?.length ? "2" : "1";
   return (
     <CardContainer>
       <ProjectSubtitle projectName={projectName} liveDemoUrl={liveDemoUrl} repoUrl={repoUrl} />
       <Caption>{caption}</Caption>
-      {technologies?.length ? (
-        <>
-          <Caption className={css({ fontFamily: "serif" })}>Technologies</Caption>
-          <ul className={css({ listStyle: "outside", ml: 4, fontSize: "xs", px: "10px" })}>
-            {technologies
-              .sort((a, b) => sortAscending(a, b))
-              .map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-          </ul>
-        </>
-      ) : null}
+      <div className={css({ display: "grid", gridTemplateColumns: columns })}>
+        {technologies?.length ? (
+          <div>
+            <Caption className={css({ fontFamily: "serif" })}>Technologies</Caption>
+            <ul className={css({ listStyle: "outside", ml: 4, fontSize: "xs", px: "10px" })}>
+              {technologies
+                .sort((a, b) => sortAscending(a, b))
+                .map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+            </ul>
+          </div>
+        ) : null}
+        {conceptsAndPatterns?.length ? (
+          <div>
+            <Caption className={css({ fontFamily: "serif" })}>Concepts and Patterns</Caption>
+            <ul className={css({ listStyle: "outside", ml: 4, fontSize: "xs", px: "10px" })}>
+              {conceptsAndPatterns
+                .sort((a, b) => sortAscending(a, b))
+                .map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+            </ul>
+          </div>
+        ) : null}
+      </div>
     </CardContainer>
   );
 };
@@ -81,6 +104,7 @@ export const ProjectsPage = () => {
               liveDemoUrl={p.liveDemoUrl}
               repoUrl={p.repoUrl}
               technologies={p.technologies}
+              conceptsAndPatterns={p.conceptsAndPatterns}
             />
           );
         })}
