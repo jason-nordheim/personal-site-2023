@@ -134,10 +134,11 @@ export const LINKEDIN_CERTS: Certification[] = [
   },
   {
     title: "Advanced Python: Language Features",
-    certificateUrl: 'https://www.linkedin.com/learning/certificates/bba063b94fedada60edb4b453c3cacac2644150687a05793e010d2675ec678fb', 
-    courseUrl: "",
-    vendor: CERTIFICATION_VENDORS.LinkedIn
-  }
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/bba063b94fedada60edb4b453c3cacac2644150687a05793e010d2675ec678fb",
+    courseUrl: "https://www.linkedin.com/learning/advanced-python-language-features?dApp=59033956",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
 ];
 
 export const PLURALSIGHT_CERTS: Certification[] = [
