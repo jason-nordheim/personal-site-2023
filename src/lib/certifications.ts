@@ -139,6 +139,13 @@ export const LINKEDIN_CERTS: Certification[] = [
     courseUrl: "https://www.linkedin.com/learning/advanced-python-language-features?dApp=59033956",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
+  {
+    title: "Migrating from REST to Graphql",
+    courseUrl: "https://www.linkedin.com/learning/migrating-from-rest-to-graphql?u=67698794",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/07a313e7694d1528231491450d18fed0c7dcaa3e09e74224ca5a52156f0ac5a5",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
 ];
 
 export const PLURALSIGHT_CERTS: Certification[] = [
