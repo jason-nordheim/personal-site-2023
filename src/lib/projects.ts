@@ -20,6 +20,7 @@ export const PROJECTS: Project[] = [
       "Vite/Vitest",
       "Firebase",
       "TypeScript",
+      "Redux/RTK/Middleware",
     ],
     conceptsAndPatterns: [
       "Algorithms",
