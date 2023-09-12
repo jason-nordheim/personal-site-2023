@@ -31,6 +31,15 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
+    title: "Muziq",
+    repoUrl: "https://github.com/jason-nordheim/Muziq",
+    liveDemoUrl: "https://muziq-ashy.vercel.app/",
+    caption:
+      "Muziq is a cloud music player using Supabase (database, blob storage, auth) and Stripe (for payments) and a UI designed to mirror the UI of Spotify",
+    technologies: ["Supabase", "TypeScript", "NextJS", "Zsutand", "Stripe", "Radix-UI", "TailwindCSS", "Vercel"],
+    conceptsAndPatterns: ["Web Hooks", "Server Components", "API", "Authentication", "Sessions", "Responsive Design"],
+  },
+  {
     title: "Algorithm Practice",
     repoUrl: "https://github.com/jason-nordheim/algo-practice",
     caption:
