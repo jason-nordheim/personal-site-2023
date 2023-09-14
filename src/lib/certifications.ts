@@ -154,6 +154,13 @@ export const LINKEDIN_CERTS: Certification[] = [
       "https://www.linkedin.com/learning/certificates/0ce33121f751b74a1fec136b995ea48448426739b889889806f29daeccfbbaca",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
+  {
+    title: "Machine Learning Foundations: Linear Algebra",
+    courseUrl: "https://www.linkedin.com/learning/machine-learning-foundations-linear-algebra/",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/5f9a92bf1721392beab7159937273480654b73f860517f1eac6dee4bb330e5eb",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
 ];
 
 export const PLURALSIGHT_CERTS: Certification[] = [
