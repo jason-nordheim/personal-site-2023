@@ -3,6 +3,7 @@ export type Project = {
   liveDemoUrl?: string;
   repoUrl?: string;
   caption: string;
+  features?: string[];
   technologies?: string[];
   conceptsAndPatterns?: string[];
 };
@@ -36,6 +37,7 @@ export const PROJECTS: Project[] = [
     liveDemoUrl: "https://muziq-ashy.vercel.app/",
     caption:
       "Muziq is a cloud music player using Supabase (database, blob storage, auth) and Stripe (for payments) and a UI designed to mirror the UI of Spotify",
+    features: ["Authentication", "MP3 Upload/Blob Storage", "Image Upload/Blob storage"],
     technologies: ["Supabase", "TypeScript", "NextJS", "Zsutand", "Stripe", "Radix-UI", "TailwindCSS", "Vercel"],
     conceptsAndPatterns: ["Web Hooks", "Server Components", "API", "Authentication", "Sessions", "Responsive Design"],
   },
