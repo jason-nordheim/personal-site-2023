@@ -5,7 +5,7 @@ import { circle } from "../styled-system/patterns";
 import { PANDA_BREAKPOINTS, getScreenSize } from "../lib/utils/screenSize";
 import { CardContainer } from "../components/CardContainer";
 import { CardGrid } from "../components/CardGrid";
-import { PageContainer, PageTitle } from "./common";
+import { PageContainer, PageTitle } from "../components/common";
 
 const MONTHS = [
   "January",
@@ -82,17 +82,17 @@ const ExperienceCard: FC<Experience> = ({
       </p>
       {image && (
         <div
-          style={{ height: logoSize, width: logoSize }}
           className={circle({
             display: "flex",
             alignContent: "center",
-            placeContent: "center",
             alignSelf: "center",
+            textAlign: "center",
           })}
         >
           <img
             src={image}
             alt={`${employer} logo`}
+            style={{ height: logoSize, width: logoSize }}
             className={circle({
               justifySelf: "center",
               alignSelf: "center",

@@ -1,30 +1,21 @@
 import { css } from "../styled-system/css";
-import profile from "../assets/profile.jpeg";
-
+import programmer from "../assets/programmer.svg";
 export const Hero = () => {
-  const imageStyles = css({ translate: "0px 70px", mt: "-20" });
+  const imageStyles = css({ sm: { height: "200px" }, md: { height: "300px" } });
   return (
-    <article className={css({ my: 2, px: 1, py: 1, placeContent: "center", display: "flex" })}>
-      <div
-        className={css({
-          height: "200px",
-          width: "200px",
-          md: {
-            height: "400px",
-            width: "400px",
-          },
-          lg: {
-            height: "500px",
-            width: "500px",
-          },
-          overflow: "hidden",
-          rounded: "50%",
-          border: "1px solid black",
-          zIndex: -1,
-        })}
-      >
-        <img src={profile} alt="jason nordheim" height="350px" className={imageStyles} />
-      </div>
-    </article>
+    <section
+      id="hero"
+      className={css({
+        my: 2,
+        px: 1,
+        py: 1,
+        placeContent: "center",
+        display: "flex",
+        sm: { height: "200px" },
+        md: { height: "300px" },
+      })}
+    >
+      <img src={programmer} alt="programmer" className={imageStyles} />
+    </section>
   );
 };

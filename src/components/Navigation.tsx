@@ -1,91 +1,88 @@
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 import { css } from "../styled-system/css";
-import { TabsProps, Tabs } from "./Tabs";
-import { MdEngineering } from "react-icons/md";
-import { IconType } from "react-icons";
+import { Tabs } from "./Tabs";
+import { Animate } from "react-simple-animate";
 
-const CLASSES = {
-  Nav: {
-    Container: {
-      loaded: css({
-        position: "sticky",
-        display: "flex",
-        flexDirection: "column",
-        bg: "blue.100",
-        pt: "20px",
-        pb: "10px",
-        translate: "0 -10px",
-        smDown: {
-          height: "50px",
-          lineHeight: "50px",
-        },
-        borderRadius: "lg",
-        border: "1px solid gray",
-      }),
-      initial: css({
-        position: "sticky",
-        display: "flex",
-        flexDirection: "column",
-        transition: "ease",
-        transitionDelay: "1s",
-        bg: "blue.100",
-        py: "10px",
-        translate: "0 -20px",
-        smDown: {
-          height: "50px",
-          lineHeight: "50px",
-        },
-        borderRadius: "lg",
-        border: "1px solid gray",
-      }),
-    },
-  },
+type NavigationContainerProps = {
+  showHeader: boolean;
+  onMenuClick: () => void;
+  tabsShown: boolean;
 };
 
-const NavigationContainer: FC<PropsWithChildren> = ({ children }) => {
-  const [rendered, setRendered] = useState(false);
-  useEffect(() => {
-    setRendered(true);
-  }, []);
-
-  const { initial, loaded } = CLASSES.Nav.Container;
-
-  return <header className={rendered ? loaded : initial}>{children}</header>;
-};
-
-const Logo: FC<{ Icon: IconType }> = ({ Icon }) => {
+const NavigationContainer: FC<PropsWithChildren<NavigationContainerProps>> = ({
+  children,
+  tabsShown,
+  showHeader,
+  onMenuClick,
+}) => {
   return (
-    <div
-      className={css({
-        smDown: {
-          display: "none",
-        },
-        display: "flex",
-        justifyContent: "center",
-      })}
-    >
-      <span
+    <Animate start={{ translate: "0 -100%" }} end={{ translate: "0 -10px" }} play>
+      <header
         className={css({
-          width: "50px",
-          flexGrow: 0,
-          fontSize: "4xl",
-          borderRadius: "full",
-          p: "2",
-          m: "5px",
-          bg: "white",
-          boxShadow: "sm",
+          position: "sticky",
+          display: "flex",
+          flexDirection: "row",
+          transition: "ease-in-out",
+          transitionDuration: "0.3s",
+          justifyContent: "center",
+          bg: "#6c63ff",
+          pt: showHeader ? "40px" : "30px",
+          pb: "15px",
+          borderRadius: "lg",
+          border: "1px solid gray",
+          boxShadow: "lg",
         })}
       >
-        <Icon />
-      </span>
-    </div>
+        {children}
+        <span
+          onClick={() => onMenuClick()}
+          className={css({
+            textAlign: "center",
+            fontVariant: "small-caps",
+            fontFamily: "mono",
+            fontSize: "xl",
+            ml: "15px",
+            display: showHeader && !tabsShown ? "flex" : "none",
+          })}
+        >
+          Jason Nordheim
+        </span>
+      </header>
+    </Animate>
   );
 };
 
-export const Navigation: FC<TabsProps> = ({ selectedTab: tab, onTabChange }) => {
+export const Navigation: FC<{ selectedTab: string; onTabChange: (newTab: string) => void }> = ({
+  selectedTab,
+  onTabChange,
+}) => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [showTabs, seShowTabs] = useState(false);
+
+  const handleMenuClick = () => {
+    seShowTabs(!showTabs);
+  };
+
+  const handleTabItemClick = (tab: string) => {
+    onTabChange(tab);
+    handleMenuClick();
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      console.log({ width: window.innerWidth });
+      setIsMobile(window.innerWidth <= 500);
+    });
+  }, []);
+
   return (
-    <NavigationContainer>
-      <Tabs selectedTab={tab} onTabChange={onTabChange} />
+    <NavigationContainer showHeader={isMobile} onMenuClick={handleMenuClick} tabsShown={showTabs}>
+      <Tabs
+        selectedTab={selectedTab}
+        onMenuClick={handleMenuClick}
+        onTabClick={handleTabItemClick}
+        showTabs={showTabs}
+      />
     </NavigationContainer>
   );
 };

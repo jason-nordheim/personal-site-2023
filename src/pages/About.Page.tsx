@@ -2,7 +2,8 @@ import { Hero } from "../components/Hero";
 import { CardGrid } from "../components/CardGrid";
 import { CardContainer } from "../components/CardContainer";
 import { FC } from "react";
-import { Caption, PageContainer, PageTitle, SubTitle } from "./common";
+import { Caption, PageContainer, PageTitle, SubTitle } from "../components/common";
+import { css } from "../styled-system/css";
 
 const Section: FC<{ title?: string; caption: string }> = ({ title, caption }) => {
   return (
@@ -20,7 +21,7 @@ export const AboutPage = () => {
       <PageTitle>About</PageTitle>
       <Hero />
       <br />
-      <CardGrid lg={{ gridTemplateColumns: "1" }}>
+      <CardGrid className={css({ gridTemplateColumns: "75%" })} lg={{ gridTemplateColumns: "1" }}>
         <CardContainer>
           <Section
             title="Introduction"
