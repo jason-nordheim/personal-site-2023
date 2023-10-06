@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { css } from "../styled-system/css";
 import { BrainCircuitIcon, BriefcaseIcon, DisplayCodeIcon, GraduationCapIcon, UserIcon } from "./Icons";
 import { FC, useState, PropsWithChildren } from "react";
-import { Props } from "../styled-system/types/pattern";
 
 const collapsedSpanA = css({ transformOrigin: "0% 0%", transition: "0.3s ease" });
 const collapsedSpanC = css({ transformOrigin: "0% 100%", transition: "0.3s ease" });
