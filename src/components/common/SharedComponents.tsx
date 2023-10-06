@@ -28,13 +28,18 @@ const BASE_STYLES = {
   Caption: css({ textStyle: "sm", mt: "2" }),
 };
 
+const clearAfter = css({
+  marginBottom: "50px",
+});
+
 export const PageContainer: FC<PropsWithChildren<HTMLElementProps>> = ({ children, className, ...rest }) => {
   return (
-    <Animate duration={0.75} play start={{ opacity: 0 }} end={{ opacity: "100%", flex: 1 }}>
+    <>
       <section {...rest} className={cx(BASE_STYLES.Container, className)}>
         {children}
       </section>
-    </Animate>
+      <div className={clearAfter}></div>
+    </>
   );
 };
 
