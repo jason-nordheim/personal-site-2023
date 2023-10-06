@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+
 import { css } from "./styled-system/css";
-import { Footer, Navigation, TABS } from "./components";
+import { Footer } from "./components";
 import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
+import { NavBar } from "./components/NavBar";
+import { useEffect } from "react";
+
+const RedirectToAbout = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/about");
+  });
+
+  return <></>;
+};
 
 export const PersonalSite = () => {
-  const [tab, setTab] = useState(TABS.ABOUT);
-  const handleTabChange = (newTab: string) => {
-    setTab(newTab);
-  };
   return (
     <div
       className={css({
@@ -19,12 +28,17 @@ export const PersonalSite = () => {
         height: "100%",
       })}
     >
-      <Navigation selectedTab={tab} onTabChange={handleTabChange} />
-      {tab == TABS.ABOUT && <AboutPage />}
-      {tab == TABS.KNOWLEDGE && <KnowledgePage />}
-      {tab == TABS.EXPERIENCE && <ExperiencePage />}
-      {tab == TABS.EDUCATION && <EducationPage />}
-      {tab === TABS.PROJECTS && <ProjectsPage />}
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" Component={RedirectToAbout} />
+          <Route path="/about" Component={AboutPage} />
+          <Route path="/knowledge" Component={KnowledgePage} />
+          <Route path="/experience" Component={ExperiencePage} />
+          <Route path="/education" Component={EducationPage} />
+          <Route path="/projects" Component={ProjectsPage} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </div>
   );
