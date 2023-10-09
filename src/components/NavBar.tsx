@@ -28,7 +28,7 @@ export const NavBar = () => {
   return (
     <nav className="navbar" role="navigation">
       <HamburgerMenu expanded={expanded} onClick={handleHamburgerClick}>
-        <div className="nav-bar-content">
+        <div className={expanded ? "nav-bar-content expanded" : "nav-bar-content"} onClick={handleHamburgerClick}>
           <NavLink to="/about" aria-label="link to about page">
             <span className="nav-link-icon">
               <UserIcon />

@@ -1,11 +1,38 @@
+/** actual navigation links **/ 
 .nav-bar-content {
-  display: none;
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
+  translate: -50%;
+}
+.nav-bar-content.expanded {
+  height: auto;
+  translate: 0 0;
+}
+
+.nav-bar-content a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.nav-bar-content a:hover {
+  text-decoration: underline;
+}
+
+.nav-bar-content a .nav-link-icon {
+  aspect-ratio: 1/1;
+  height: 1rem;
 }
 
 nav.navbar {
   margin: 10px 10px;
 }
 
+
+/** Hamburger Menu **/
 .hamburger-menu {
   aspect-ratio: 1/1;
   height: 2em;
@@ -26,6 +53,7 @@ nav.navbar {
   border-radius: 1rem;
   transition: 0.3s ease;
 }
+
 .hamburger-menu.expanded span:first-child {
   transform: rotate(-45deg);
   transform-origin: 90% 130%;
