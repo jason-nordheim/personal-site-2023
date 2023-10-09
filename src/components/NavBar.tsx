@@ -10,7 +10,7 @@ const HamburgerMenu: FC<PropsWithChildren<{ expanded: boolean; onClick: () => vo
 }) => {
   return (
     <div className="hamburger-menu-container">
-      <div className="hamburger-menu">
+      <div className={expanded ? "hamburger-menu expanded" : "hamburger-menu"} onClick={onClick}>
         <span></span>
         <span></span>
         <span></span>

@@ -16,6 +16,7 @@ nav.navbar {
   cursor: pointer;
 }
 
+
 .hamburger-menu span {
   position: relative;
   display: flex;
@@ -23,4 +24,16 @@ nav.navbar {
   width: 100%;
   background: black;
   border-radius: 1rem;
+  transition: 0.3s ease;
+}
+.hamburger-menu.expanded span:first-child {
+  transform: rotate(-45deg);
+  transform-origin: 90% 130%;
+}
+.hamburger-menu.expanded span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-menu.expanded span:last-child {
+  transform: rotate(45deg);
+  transform-origin: 85% -50%;
 }
