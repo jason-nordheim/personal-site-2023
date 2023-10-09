@@ -4,11 +4,11 @@ import { HTMLElementProps, HeadingProps, PProps } from "./ElementProps";
 
 export const PageContainer: FC<PropsWithChildren<HTMLElementProps>> = ({ children, className, ...rest }) => {
   return (
-    <>
+    <div>
       <section {...rest} className={cx("page-container", className)}>
         {children}
       </section>
-    </>
+    </div>
   );
 };
 

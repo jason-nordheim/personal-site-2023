@@ -1,3 +1,13 @@
+/** the navbar root **/
+nav.navbar {
+  margin: 10px 10px;
+  height: 50px;
+}
+nav.navbar.expanded {
+  height: auto;
+  transition: 0.3s ease;
+}
+
 /** actual navigation links **/ 
 .nav-bar-content {
   height: 0;
@@ -7,7 +17,6 @@
   translate: -50%;
 }
 .nav-bar-content.expanded {
-  height: 100%;
   translate: 0 0;
 }
 
@@ -27,14 +36,7 @@
   height: 1rem;
 }
 
-nav.navbar {
-  margin: 10px 10px;
-  height: 50px;
-}
-nav.navbar.expanded {
-  height: auto;
-  transition: 0.3s ease;
-}
+
 
 /** Hamburger Menu **/
 .hamburger-menu {
@@ -71,13 +73,22 @@ nav.navbar.expanded {
 }
 
 @media (min-width: 500px) {
+  nav.navbar {
+    height: 50px;
+    border-bottom: 1px solid black;
+  }
+  nav.navbar.expanded {
+    height: 50px;
+    border-bottom: 1px solid black;
+  }
+
   .hamburger-menu {
     display: none;
   }
 
   .nav-bar-content {
+    height: 50px;
     position: relative;
-    height: 100%;
     display: flex;
     flex-direction: row;
     width: 100%;
