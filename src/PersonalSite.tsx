@@ -4,6 +4,8 @@ import { Footer } from "./components";
 import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
 import { NavBar } from "./components/NavBar";
 import { useEffect } from "react";
+import { SkillsPage } from "./pages/Skills.Page";
+import { CertificationsPage } from "./pages/Certifications.Page";
 
 const RedirectToAbout = () => {
   const navigate = useNavigate();
@@ -23,7 +25,8 @@ export const PersonalSite = () => {
         <Routes>
           <Route path="/" Component={RedirectToAbout} />
           <Route path="/about" Component={AboutPage} />
-          <Route path="/knowledge" Component={KnowledgePage} />
+          <Route path="/skills" Component={SkillsPage} />
+          <Route path="/certifications" Component={CertificationsPage} />
           <Route path="/experience" Component={ExperiencePage} />
           <Route path="/education" Component={EducationPage} />
           <Route path="/projects" Component={ProjectsPage} />

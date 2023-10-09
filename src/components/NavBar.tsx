@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { BrainCircuitIcon, BriefcaseIcon, DisplayCodeIcon, GraduationCapIcon, UserIcon } from "./Icons";
+import { AwardIcon, BrainCircuitIcon, BriefcaseIcon, DisplayCodeIcon, GraduationCapIcon, UserIcon } from "./Icons";
 import { FC, useState, PropsWithChildren } from "react";
 import "./NavBar.css";
 
@@ -45,14 +45,24 @@ export const NavBar = () => {
             <span className="lint-link-text">About</span>
           </NavLink>
           <NavLink
-            to="/knowledge"
-            aria-label="link to knowledge page"
+            to="/skills"
+            aria-label="link to skills page"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             <span className="nav-link-icon">
               <BrainCircuitIcon />
             </span>
-            <span className="lint-link-text">Knowledge</span>
+            <span className="lint-link-text">Skills</span>
+          </NavLink>
+          <NavLink
+            to="/certifications"
+            aria-label="link to certifications page"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            <span className="nav-link-icon">
+              <AwardIcon />
+            </span>
+            <span className="lint-link-text">Certifications</span>
           </NavLink>
           <NavLink
             to="/experience"
