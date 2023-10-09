@@ -1,3 +1,8 @@
+
+nav {
+  --nav-height: 2em;
+}
+
 /** the navbar root **/
 nav.navbar {
   margin: 10px 10px;
@@ -11,14 +16,29 @@ nav.navbar.expanded {
   opacity: 1;
 }
 
+.hamburger-menu-container .row {
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.hamburger-menu-container .row .page-title {
+  justify-content: center;
+  width: 100%;
+  margin-right: var(--nav-height);
+}
+.hamburger-menu-container .row .page-title p::first-letter {
+  text-transform: capitalize;
+}
+
 /** actual navigation links **/ 
 .nav-bar-content {
   height: 0;
   display: flex;
   flex-direction: column;
   transition: 0.3s ease;
-  translate: -50%;
+  translate: -100%;
 }
+
 .nav-bar-content.expanded {
   height: auto;
   transition: 0.3s ease;
@@ -31,6 +51,7 @@ nav.navbar.expanded {
   gap: 5px;
   font-size: 18px;
   transition: 0.3s ease;
+  justify-content: center;
 }
 
 .nav-bar-content a.active  {
@@ -50,13 +71,11 @@ nav.navbar.expanded {
   height: 1rem;
 }
 
-
-
 /** Hamburger Menu **/
 .hamburger-menu {
   aspect-ratio: 1/1;
-  height: 2em;
-  margin: auto 0 10px 0;
+  height: var(--nav-height);
+  margin: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -88,11 +107,9 @@ nav.navbar.expanded {
 
 @media (min-width: 500px) {
   nav.navbar {
-    height: 50px;
     border-bottom: 1px solid black;
   }
   nav.navbar.expanded {
-    height: 50px;
     border-bottom: 1px solid black;
   }
 
@@ -101,7 +118,7 @@ nav.navbar.expanded {
   }
 
   .nav-bar-content {
-    height: 50px;
+    height: var(--nav-height);
     position: relative;
     display: flex;
     flex-direction: row;
@@ -110,5 +127,10 @@ nav.navbar.expanded {
     translate: 0 0;
     font-size: 20px;
     margin-top: 5px;
+  }
+  .hamburger-menu-container .row .page-title {
+    display: none;
+    border: none;
+    height: 0;
   }
 }

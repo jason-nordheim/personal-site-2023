@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { BrainCircuitIcon, BriefcaseIcon, DisplayCodeIcon, GraduationCapIcon, UserIcon } from "./Icons";
 import { FC, useState, PropsWithChildren } from "react";
 import "./NavBar.css";
@@ -8,12 +8,18 @@ const HamburgerMenu: FC<PropsWithChildren<{ expanded: boolean; onClick: () => vo
   onClick,
   children,
 }) => {
+  const locaiton = useLocation();
   return (
     <div className="hamburger-menu-container">
-      <div className={expanded ? "hamburger-menu expanded" : "hamburger-menu"} onClick={onClick}>
-        <span></span>
-        <span></span>
-        <span></span>
+      <div className="row">
+        <div className={expanded ? "hamburger-menu expanded" : "hamburger-menu"} onClick={onClick}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <span className="page-title">
+          <p>{locaiton.pathname.slice(1)}</p>
+        </span>
       </div>
       {children}
     </div>
@@ -23,7 +29,10 @@ const HamburgerMenu: FC<PropsWithChildren<{ expanded: boolean; onClick: () => vo
 export const NavBar = () => {
   const [expanded, setExpanded] = useState(false);
   const handleHamburgerClick = () => {
-    setExpanded(!expanded);
+    const width = window.innerWidth;
+    if (width < 500) {
+      setExpanded(!expanded);
+    }
   };
   return (
     <nav className={expanded ? "navbar expanded" : "navbar"} role="navigation">
