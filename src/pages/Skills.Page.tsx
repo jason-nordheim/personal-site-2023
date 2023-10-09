@@ -1,24 +1,22 @@
+import { FC, PropsWithChildren, useState } from "react";
+import { DivProps, LabelProps, PageContainer, PageTitle } from "../components";
 import {
   FILTERS_ALL,
   FILTER_NONE,
   FilterCategories,
   SKILL_CATEGORY,
   SORT_OPTIONS,
-  SkillCategory,
   SortOptions,
   TagFilters,
-} from "../../lib";
-import { FC, PropsWithChildren, useState } from "react";
-import { css } from "../../styled-system/css";
+  capitalizeFirstChar,
+} from "../lib";
+import { useSortedAndFilteredSkills } from "../hooks";
+import { SkillsForm } from "../components/SkillsForm";
 import { AiOutlineArrowDown } from "react-icons/ai";
-
-import { DivProps, LabelProps } from "../common";
-import { capitalizeFirstChar } from "../../lib/utils";
-import { useSortedAndFilteredSkills } from "../../hooks";
-import { SkillBubble } from "../SkillBubble";
-import { SkillBubbleContainer } from "../SkillBubbleContainer";
-import { SkillsForm } from "../SkillsForm";
-import { makeSkillStyles } from "../../lib/utils/makeSkillStyles";
+import { SkillBubbleContainer } from "../components/SkillBubbleContainer";
+import { makeSkillStyles } from "../lib/utils/makeSkillStyles";
+import { SkillBubble } from "../components/SkillBubble";
+import { css } from "../styled-system/css";
 
 const SortAndFilterColumn: FC<PropsWithChildren<DivProps>> = ({ children, ...rest }) => {
   return (
@@ -109,7 +107,8 @@ const TagSelectionContainer: FC<PropsWithChildren<DivProps>> = ({ children, ...r
     </div>
   );
 };
-export const SkillsSection = () => {
+
+export const SkillsPage = () => {
   const [filters, setFilters] = useState<TagFilters>(FILTERS_ALL);
   const [sortField, setSortField] = useState<SortOptions>(SORT_OPTIONS.category);
   const [filterCategory, setFilterCategory] = useState<FilterCategories>("All");
@@ -130,7 +129,8 @@ export const SkillsSection = () => {
 
   const skills = useSortedAndFilteredSkills(sortField, filters, filterCategory);
   return (
-    <>
+    <PageContainer>
+      <PageTitle>Skills</PageTitle>
       <SkillsForm>
         <SortAndFilterColumn>
           <SortFilterContainer>
@@ -201,6 +201,6 @@ export const SkillsSection = () => {
         })}
       </SkillBubbleContainer>
       <br />
-    </>
+    </PageContainer>
   );
 };

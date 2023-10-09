@@ -1,5 +1,15 @@
 import { useMemo } from "react";
-import { FilterCategories, SKILLS, SORT_OPTIONS, Skill, TagFilters, skillHasTag, sortAscending } from "../lib";
+import {
+  Certification,
+  FilterCategories,
+  SKILLS,
+  SORT_OPTIONS,
+  Skill,
+  TagFilters,
+  skillHasTag,
+  sortAscending,
+  sortDescending,
+} from "../lib";
 import { ValueOf } from "ts-essentials";
 import { allPropertiesTruthy } from "../lib/utils/general";
 
@@ -53,4 +63,20 @@ export const useSortedAndFilteredSkills = (
   const categoryFilteredSkills = useCategoryFilter(skillsFilteredByTag, selectedCategory);
 
   return categoryFilteredSkills;
+};
+
+type UseCertificationOptions = {
+  sortDirection: "ascending" | "descending";
+};
+
+export const useCertificationsFilters = (certifications: Certification[], options?: UseCertificationOptions) => {
+  if (options?.sortDirection === "ascending") {
+    return certifications.sort((a, b) => sortAscending(a.title, b.title));
+  }
+
+  if (options?.sortDirection === "descending") {
+    return certifications.sort((a, b) => sortDescending(a.title, b.title));
+  }
+
+  return certifications;
 };
