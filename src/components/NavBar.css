@@ -7,7 +7,7 @@
   translate: -50%;
 }
 .nav-bar-content.expanded {
-  height: auto;
+  height: 100%;
   translate: 0 0;
 }
 
@@ -29,8 +29,12 @@
 
 nav.navbar {
   margin: 10px 10px;
+  height: 50px;
 }
-
+nav.navbar.expanded {
+  height: auto;
+  transition: 0.3s ease;
+}
 
 /** Hamburger Menu **/
 .hamburger-menu {
@@ -64,4 +68,22 @@ nav.navbar {
 .hamburger-menu.expanded span:last-child {
   transform: rotate(45deg);
   transform-origin: 85% -50%;
+}
+
+@media (min-width: 500px) {
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-bar-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-evenly;
+    translate: 0 0;
+    font-size: 20px;
+    margin-top: 5px;
+  }
 }

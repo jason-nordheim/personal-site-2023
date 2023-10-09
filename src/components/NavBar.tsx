@@ -26,7 +26,7 @@ export const NavBar = () => {
     setExpanded(!expanded);
   };
   return (
-    <nav className="navbar" role="navigation">
+    <nav className={expanded ? "navbar expanded" : "navbar"} role="navigation">
       <HamburgerMenu expanded={expanded} onClick={handleHamburgerClick}>
         <div className={expanded ? "nav-bar-content expanded" : "nav-bar-content"} onClick={handleHamburgerClick}>
           <NavLink to="/about" aria-label="link to about page">

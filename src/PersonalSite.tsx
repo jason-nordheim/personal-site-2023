@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
-import { css } from "./styled-system/css";
 import { Footer } from "./components";
 import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
 import { NavBar } from "./components/NavBar";
@@ -18,16 +17,7 @@ const RedirectToAbout = () => {
 
 export const PersonalSite = () => {
   return (
-    <div
-      className={css({
-        overflowY: "scroll",
-        overflowX: "hidden",
-        display: "flex",
-        bg: "#dbd9ff",
-        flexDirection: "column",
-        height: "100%",
-      })}
-    >
+    <>
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -40,6 +30,6 @@ export const PersonalSite = () => {
         </Routes>
       </BrowserRouter>
       <Footer />
-    </div>
+    </>
   );
 };

@@ -1,4 +1,29 @@
 @layer reset, base, tokens, recipes, utilities;
+body {
+  margin: 0;
+  padding: 0;
+}
+
 #root {
   height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: rgb(197, 149, 241);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  flex-wrap: wrap;
+  background-color: rgb(255, 255, 255);
+  margin: 1em 1em 3.5em 1em;
+  border-radius: 1em;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border-color:1px solid lightgray;
+  }
+
+.page-title {
+  font-size: xx-large;
+  text-align: center;
 }
