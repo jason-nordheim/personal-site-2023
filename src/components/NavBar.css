@@ -1,11 +1,14 @@
 /** the navbar root **/
 nav.navbar {
   margin: 10px 10px;
-  height: 50px;
+  z-index: 100;
+  background-color: rgb(197, 149, 241);
 }
 nav.navbar.expanded {
   height: auto;
   transition: 0.3s ease;
+  width: 100vw;
+  opacity: 1;
 }
 
 /** actual navigation links **/ 
@@ -17,6 +20,8 @@ nav.navbar.expanded {
   translate: -50%;
 }
 .nav-bar-content.expanded {
+  height: auto;
+  transition: 0.3s ease;
   translate: 0 0;
 }
 
@@ -25,8 +30,17 @@ nav.navbar.expanded {
   align-items: center;
   gap: 5px;
   font-size: 18px;
+  transition: 0.3s ease;
 }
 
+.nav-bar-content a.active  {
+  transition: 0.3s ease;
+  color: white;
+}
+.nav-bar-content a.active svg {
+  transition: 0.3s ease;
+  fill: white;
+}
 .nav-bar-content a:hover {
   text-decoration: underline;
 }
@@ -42,7 +56,7 @@ nav.navbar.expanded {
 .hamburger-menu {
   aspect-ratio: 1/1;
   height: 2em;
-  margin: auto 0;
+  margin: auto 0 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

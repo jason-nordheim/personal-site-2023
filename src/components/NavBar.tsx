@@ -29,31 +29,47 @@ export const NavBar = () => {
     <nav className={expanded ? "navbar expanded" : "navbar"} role="navigation">
       <HamburgerMenu expanded={expanded} onClick={handleHamburgerClick}>
         <div className={expanded ? "nav-bar-content expanded" : "nav-bar-content"} onClick={handleHamburgerClick}>
-          <NavLink to="/about" aria-label="link to about page">
+          <NavLink to="/about" aria-label="link to about page" className={({ isActive }) => (isActive ? "active" : "")}>
             <span className="nav-link-icon">
               <UserIcon />
             </span>
             <span className="lint-link-text">About</span>
           </NavLink>
-          <NavLink to="/knowledge" aria-label="link to knowledge page">
+          <NavLink
+            to="/knowledge"
+            aria-label="link to knowledge page"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <span className="nav-link-icon">
               <BrainCircuitIcon />
             </span>
             <span className="lint-link-text">Knowledge</span>
           </NavLink>
-          <NavLink to="/experience" aria-label="link to experience page">
+          <NavLink
+            to="/experience"
+            aria-label="link to experience page"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <span className="nav-link-icon">
               <BriefcaseIcon />
             </span>
             <span className="lint-link-text">Experience</span>
           </NavLink>
-          <NavLink to="/education" aria-label="link to education page">
+          <NavLink
+            to="/education"
+            aria-label="link to education page"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <span className="nav-link-icon">
               <GraduationCapIcon />
             </span>
             <span className="lint-link-text">Education</span>
           </NavLink>
-          <NavLink to="/projects" aria-label="link to projects page">
+          <NavLink
+            to="/projects"
+            aria-label="link to projects page"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
             <span className="nav-link-icon">
               <DisplayCodeIcon />
             </span>

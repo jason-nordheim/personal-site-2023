@@ -1,7 +1,7 @@
 @layer reset, base, tokens, recipes, utilities;
 html {
   touch-action: manipulation;
-    user-scalable: no;
+  user-scalable: no;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border-color:1px solid lightgray;
   height: 100%;
-  }
+}
 
 .page-title {
   font-size: xx-large;
