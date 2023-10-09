@@ -4,6 +4,4 @@ export * from "./Hero";
 export * from "./common";
 export * from "./CardContainer";
 export * from "./CardGrid";
-export * from "./sections/CertificationsSection";
 export * from "./Tabs";
-export * from "./sections";
