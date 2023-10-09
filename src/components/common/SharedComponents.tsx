@@ -2,12 +2,12 @@ import { FC, PropsWithChildren } from "react";
 import { container } from "../../styled-system/patterns";
 import { css, cx } from "../../styled-system/css";
 import { HTMLElementProps, HeadingProps, PProps } from "./ElementProps";
-import { Animate } from "react-simple-animate";
 
 const BASE_STYLES = {
   Container: container({
     display: "flex",
     flexDirection: "column",
+    translate: "0 50px",
     px: "10px",
     py: "10px",
     pb: "50px",
@@ -35,7 +35,7 @@ const clearAfter = css({
 export const PageContainer: FC<PropsWithChildren<HTMLElementProps>> = ({ children, className, ...rest }) => {
   return (
     <>
-      <section {...rest} className={cx(BASE_STYLES.Container, className)}>
+      <section aria-label="page-container" {...rest} className={cx(BASE_STYLES.Container, className)}>
         {children}
       </section>
       <div className={clearAfter}></div>
