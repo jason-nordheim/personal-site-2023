@@ -1,0 +1,26 @@
+.nav-bar-content {
+  display: none;
+}
+
+nav.navbar {
+  margin: 10px 10px;
+}
+
+.hamburger-menu {
+  aspect-ratio: 1/1;
+  height: 2em;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.hamburger-menu span {
+  position: relative;
+  display: flex;
+  height: 23%;
+  width: 100%;
+  background: black;
+  border-radius: 1rem;
+}
