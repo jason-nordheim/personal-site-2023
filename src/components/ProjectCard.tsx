@@ -1,8 +1,9 @@
 import { FC, useState } from "react";
+import { AiFillGithub } from "react-icons/ai";
+import { MdOutlinePreview } from "react-icons/md";
+
 import { Project, sortAscending } from "../lib";
 import "./ProjectCard.css";
-
-const ASSETS_DIR = "../assets";
 
 export const ProjectCard: FC<Project> = ({
   caption,
@@ -28,7 +29,15 @@ export const ProjectCard: FC<Project> = ({
         <h2 className="project-card-title">{title}</h2>
         <div className="project-details">
           <p>{caption}</p>
-          <div>
+          <div className="project-links">
+            <a href={liveDemoUrl} aria-label={`live demo of ${title}`}>
+              Live Demo: <MdOutlinePreview />
+            </a>
+            <a href={liveDemoUrl} aria-label={`live demo of ${title}`}>
+              Code: <AiFillGithub />
+            </a>
+          </div>
+          <div className="technical-details">
             <ul className="project-technologies">
               <h3>Technologies</h3>
               {technologies
