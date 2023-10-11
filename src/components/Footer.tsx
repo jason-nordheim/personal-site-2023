@@ -36,7 +36,8 @@ export const Footer = () => {
   return (
     <footer
       className={css({
-        bottom: "0",
+        translate: "0 100%",
+        bottom: 0,
         width: "100%",
         mt: "30px",
         bg: " rgb(197, 149, 241)",

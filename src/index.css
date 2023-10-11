@@ -31,16 +31,18 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 10px 10px;
+  padding: 20px 10px;
   flex-wrap: wrap;
   background-color: rgb(255, 255, 255);
-  margin: 1em 1em 3.5em 1em;
+  margin: 0.5em;
   border-radius: 1em;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   border-color:1px solid lightgray;
   height: 100%;
 }
-
+.page-container > .page-title {
+  display:  none;
+}
 .page-title {
   font-size: xx-large;
   text-align: center;
@@ -67,5 +69,13 @@ body {
 @media only screen and (min-width: 500px) {
   .projects-container {
     gap: 10em;
+  }
+  .page-container {
+    margin: 1em 1em 3.5em 1em;
+  }
+  .page-container .page-title {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 40px 0;
   }
 }
