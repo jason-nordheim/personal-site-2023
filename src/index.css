@@ -57,3 +57,15 @@ body {
 .caption {
   font-size: small;
 }
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 500px) {
+  .projects-container {
+    gap: 10em;
+  }
+}

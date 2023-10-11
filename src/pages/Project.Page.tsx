@@ -8,15 +8,7 @@ export const ProjectPage: FC = () => {
   return (
     <PageContainer>
       <PageTitle>Projects</PageTitle>
-      <div
-        className={css({
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "10em",
-          padding: "1",
-        })}
-      >
+      <div className="projects-container">
         {PROJECTS.map((p) => (
           <ProjectCard key={p.repoUrl} {...p} />
         ))}
