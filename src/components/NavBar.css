@@ -2,7 +2,9 @@
 nav {
   --nav-height: 2em;
 }
-
+.page-title {
+  margin: 0;
+}
 /** the navbar root **/
 nav.navbar {
   margin: 10px 10px;
