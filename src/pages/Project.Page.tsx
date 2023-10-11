@@ -13,7 +13,7 @@ export const ProjectPage: FC = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "20px",
+          gap: "10em",
           padding: "1",
         })}
       >
