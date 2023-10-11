@@ -14,13 +14,19 @@ export const FooterLink: FC<FooterLinkProps> = ({ href, Icon, text }) => {
   return (
     <li>
       <a
-        className={css({ color: "blue.500", textDecoration: "none", display: "flex", alignItems: "center" })}
+        className={css({
+          color: "black",
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+          "&:hover": { color: "white" },
+        })}
         href={href}
       >
         <span>
           <Icon />
         </span>
-        <span className={css({ ml: "5px" })}>{text}</span>
+        <span className={css({ ml: "5px", "&:hover": { textDecoration: "underline" } })}>{text}</span>
       </a>
     </li>
   );
@@ -30,12 +36,10 @@ export const Footer = () => {
   return (
     <footer
       className={css({
-        position: "fixed",
         bottom: "0",
         width: "100%",
-        borderTop: "1px solid black",
-        mt: "10px",
-        bg: "gray.200",
+        mt: "30px",
+        bg: " rgb(197, 149, 241)",
         zIndex: 1000,
       })}
     >
