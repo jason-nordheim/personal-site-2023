@@ -36,6 +36,7 @@ export const Footer = () => {
         borderTop: "1px solid black",
         mt: "10px",
         bg: "gray.200",
+        zIndex: 1000,
       })}
     >
       <ul className={css({ display: "flex", justifyContent: "space-evenly", py: "10px" })}>
