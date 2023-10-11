@@ -6,6 +6,7 @@ import { NavBar } from "./components/NavBar";
 import { useEffect } from "react";
 import { SkillsPage } from "./pages/Skills.Page";
 import { CertificationsPage } from "./pages/Certifications.Page";
+import { ProjectPage } from "./pages/Project.Page";
 
 const RedirectToAbout = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const PersonalSite = () => {
           <Route path="/certifications" Component={CertificationsPage} />
           <Route path="/experience" Component={ExperiencePage} />
           <Route path="/education" Component={EducationPage} />
-          <Route path="/projects" Component={ProjectsPage} />
+          <Route path="/projects" Component={ProjectPage} />
         </Routes>
       </BrowserRouter>
       <Footer />
