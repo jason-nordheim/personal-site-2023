@@ -1,34 +1,15 @@
+import { FC, PropsWithChildren } from "react";
+import { Caption, CardContainer, CardGrid, LiProps, PageContainer, PageTitle, SubTitle } from "../components";
 import {
   CERTIFICATION_VENDORS,
   Certification,
   LINKEDIN_CERTS,
   PLURALSIGHT_CERTS,
   UDEMY_CERTS,
-} from "../../lib/certifications";
-import { sortAscending, sortDescending } from "../../lib/utils/sorting";
-import { CardGrid } from "../CardGrid";
-import { CardContainer } from "../CardContainer";
-import { FC, PropsWithChildren } from "react";
-import { LiProps } from "../common";
-import { Caption, PageTitle, SubTitle } from "../common/SharedComponents";
-import { css } from "../../styled-system/css";
+} from "../lib/certifications";
+import { css } from "../styled-system/css";
 import { AiOutlineArrowDown } from "react-icons/ai";
-
-type UseCertificationOptions = {
-  sortDirection: "ascending" | "descending";
-};
-
-const useCertificationsFilters = (certifications: Certification[], options?: UseCertificationOptions) => {
-  if (options?.sortDirection === "ascending") {
-    return certifications.sort((a, b) => sortAscending(a.title, b.title));
-  }
-
-  if (options?.sortDirection === "descending") {
-    return certifications.sort((a, b) => sortDescending(a.title, b.title));
-  }
-
-  return certifications;
-};
+import { useCertificationsFilters } from "../hooks";
 
 type CertificationCollectionCardProps = {
   certifications: Certification[];
@@ -44,7 +25,11 @@ const CourseListItem: FC<PropsWithChildren<LiProps>> = ({ children, ...rest }) =
   );
 };
 
-const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ title, subtitle, certifications }) => {
+export const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({
+  title,
+  subtitle,
+  certifications,
+}) => {
   return (
     <CardContainer>
       <SubTitle>{title}</SubTitle>
@@ -96,13 +81,13 @@ const CertificationCollectionCard: FC<CertificationCollectionCardProps> = ({ tit
   );
 };
 
-export const CertificationsSection = () => {
+export const CertificationsPage = () => {
   const udemy = useCertificationsFilters(UDEMY_CERTS, { sortDirection: "ascending" });
   const pluralsight = useCertificationsFilters(PLURALSIGHT_CERTS, { sortDirection: "ascending" });
   const linkedIn = useCertificationsFilters(LINKEDIN_CERTS, { sortDirection: "ascending" });
 
   return (
-    <section className={css({ mt: "5" })} id="certifications">
+    <PageContainer>
       <PageTitle>Certifications</PageTitle>
       <CardGrid>
         {udemy?.length && (
@@ -130,6 +115,6 @@ export const CertificationsSection = () => {
           />
         )}
       </CardGrid>
-    </section>
+    </PageContainer>
   );
 };

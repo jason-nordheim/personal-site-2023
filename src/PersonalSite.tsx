@@ -1,31 +1,38 @@
-import { useState } from "react";
-import { css } from "./styled-system/css";
-import { Footer, Navigation, TABS } from "./components";
-import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+
+import { Footer } from "./components";
+import { AboutPage, EducationPage, ExperiencePage, ProjectsPage } from "./pages";
+import { NavBar } from "./components/NavBar";
+import { useEffect } from "react";
+import { SkillsPage } from "./pages/Skills.Page";
+import { CertificationsPage } from "./pages/Certifications.Page";
+
+const RedirectToAbout = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/about");
+  });
+
+  return <></>;
+};
 
 export const PersonalSite = () => {
-  const [tab, setTab] = useState(TABS.ABOUT);
-  const handleTabChange = (newTab: string) => {
-    setTab(newTab);
-  };
   return (
-    <div
-      className={css({
-        overflowY: "scroll",
-        overflowX: "hidden",
-        display: "flex",
-        bg: "#dbd9ff",
-        flexDirection: "column",
-        height: "100%",
-      })}
-    >
-      <Navigation selectedTab={tab} onTabChange={handleTabChange} />
-      {tab == TABS.ABOUT && <AboutPage />}
-      {tab == TABS.KNOWLEDGE && <KnowledgePage />}
-      {tab == TABS.EXPERIENCE && <ExperiencePage />}
-      {tab == TABS.EDUCATION && <EducationPage />}
-      {tab === TABS.PROJECTS && <ProjectsPage />}
+    <>
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" Component={RedirectToAbout} />
+          <Route path="/about" Component={AboutPage} />
+          <Route path="/skills" Component={SkillsPage} />
+          <Route path="/certifications" Component={CertificationsPage} />
+          <Route path="/experience" Component={ExperiencePage} />
+          <Route path="/education" Component={EducationPage} />
+          <Route path="/projects" Component={ProjectsPage} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
-    </div>
+    </>
   );
 };

@@ -146,6 +146,21 @@ export const LINKEDIN_CERTS: Certification[] = [
       "https://www.linkedin.com/learning/certificates/07a313e7694d1528231491450d18fed0c7dcaa3e09e74224ca5a52156f0ac5a5",
     vendor: CERTIFICATION_VENDORS.LinkedIn,
   },
+  {
+    title: "Introduction to Artificial Intelligence",
+    courseUrl:
+      "https://www.linkedin.com/learning/introduction-to-artificial-intelligence/why-you-need-to-know-about-artificial-intelligence?u=67698794",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/0ce33121f751b74a1fec136b995ea48448426739b889889806f29daeccfbbaca",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
+  {
+    title: "Machine Learning Foundations: Linear Algebra",
+    courseUrl: "https://www.linkedin.com/learning/machine-learning-foundations-linear-algebra/",
+    certificateUrl:
+      "https://www.linkedin.com/learning/certificates/5f9a92bf1721392beab7159937273480654b73f860517f1eac6dee4bb330e5eb",
+    vendor: CERTIFICATION_VENDORS.LinkedIn,
+  },
 ];
 
 export const PLURALSIGHT_CERTS: Certification[] = [

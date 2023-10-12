@@ -30,7 +30,7 @@ export const Footer = () => {
   return (
     <footer
       className={css({
-        position: "sticky",
+        position: "fixed",
         bottom: "0",
         width: "100%",
         borderTop: "1px solid black",
