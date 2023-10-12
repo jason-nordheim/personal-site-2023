@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import { Footer } from "./components";
-import { AboutPage, EducationPage, ExperiencePage, KnowledgePage, ProjectsPage } from "./pages";
+import { AboutPage, EducationPage, ExperiencePage, ProjectsPage } from "./pages";
 import { NavBar } from "./components/NavBar";
 import { useEffect } from "react";
 import { SkillsPage } from "./pages/Skills.Page";
