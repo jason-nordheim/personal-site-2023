@@ -10,6 +10,24 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    title: "React SketchPad",
+    caption:
+      "A published NPM package that can be consumed in any modern React application. Written in TypeScript, it supports type hinting and enables users to create sketches in a React application, export what was drawn as JSON data (paths) or as a PNG",
+    technologies: [
+      "HTML/CSS/JavaScript/Events",
+      "React: Hooks, JSX/babel, CSS-in-JS",
+      "Vite",
+      "HTML Canvas",
+      "TypeScript",
+      "Storybook",
+      "NPM",
+      "Eslint"
+    ],
+    conceptsAndPatterns: ["Packaging", "Deployment", "CI/CD"],
+    liveDemoUrl: "https://jason-nordheim.github.io/sketchPad/",
+    repoUrl: "https://github.com/jason-nordheim/sketchPad",
+  },
+  {
     title: "Pathfinder",
     liveDemoUrl: "https://find-best-path.web.app/",
     repoUrl: "https://github.com/jason-nordheim/pathfinder",
